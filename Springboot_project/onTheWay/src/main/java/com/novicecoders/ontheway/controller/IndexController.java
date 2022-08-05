@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 	@RequestMapping("/")
-	public void index(HttpServletResponse response) throws IOException{
-		response.getWriter().print("Hello World");
+	public String index() {
+		return "index";
 	}
 }

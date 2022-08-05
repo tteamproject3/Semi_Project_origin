@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.footer {
+	height: 100px;
+	background: #aaa;
+	text-align: center;
+}
+
+.header {
+	height: 100px;
+	background: #aaa;
+	text-align: center;
+}
