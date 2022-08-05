@@ -1,0 +1,53 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.campus'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies { //필요한 프레임워크가 있다면 이곳에 넣는다
+//리플래쉬 해주어야함 그래들리에서 우클릭 그래들 / 그래들 리플래쉬 해야 다운로드 된다.
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
+	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.58'
+	//뷰를 JSP로 사용하기 위하여 프레이뭐크를 추가한다
+	
+	// https://mvnrepository.com/artifact/javax.servlet/jstl
+	implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+
+	
+	// https://mvnrepository.com/artifact/javax.inject/javax.inject
+	implementation group: 'javax.inject', name: 'javax.inject', version: '1'
+	//자동으로 객체만들어주는 인젝트
+	
+	//파일 업로드
+	// https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+	implementation 'commons-fileupload:commons-fileupload:1.4'
+	
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
