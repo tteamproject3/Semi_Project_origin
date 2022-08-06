@@ -8,16 +8,16 @@ spring:
     suffix: .jsp
   dataSource: #jdbc
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1/(__1번__)?characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1/travel?characterEncoding=utf-8
     username: root
-    password: 
+    password: akflfls8dfh115!
   servlet: #파일업로드
     multipart:
       max-file-size: 20MB
       enabled: true
         
   
-#mybatis:
-# type-aliases-package: com.campus.myapp.vo
-# mapper-locations: mapper/*Mapper.xml
+mybatis:
+ type-aliases-package: com.novicecoders.ontheway.vo
+ mapper-locations: mapper/*Mapper.xml
 
