@@ -12,4 +12,5 @@
 <body>
 <div class="header">
 <h1>header</h1>
+<a href="/main/maps">maps</a>
 </div>
