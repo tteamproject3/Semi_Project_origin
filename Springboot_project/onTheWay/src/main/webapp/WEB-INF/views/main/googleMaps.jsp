@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- 구글맵 API -->
+<!-- &callback=initMap 콜백함수가 작동이 안되어서 지우고jq를 이용하여 추가함. -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwSEWBBCWNZzbZ6_ItQYHifWBj_gVVgWQ&callback=initMap&region=kr">	
 
 </script>
@@ -12,8 +13,38 @@
 	border: 1px solid #ddd;
 }
 </style>
+<script>
+var xhr = new XMLHttpRequest();
+var url = 'http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api'; /*URL*/
+var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'k%2BXUC8ZGTgciDc7GQP6q9XAd2Bd9IX5sbFqouotvyi4IQP2S%2BHFsLpGOxgYjnAlGImd%2FeNjPFPBu8xlS%2BhCLKw%3D%3D'; /*Service Key*/
+queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('0'); /**/
+queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('100'); /**/
+queryParams += '&' + encodeURIComponent('type') + '=' + encodeURIComponent('json'); /**/
+
+xhr.open('GET', url + queryParams); //get으로 보내겠다. 입력주소
+xhr.onreadystatechange = function () {
+    if (this.readyState == 4) { //전부받은상태 readyState == 
+        //alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+    }
+};
+
+xhr.send('');
+</script>
+<div>
+<form method="post" action="/">
+<input type="submit" value="클릭시 정보 가져와보기" id="data" />
+
+</form>
+</div>
 	<div id="googleMapView">
 		<script>
+		//$(document).ready(function($) {
+		//    initMap();
+		//});
+
+		  var map;
+
+
 			var latitude = 37.5729503;
 			var longitude = 126.9793578;
 			
@@ -30,9 +61,9 @@
 				//지도 종류(ROADMAP, HYBRID, STEELITE, TREEAIN))
 				};
 				var map = new google.maps.Map(document
+						
 				//지도 표시할 곳      //맵 옵션
 				.getElementById('googleMapView'), mapProperty);
-				
 				
 				//마커표시
 				var marker = new google.maps.Marker({
@@ -41,7 +72,7 @@
 					title:"서울시청", //마커에 마우스 오버시 표시할 내용
 					icon:"../../img/gmap_pin.png"
 
-				})
+				});
 				//정보 대화상자
 				var infoMsg = "위도:"+latitude+"<br/>경도="+longitude;
 				infoMsg+= "<br/><a href='https://lostark.game.onstove.com/Main'><img src='../../img/방긋.png' width'100' height='100'/></a>";
@@ -85,7 +116,8 @@
 				
 				myCity.setMap(map);
 				
+	
+				
 			}
 		</script>
-		 -->
 	</div>
