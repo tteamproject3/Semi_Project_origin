@@ -134,6 +134,14 @@ header .header__icon{
 header .header__icon i {
 	margin-right: var(--medium-space);
 }
+header .header_menu i:hover{
+	background-color: var(--bg-color-lightBlue-1);
+}
+/* ----- NAV ------ */
+nav{
+	display: none;
+	width: 20vw;
+}
 /* ----- FOOTER ----- */
 footer{
 	background-color: var(--main-color);
@@ -168,8 +176,7 @@ footer .footer__info span{
 	/* 상단 배경 설정 */
 	height: 60vh;
 	overflow: hidden;
-	background: url("img/river-view.jpg") center center;
-	/* background-size: var(--viewPort-width); */
+	background: url("/img/river-view.jpg") center center;
 	background-size: cover;
 }
 .top>div{
