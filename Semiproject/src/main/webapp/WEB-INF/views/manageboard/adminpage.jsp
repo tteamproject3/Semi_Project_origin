@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="/style/style.css">
 	<script src="https://kit.fontawesome.com/ab847241fd.js" crossorigin="anonymous"></script>
 
-	<title>On the way mypage</title>
+	<title>On the way adminpage</title>
 </head>
 <style>
 	#board,#page{overflow:auto;}
@@ -23,14 +23,38 @@
 	width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 	}
 
-	/* 페이지 */
-	#page li{
- 		float:left; padding:10px;
- 	}
-	#checkbox{
-		width:20px; height: 20px;
-	}
 
+	.checkbox{
+		width:1em; height: 1em;
+	}
+	.board__page{
+		margin:0 auto; text-align: center;
+	}
+	.board__page>li{
+		font-size: 0.8em; align-items: center;
+	}
+	.board__bottom .board__page {
+		display: flex;
+	}
+	.board__bottom .DelBtn{
+	/* 우측 버튼 설정 */
+	/* 세부 */
+	border-radius: var(--mild-radius);
+	background-color: var(--main-color);
+	color: var(--main-bg-color);
+	/* 크기 */
+	width: 127px;;
+	height: calc( var(--button-height) - 8px);
+	line-height: calc( var(--button-height) - 8px);
+	font-weight: bold;
+	font-size: var(--medium-font-size-3);
+}
+.actionBtn{
+	width:127px; height: 34px;
+}
+.board__bar .SearchKey li {
+	float:left;
+}
 
 </style>
 
@@ -56,7 +80,7 @@
 	<!-- PAGE TITLE 표시 바 -->
 	<section class="title">
 		<div class="title__bar">
-			<span>마이페이지</span>
+			<span>[관리자]관리창</span>
 		</div>
 	</section>
 
@@ -66,12 +90,19 @@
 		<!-- BOARD NAV + BUTTON -->
 		<div class="board__bar">
 			<ul class="board__nav">
-				<li><a href = "#">내가 쓴 글</a></li>
-				<li class="active"><a href = "#">내가 쓴 댓글</a></li>
-				<li><a href = "#">찜한 여행지</a></li>
-				<li><a href = "#">나의후기</a></li>
+				<li><a href = "#">후기별점</a></li>
+				<li class="active"><a href = "#">테마여행 추천</a></li>
 			</ul>
-			<div class="actionBtn">작성하기</div>
+			<ul class="SearchKey">
+				<li><select id ="">
+					<option>인기순</option>
+					<option>조회순</option>
+					<option>업데이트순</option>
+					<option>별점순</option>
+				</select></li>
+				<li><input type = "text" size = "10"></li>				
+				<li class="actionBtn">작성하기</li>
+		</ul>
 		</div>
 		
 		<!-- CONTENT -->
@@ -91,47 +122,25 @@
 				<li>${vo.userid}</li>
 				<li>${vo.hit}</li>
 				
-					<li>&nbsp;&nbsp;&nbsp;<input type = "checkbox" id = "checkbox" value = "${vo.no}"></li>
+					<li>&nbsp;&nbsp;&nbsp;<input type = "checkbox" id = "checkbox" class = "checkbox" value = "${vo.no}"></li>
 				
 			</ul>
-		<!-- PAGING + BUTTON
-			<div class="board__bottom">
-				<ul class="board__page">
-				<c:if test="${pVO.nowPage<=1}">
-					<li><a href="#"> <i class="fa-solid fa-angle-left"></i></a></li>
-				</c:if>
-			<c:if test = "${pVO.nowPage>1}">  
-				<li><a href = "/board/boardList?nowPage=${pVO.nowPage-1}
-					<c:if test ='${pVO.searchWord!=null}'>
-						&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}
-					</c:if>"><i class="fa-solid fa-angle-left"></i></a>
-				</li>
-			</c:if>
-			<c:forEach var = "p" begin="${pVO.startPage}" end ="${pVO.startPage+pVO.onePageCount-1}">
-			
-				<c:if test="${p<=pVO.totalPage}">
-					<li
-					<c:if test="${p==pVO.nowPage}">
-						 강조폰트
-					</c:if>
-					><a href ="/board/boardList?nowPage=${p}
-					<c:if test ='${pVO.searchWord!=null}'>
-						&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}
-					</c:if>">${p}</a></li>
-				</c:if>
-			</c:forEach>-->
+
+		<!-- PAGING + BUTTON-->
+		<div class="board__bottom">
+			<ul class="board__page">
+				<li><a href="#"> <i id = "" class="fa-solid fa-angle-left"></i></a></li>
+				<li><a href="#"> <i id = "" class="fa-solid fa-angle-right"></i></a></li>				
+				<li><input type = "checkbox" id = "allChk" class="checkbox"></li>
+				<li>모두선택</li>
+				<li><input type="button" class="DelBtn" value="삭제하기"></li>
+			</ul>
+		</div>
 				
-				<!-- 다음페이지 
-				<c:if test ="${pVO.nowPage==pVO.totalPage }">
-					<li><a href="#"> <i class="fa-solid fa-angle-right"></i></a></li>
-				</c:if>
-				<c:if test ="${pVO.nowPage<pVO.totalPage }">
-					<li><a href = "/board/boardList?nowPage=${pVO.nowPage+1}
-					<c:if test ='${pVO.searchWord!=null}'>
-						&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}
-					</c:if>"><i class="fa-solid fa-angle-right"></i></a></li>
-				</c:if>-->
-				
+				</ul>
+			</div> 
+		</div>
+	</section>
 
 	<!-- FOOTER -->
 	<footer>
