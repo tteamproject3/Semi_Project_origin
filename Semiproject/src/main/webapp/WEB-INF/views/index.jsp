@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://use.typekit.net/mss6mty.css">
 	<link rel="stylesheet" href="/style/indexStyle.css">
 	<script src="https://kit.fontawesome.com/ab847241fd.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+	<script src="/script/indexScript.js" type="text/javascript"></script>
+	
     <title>OnTheWay</title>
 </head>
 <body>
@@ -30,13 +33,12 @@
 
 	<nav>
 		<ul>
-			<li>홈페이지 소개</li>
-			<li>이용약관</li>
-			<li>개인정보보호정책</li>
-			<li>게시판</li>
-			<li>고객센터</li>
+			<li><a href="#">홈페이지 소개</a></li>
+			<li><a href="#">게시판</a></li>
+			<li><a href="#">이용약관</a></li>
+			<li><a href="#">개인정보보호정책</a></li>
+			<li><a href="#">고객문의</a></li>
 		</ul>
-		
 	</nav>
 
 		<!-- TITLE + SEARCH AREA -->

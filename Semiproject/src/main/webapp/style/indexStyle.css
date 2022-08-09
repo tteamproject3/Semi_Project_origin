@@ -81,7 +81,8 @@ body {
 	background-color: var(--main-bg-color);
 }
 
-header,
+header, 
+nav,
 section,
 footer {
 	width: var(--main-center-ratio);
@@ -134,13 +135,30 @@ header .header__icon{
 header .header__icon i {
 	margin-right: var(--medium-space);
 }
-header .header_menu i:hover{
-	background-color: var(--bg-color-lightBlue-1);
-}
+
 /* ----- NAV ------ */
-nav{
+
+nav>ul{
 	display: none;
-	width: 20vw;
+	position: absolute;
+	z-index: 10;
+	background-color: var(--bg-color-lightBlue-1);
+	width: 10vw;
+}
+nav>ul>li{
+	padding: 5%;
+	border-bottom: var(--basic-line) var(--bg-color-blue-2);
+	font-size: var(--medium-font-size-3);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+nav>ul>li:last-child{
+	border-bottom: none;
+}
+nav>ul>li:hover{
+	color: var(--main-bg-color);
+	background-color: var(--main-color);
 }
 /* ----- FOOTER ----- */
 footer{
@@ -168,6 +186,16 @@ footer .footer__info{
 footer .footer__info span{
 	text-align: center;
 }
+/* **** events ***** */
+header .header__menu>i:hover, 
+.header__icon>i:hover,
+.header__logo:hover{
+	pointer-events : auto;
+	color: var(--bg-color-blue-1);
+}
+
+
+
 
 
 /* **************** MAIN PAGE **************** */
@@ -177,6 +205,7 @@ footer .footer__info span{
 	height: 60vh;
 	overflow: hidden;
 	background: url("/img/river-view.jpg") center center;
+	/* background-size: var(--viewPort-width); */
 	background-size: cover;
 }
 .top>div{
@@ -276,7 +305,18 @@ footer .footer__info span{
 	text-align: center;
 	margin-top: var(--medium-space);
 }
-
+/* ***** event ****** */
+.search .button:hover{
+	/* 버튼 호버 */
+	background-color: var(--bg-color-blue-2);
+}
+.search input:focus,
+.search select:focus {
+	outline: var(--basic-line) var(--bg-color-blue-2);
+}
+.search input:focus + label {
+	color:var(--bg-color-blue-2);
+}
 /* ----- Setting ----- */
 /* banner titles */
 .title{
@@ -310,14 +350,15 @@ footer .footer__info span{
 	/* 날씨 정보 정렬 */
 	display: flex;
 	justify-content: space-between;
+	overflow: scroll;
 }
 .weather__list .weather__info .weather_detail{
 	/* 아이콘-기온-도시 이름 정렬 */
 	display: flex;
 	flex-direction: column;
 }
-.weather__list .weather__info .weather__detail i{
-	font-size: 8vw;
+.weather__list .weather__info .weather__detail img{
+	width: 12vw;
 	margin-bottom: var(--medium-space);
 }
 .weather__list .weather__info .weather__detail .wTemp{
@@ -478,3 +519,6 @@ footer .footer__info span{
 	color: var(--ct-color-gray-dark);
 	overflow: auto;
 }
+
+
+

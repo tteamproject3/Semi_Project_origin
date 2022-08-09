@@ -1,5 +1,8 @@
 package com.campus.myapp.service;
 
-public class BoardServiceImpl implements boardService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class BoardServiceImpl implements BoardService {
     
 }
