@@ -21,11 +21,6 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(SemiprojectApplication.class);
 	}
-<<<<<<< HEAD:Semiproject/src/main/java/com/campus/myapp/ServletInitializer.java
- 
-=======
-	
->>>>>>> d84aca60ec232897feac6831e202b0e6cd3aa2f7:Semiproject/src/main/java/com/campus/myapp/vo/ServletInitializer.java
 	@Bean
 	public ConfigurableServletWebServerFactory configurableServletWebServerFactory() {
 		return new TomcatServletWebServerFactory() {
