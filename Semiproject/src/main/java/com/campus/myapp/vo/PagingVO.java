@@ -5,7 +5,7 @@ public class PagingVO {
 	private int onePageRecord=10; // 한페이지에 출력할 레코드수
 	private int totalRecord; // 총레코드수
 	private int totalPage;// 총페이지수
-	private int offsetPoint; // 
+	private int offsetPoint; //
 	
 	//페이지 번호
 	private int startPage = 1;

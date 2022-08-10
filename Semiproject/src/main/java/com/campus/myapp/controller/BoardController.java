@@ -26,11 +26,11 @@ import com.campus.myapp.vo.PagingVO;
 @RequestMapping("/board/*")
 public class BoardController {
 	@Autowired
-    BoardService service;
-    
-	ModelAndView mav = null;
-
-    //게시판
+	BoardService service;
+	
+	ModelAndView mav = null; //변수를 초기화 해놔야함
+	
+	//게시판
 	@GetMapping("boardList") //a태그
 	public ModelAndView boardList(PagingVO pVO) {
 		mav = new ModelAndView();

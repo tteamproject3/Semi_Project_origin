@@ -3,7 +3,7 @@ package com.campus.myapp.vo;
 import java.util.List;
 
 public class BoardVO {
-    private int no;
+	private int no;
 	private String subject;
 	private String content;
 	private String userid;
@@ -11,10 +11,12 @@ public class BoardVO {
 	private int hit;
 	private String writedate;
 	
+	//여러개의 레코드 번호를 저장하는 컬렉션 선언
 	private List<Integer> noList;
+	
+	///여러개의 레코드 번호를 저장할 컬렉션 선언
 	private int reply_count;
 	
-    
 	@Override
 	public String toString() {
 		return "BoardVO [no=" + no + ", subject=" + subject + ", content=" + content + ", userid=" + userid + ", ip="
@@ -74,4 +76,6 @@ public class BoardVO {
 	public void setReply_count(int reply_count) {
 		this.reply_count = reply_count;
 	}
+	
+
 }
