@@ -23,7 +23,6 @@
 	width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 	}
 
-
 	.checkbox{
 		width:1em; height: 1em;
 	}
@@ -121,8 +120,7 @@
 				
 				<!--<c:if test = "${logStatus=='Y'}">-->
 					<li>&nbsp;&nbsp;&nbsp;<input type = "checkbox" id = "allChk" class = "checkbox" value = "${vo.no}"></li>
-				<!--</c:if>-->
-				
+				<!--</c:if>-->	
 			</ul>
 
 			<!-- PAGING + BUTTON-->
