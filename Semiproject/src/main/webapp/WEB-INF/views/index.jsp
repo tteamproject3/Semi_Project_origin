@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.typekit.net/mss6mty.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- 웹표준 최신버전으로 호환 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- 뷰포트메타태그를 사용하여 창크기를 조절하면서 뷰포트 크기 조절가능 -->
+    <link rel="stylesheet" href="https://use.typekit.net/mss6mty.css"><!-- 어도비폰트css -->
 	<link rel="stylesheet" href="/style/indexStyle.css">
-	<script src="https://kit.fontawesome.com/ab847241fd.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/ab847241fd.js" crossorigin="anonymous"></script><!-- css로 가능한 이모티콘관련 링크 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 	<script src="/script/indexScript.js" type="text/javascript"></script>
 	
-    <title>OnTheWay</title>
+    <title>On The Way</title>
 </head>
 <body>
     <!-- HEADER -->

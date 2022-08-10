@@ -99,7 +99,7 @@
 				<li><a href = "#">축제후기</a></li>
 				<li><a href = "#">맛집추천</a></li>
 			</ul>
-			<input type="button" class="actionBtn" value="작성하기"></div>
+			<input type="button" class="actionBtn" value="작성하기">
 		</div>
 		
 		<!-- CONTENT -->
@@ -110,7 +110,7 @@
 					<li>작성일</li>
 					<li>작성자</li>
 					<li>조회수</li>
-					<!--<c:if test = "${logStatus=='Y'}">--><li>선택</li></c:if>
+					<!--<c:if test = "${logStatus=='Y'}">--><li>선택</li><!-- </c:if> -->
 			</ul>
 			<ul class="content__list">
 				<li>{vo.no}</li>
@@ -146,7 +146,7 @@
 			<a href="#"><i class="fa-solid fa-share-from-square"></i></a>
 		</div>
 		<div class="footer__info">
-			<a href="#">About Us</a> | 
+			<a href="#">About Us</a> |
 			<a href="#">Support</a> |
 			<a href="#">Term of Use</a> |
 			<a href="#">Private Policy</a> <br>
