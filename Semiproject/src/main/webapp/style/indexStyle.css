@@ -64,7 +64,6 @@
 	--bold-dotted-line:3px dotted;
 }
 
-
 /* * BASIC Settings *
 */
 * {
@@ -81,10 +80,9 @@ body {
 	background-color: var(--main-bg-color);
 }
 
-header, 
+.wrapper, 
 nav,
-section,
-footer {
+section{
 	width: var(--main-center-ratio);
 	margin: 0 auto;
 }
@@ -94,24 +92,27 @@ a {
 	color: inherit;
 	font-size: inherit;
 }
-
+i{
+	cursor: pointer;
+}
 /* **************** INC 영역 **************** */
 /* ----- HEADER ------*/
-header {
-	/* 플랙스박스 속성 이용한 배치*/
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
+header{
 	/* 색상 + 선*/
 	color: var(--main-color);
 	border-bottom: var(--basic-line) var(--main-color);
 }
-header>div{
+header .wrapper {
+	/* 플랙스박스 속성 이용한 배치*/
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+header>div>div{
 	width: 20%;
 	padding: var(--medium-space);
 }
-header>div:nth-child(3n+2){
+header>div>div:nth-child(2){
 	width: 60%;
 }
 header i {
@@ -153,9 +154,6 @@ nav>ul>li{
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-nav>ul>li:last-child{
-	border-bottom: none;
-}
 nav>ul>li:hover{
 	color: var(--main-bg-color);
 	background-color: var(--main-color);
@@ -192,7 +190,6 @@ header .header__menu>i:hover,
 .header__logo:hover{
 	pointer-events : auto;
 	color: var(--bg-color-blue-1);
-	cursor: pointer;
 }
 
 
@@ -280,6 +277,10 @@ header .header__menu>i:hover,
 	color: var(--ct-color-gray-dark);
 	/* font-size: var(--medium-font-size-2); */
 }
+.Itnr .input__box{
+	/* 날짜 입력창 설정 */
+	width: 44%;
+}
 .search .input__wrapper{
 	/* 현재 위치 검색창 스타일 */
 	width:100%;
@@ -310,11 +311,10 @@ header .header__menu>i:hover,
 .search .button:hover{
 	/* 버튼 호버 */
 	background-color: var(--bg-color-blue-2);
-	cursor:pointer;
 }
 .search input:focus,
 .search select:focus {
-	outline: var(--basic-line) var(--bg-color-blue-2);
+	outline: var(--basic-line)var(--bg-color-blue-2);
 }
 .search input:focus + label {
 	color:var(--bg-color-blue-2);
@@ -347,28 +347,52 @@ header .header__menu>i:hover,
 	width:10%;
 	font-size: var(--title-font-size);
 }
-.weather__list .weather__info{
+.weather__list .wVertical{
+	flex-direction: columm;
 	width: 70%;
-	/* 날씨 정보 정렬 */
+}
+.weather__list .weather__info_1,
+.weather__list .weather__info_2{
+	/* 날씨 정보 가로 정렬 */
 	display: flex;
 	justify-content: space-between;
-	overflow: scroll;
+	/* 오른쪽으로 넘친 정보  */
+	overflow: scroll; 
+	/* flex-wrap: wrap; */
+	width: 100%;
 }
-.weather__list .weather__info .weather__detail{
-	/* 아이콘-기온-도시 이름 정렬 */
+.weather__list .weather__info_1 .weather__detail,
+.weather__list .weather__info_2 .weather__detail{
+	/* 아이콘-기온-도시 이름 세로 정렬 */
 	display: flex;
 	flex-direction: column;
+	margin: var(--medium-space);
+	/* 좌우 이동 */
+	position:relative;
+	left: 0;
 }
-.weather__list .weather__info .weather__detail img{
-	width: 12vw;
+.weather__list .weather__info_1 .weather__detail img,
+.weather__list .weather__info_2 .weather__detail img{
+	/* 날씨 아이콘 */
+	width: 7.6vw; 
 	margin-bottom: var(--medium-space);
+	background-color: var(--ct-color-gray-light);
+	border-radius: 50%;
+	box-shadow: var(--basic-shadow);
 }
-.weather__list .weather__info .weather__detail .wTemp{
+.weather__list .weather__info_1 .weather__detail .wTemp,
+.weather__list .weather__info_2 .weather__detail .wTemp{
 	color: var(--ct-color-gray-dark);
+}
+.weather__page {
+	display:flex;
+	justify-content: center;
 }
 .weather__page i{
+	/* 날씨페이지  */
 	font-size: var(--small-font-size-1);
 	color: var(--ct-color-gray-dark);
+	margin: var(--medium-space);
 }
 
 /* ----- THEME BANNER ----- */
@@ -474,6 +498,9 @@ header .header__menu>i:hover,
 }
 
 /* ----- FESTIVAL BANNER ----- */
+.festival{
+	text-align: center;
+}
 .festival>.festival__title{
 		/* 제목 */
 		text-align: center;
@@ -481,7 +508,6 @@ header .header__menu>i:hover,
 }
 .festival__list{
 	display: flex;
-	margin-bottom: var(--large-space);
 }
 .festival__list li{
 	margin: calc(var(--medium-space)*2);
@@ -491,6 +517,7 @@ header .header__menu>i:hover,
 	flex-direction: column;
 	font-size: var(--small-font-size-1);
 	color: var(--ct-color-gray-dark);
+	text-align: left;
 }
 .festival__list .festival__info img{
 	width: 100%;
@@ -521,35 +548,47 @@ header .header__menu>i:hover,
 	color: var(--ct-color-gray-dark);
 	overflow: auto;
 }
+.festival__page i{
+	/* 배너페이지  */
+	font-size: var(--small-font-size-1);
+	color: var(--ct-color-gray-dark);
+	margin-bottom: var(--large-space);
+}
+
+
 
 /*---------------------지도한눈에 보기~ 구글맵 전까지-------------------------*/
 .maps_background{
 	display: flex;
-	height: 360px;
-	background: var(--unnamed-color-4f6083) 0% 0% no-repeat padding-box;
+	height: 30vh;
 	background: #4F6083 0% 0% no-repeat padding-box;
 	z-index: 0;
-	
+	margin-top: var(--large-space);
 }
 .maps_div{
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	height: 88px;
+	width: var(--main-center-ratio);
+	margin: calc(var(--large-space)*2) auto 0;
 	z-index: 3;
-	margin: auto
 }
 
 .maps_content{
-	width: 100%;
-	height: 200px;
-	font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-50)/var(--unnamed-line-spacing-66) var(--unnamed-font-family-roboto);
+	width: 90%;
+	height: var(--large-font-size-1);
+	font-size: var(--large-font-size-1);
+	font-weight: bold;
 	letter-spacing: var(--unnamed-character-spacing-0);
-	color: var(--unnamed-color-ffffff);
 	text-align: center;
-	font: normal normal bold 50px/66px Roboto;
-	color: #FFFFFF;
+	color: var(--main-bg-color);
+	margin: 0 auto var(--medium-space);
+}
 
+.maps_line{
+	width: 70%;
+	height: 2px;
+	background-color: var(--main-bg-color);
+	margin: 0 auto;
 }
 
 .maps_search{
@@ -558,51 +597,62 @@ header .header__menu>i:hover,
 	display: flex;
 	top: -100px;
 	width: 90%;
-	height: 200px;
+	height: 150px;
 	margin:auto;
-	background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
 	background: #FFFFFF 0% 0% no-repeat padding-box;
-	box-shadow: 0px 10px 20px #00000029;
+	box-shadow: var(--bigger-shadow);
 	border-radius: 20px;
 }
 .maps_search_subject{
-	width: 200px;
-	height: 40px;
-	font: normal normal bold 26px/31px Apple SD Gothic Neo;
+	width: inherit;
+	height: 30px;
 	color: #191919;
 	margin:auto;
+	text-align: center;
+	font-size: var(--large-font-size-2);
+	font-weight: bold;
 }
 .maps_search_content{
-	width:75%;
-	height: 40px;
+	width:80%;
+	height: 30px;
 	margin:auto;
 	display: flex;
 	justify-content: space-between;
 }
+.search_box{
+	width: 45%;
+	margin:0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 .search_box_1, #search_box_2, .search_box{
-	text-align: left;
-	font: normal normal bold 26px/31px Apple SD Gothic Neo;
-	margin:auto;
+	text-align: center;
+	font-size:var(--medium-font-size-3);
+}
+.search_box select{
+	width: 60%;
 }
 /* ---------------------googleMaps------------------------- */
 .gmap_section{
 	display: flex;
 	margin:auto;
 	justify-content: space-between;
-	height: 700px;
+	height: 600px;
+	position: relative;
+	top: -70px;
 }
 .gmap_search{
 	width: 38%;
-	height: 700px;
-	background: var(--unnamed-color-f2f2f2) 0% 0% no-repeat padding-box;
+	height: 600px;
 	background: #F2F2F2 0% 0% no-repeat padding-box;
-	box-shadow: 0px 10px 20px #00000029;
+	box-shadow: var(--bigger-shadow);
 	border-radius: 20px;
 }
 #googleMapView{
 	width: 60%;
-	height: 700px;
-	box-shadow: 0px 10px 10px #00000029;
+	height: 600px;
+	box-shadow: var(--bigger-shadow);
 	border-radius: 20px;
 }
 /* ---------------------------------맞춤여행지----------------------------------- */
@@ -620,17 +670,17 @@ header .header__menu>i:hover,
 .search_result_title{
 	width: 80%;
 	margin:auto auto 0px;
-	color: var(--unnamed-color-ffffff);
 	text-align: center;
-	font: normal normal bold 50px/66px Roboto;
+	font-size: var(--large-font-size-1);
+	font-weight: bold;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
 }
 
 .search_result_hr{
-	width:90%;
-	height:5px;
+	width:80%;
+	height:3px;
 	border:none;
 	background-color:black;
 	margin:0 auto auto auto;
@@ -640,9 +690,8 @@ header .header__menu>i:hover,
 	height: 250px;
 	width: 100%;
 	margin:15px, auto, auto, 15px;
-	background: var(--unnamed-color-e1e8ef) 0% 0% no-repeat padding-box;
 	background: #E1E8EF 0% 0% no-repeat padding-box;
-	box-shadow: 0px 3px 6px #00000029;
+	box-shadow: var(--basic-shadow);
 	opacity: 1;
 	filter: blur(0px);
 }
@@ -652,7 +701,7 @@ header .header__menu>i:hover,
 	height:90%;
 	background-color: orange;
 	margin:auto;
-	box-shadow: 0px 3px 6px #00000029;
+	box-shadow: var(--basic-shadow);
 	opacity: 1;
 	filter: blur(0px);
 	
@@ -666,12 +715,14 @@ header .header__menu>i:hover,
 }
 .touristSpot_subject{
 	text-align: left;
-	font: normal normal bold 30px/39px Roboto;
+	font-size:var(--large-font-size-3);
+	font-weight:bold;
 	opacity: 1;
 	}
 .touristSpot_content{
 	height:150px;
 	text-align: left;
+	font-size:var(--medium-font-size-3);
 }
 .touristSpot_fav{
 	width:30px;
