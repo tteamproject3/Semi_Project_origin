@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +10,7 @@
 	<script src="https://kit.fontawesome.com/ab847241fd.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 	<script src="/script/indexScript.js" type="text/javascript"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwSEWBBCWNZzbZ6_ItQYHifWBj_gVVgWQ&region=kr"></script>
 	
     <title>OnTheWay</title>
 </head>
@@ -164,7 +166,99 @@
 				<i class="fa-regular fa-circle"></i>
 			</div>
 		</section>
-    
+		<!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
+	    	<div class="maps_background">
+	    		<div class="maps_div">
+	    			<div class="maps_content">지도에서 한눈에 찾아보기</div>
+	    			<hr style="width:50%;height:10px;border:none;background-color:white;margin: auto;">
+    			</div>
+   			</div>
+	    <section class="maps">
+   			<div class="maps_search">
+   				<div class="maps_search_subject">세부 검색 설정</div>
+   				<div class="maps_search_content">
+		          <div class="search_box">
+		          	<span>지역/권역</span>
+		            <select name="" class="search_box_1" onchange="categoryChange(this)">
+		              <option value>시/도 선택</option>
+		              <option value="general01">강원</option>
+		              <option value="general02">경기</option>
+		              <option value="general03">경남</option>
+		              <option value="general04">경북</option>
+		              <option value="general05">광주</option>
+		              <option value="general06">대구</option>
+		              <option value="general07">대전</option>
+		              <option value="general08">부산</option>
+		              <option value="general09">서울</option>
+		              <option value="general10">울산</option>
+		              <option value="general11">인천</option>
+		              <option value="general12">전남</option>
+		              <option value="general13">전북</option>
+		              <option value="general14">제주</option>
+		              <option value="general15">충남</option>
+		              <option value="general16">충북</option>
+		            </select>
+		          </div>
+	          
+		          <div class="search_box">
+		          	<span>시/구/군</span>
+		            <select name="" id="search_box_2">
+		              <option>군/구 선택</option>
+		            </select>
+		          </div>
+				</div>
+   			</div>
+		</section>
+<!-- ---------------------googleMaps-------------------------  -->   
+		<section class="gmap_section">
+				<div class="gmap_search">
+					<form>
+					</form>
+				</div>
+				<div id="googleMapView">
+				</div>
+		</section>
+ <!-- ---------------------------------맞춤여행지-----------------------------------  -->  
+ 		<section class="search_result">
+		    <div class="search_result_div1">
+	   			<div class="search_result_title">${user_nickname} 님을 위한 맞춤 여행지</div>
+	   			<hr class="search_result_hr">
+  			</div>
+  			<div class="touristSpot">
+	  			<div class="touristSpot_img">img파일 어디서구하지?</div>
+	  			<!-- 이미지파일을 구하는 방법을 정하면 그때가서 동그라미로 자르기 -->
+	  			<div class="touristSpot_div">
+		  			<div class="touristSpot_subject">은평역사한옥박물관</div>
+		  			<br/>
+		  			<spen>관광지 소개<br/></spen>
+		  			<div class="touristSpot_content">은평구의 문화유산과 한옥의 전통을 소개하는 박물관</div>
+		  			<div class="touristSpot_tel">관광지 관리기관 전화번호: 02-351-8525</div>
+			  		<div class="touristSpot_div2">
+			  		<div class="touristSpot_parking">주차가능공간: 26</div>
+			  		<div class="touristSpot_raiting">평점★: 4.6 &nbsp; &nbsp; <input class="touristSpot_fav" type="button" value="❤"/></div>
+			  		</div>
+	  			</div>	
+  			</div>
+  			<br/>
+  			<div class="touristSpot">
+	  			<div class="touristSpot_img">img파일 어디서구하지?</div>
+	  			<!-- 이미지파일을 구하는 방법을 정하면 그때가서 동그라미로 자르기 -->
+	  			<div class="touristSpot_div">
+		  			<div class="touristSpot_subject">은평역사한옥박물관</div>
+		  			<br/>
+		  			<spen>관광지 소개<br/></spen>
+		  			<div class="touristSpot_content">은평구의 문화유산과 한옥의 전통을 소개하는 박물관</div>
+		  			<div class="touristSpot_tel">관광지 관리기관 전화번호: 02-351-8525</div>
+			  		<div class="touristSpot_div2">
+			  		<div class="touristSpot_parking">주차가능공간: 26</div>
+			  		<div class="touristSpot_raiting">평점★: 4.6 &nbsp; &nbsp; <input class="touristSpot_fav" type="button" value="❤"/></div>
+			  		</div>
+	  			</div>	
+  			</div>
+  			<br/>
+  			<!-- 축제 관련해서도 추후에 추가해야함 -->
+ 		</section>
+ <!-- ------------------------------------------------------------------------------------------------------  -->    
 		<!-- THEME RECOMMENDATION -->
 		<section class="theme">
 			<div class="theme__title">
