@@ -55,8 +55,7 @@ public class BoardController {
 	//글쓰기 DB
 	@PostMapping("boardFormOk")
 	public ResponseEntity<String> boardFormOk(BoardVO vo,HttpServletRequest request){
-		vo.setUserid((String)request.getSession().getAttribute("logId"));//세션 로그인 아이디
-		vo.setIp(request.getRemoteAddr());//접속자의 아이피
+		vo.setGoogle_id((String)request.getSession().getAttribute("logId"));//세션 로그인 아이디
 		
 		String msg = "<script>";
 		try {
@@ -102,7 +101,7 @@ public class BoardController {
 	@PostMapping("boardEditOk")
 	public ResponseEntity<String> boardEditOk(BoardVO vo, HttpSession session){
 		//세션의 아이디를 구한다.
-		vo.setUserid((String)session.getAttribute("logId"));
+		vo.setGoogle_id((String)session.getAttribute("logId"));
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type", "text/html; charset-UTF-8");
@@ -111,7 +110,7 @@ public class BoardController {
 			service.boardEditOk(vo);
 			//수정되었음 - 글내용보기
 			msg += "alert('글이 수정되었습니다.');";
-			msg += "location.href = '/board/boardView?no="+vo.getNo()+"';";
+			msg += "location.href = '/board/boardView?no="+vo.getPostid()+"';";
 		}catch(Exception e) {
 			e.printStackTrace();
 			//수정 실패일때
