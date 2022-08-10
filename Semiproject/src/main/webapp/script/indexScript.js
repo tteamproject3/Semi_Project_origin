@@ -66,11 +66,13 @@ $(function(){
 
 				// 데이터 쓰기 
 				// $('.weather__info').empty();
-				$('.weather__info').append('<li><ul class="weather__detail">');
-				$('.weather__info').append('<li class="wIcon"><img src="'+$iconUrl+'" alt="icon" /></li><br/>');
-				$('.weather__info').append('<li class="wTemp">'+$temp+'</li><br/>');
-				$('.weather__info').append('<li class="wCity">'+$city+'</li></ul></li>');
-			
+				var tag ='<li><ul class="weather__detail">';
+				tag += '<li class="wIcon"><img src="'+$iconUrl+'" alt="icon" /></li>';
+				tag += '<li class="wTemp">'+$temp+'</li>';
+				tag += '<li class="wCity">'+$city+'</li></ul></li>';
+
+				$('.weather__info').append(tag);
+				// $('.weather__info_2').append(tag);
 			}, error:function(e){
 				console.log(e.responseText);
 			}

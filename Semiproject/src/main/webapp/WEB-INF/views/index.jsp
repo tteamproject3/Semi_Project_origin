@@ -124,8 +124,9 @@
 				<i class="fa-solid fa-angle-left"></i>
 				<!-- 도시+날씨 리스트 -->
 					<ul class="weather__info">
-						<li>
+						
 							<!-- 도시별 이름+날씨 아이콘+기온-->
+						<!-- <li>	
 							<ul class="weather__detail">
 								<li class="wIcon"><i class="fa-solid fa-cloud-sun"></i></li>
 								<li class="wTemp">28 &#8451;</li>
@@ -152,7 +153,7 @@
 								<li class="wTemp">26 &#8451;</li>
 								<li class="wCity">제주</li>
 							</ul>
-						</li>
+						</li> -->
 					</ul>
 				<i class="fa-solid fa-angle-right"></i>
 			</div>
