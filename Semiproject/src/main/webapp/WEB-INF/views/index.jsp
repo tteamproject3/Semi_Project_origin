@@ -16,32 +16,33 @@
 </head>
 <body>
     <!-- HEADER -->
-	<header>
-		<div class="header__menu">
-			<i class="fa-solid fa-bars"></i>
-		</div>
-		<div class="header__logo">
-			<a href="#">
-                <i class="fa-solid fa-plane-departure"></i>
-                <span>On The Way</span>
-			</a>
-		</div>
-		<div class="header__icon">
-			<!-- <i class="fa-solid fa-arrow-right-from-bracket"></i> -->
-			<i class="fa-regular fa-bell"></i>
-			<i class="fa-regular fa-user"></i>
-		</div>
-	</header>
-
-	<nav>
-		<ul>
-			<li><a href="#">홈페이지 소개</a></li>
-			<li><a href="#">게시판</a></li>
-			<li><a href="#">이용약관</a></li>
-			<li><a href="#">개인정보보호정책</a></li>
-			<li><a href="#">고객문의</a></li>
-		</ul>
-	</nav>
+		<header>
+			<div class="wrapper">
+				<div class="header__menu">
+					<i class="fa-solid fa-bars"></i>
+				</div>
+				<div class="header__logo">
+					<a href="#">
+						<i class="fa-solid fa-plane-departure"></i>
+						<span>On The Way</span>
+					</a>
+				</div>
+				<div class="header__icon">
+					<!-- <i class="fa-solid fa-arrow-right-from-bracket"></i> -->
+					<i class="fa-regular fa-bell"></i>
+					<i class="fa-regular fa-user"></i>
+				</div>
+			</div>
+		</header>
+		<nav>
+			<ul>
+				<li><a href="#">홈페이지 소개</a></li>
+				<li><a href="#">게시판</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li><a href="#">개인정보보호정책</a></li>
+				<li><a href="#">고객문의</a></li>
+			</ul>
+		</nav>
 
 		<!-- TITLE + SEARCH AREA -->
     <div class="top">
@@ -76,18 +77,18 @@
 							</div>
 						</li>
 
-						<li>
-							<label for="intinerary" >
+						<li class="Itnr">
+							<label>
 								<div class="search__title">여행 날짜</div>
 							</label>
-							<input type="date" class="input__box" id="intinerary" name="intinerary" 
-							value="2022-08-16" min="2022-08-16" max="2022-12-16"> 
-							<!-- 차후 현재 날짜에 따라 변경할 것 -->
+							<input type="date" class="input__box" id="start_Itnr" name="start_Itnr"> ~ 
+							<input type="date" class="input__box" id="end_Itnr" name="end_Itnr"> 
 						</li>
 
 						<li>
 							<div class="search__title">이동수단</div>
 							<select class="input__box" id="transfort" >
+								<option value="">-</option>
 								<option value="train">기차</option>
 								<option value="car">차량</option>
 								<option value="bus">버스</option>
@@ -98,7 +99,7 @@
 						<li>
 							<div class="search__title">이동거리</div>
 							<select class="input__box" id="distance" >
-								<option value="range_1">0km ~ 10Km</option>
+								<option value="">-</option>
 								<option value="range_1">10Km ~ 30Km</option>
 								<option value="range_1">30Km ~ 100Km</option>
 								<option value="range_1">100Km ~ 200Km</option>
@@ -123,53 +124,31 @@
 			</div>
 			<!-- 날씨 정보 -->
 			<div class="weather__list">
-				<i class="fa-solid fa-angle-left"></i>
+				<i class="fa-solid fa-angle-left" id="wLeft"></i>
 				<!-- 도시+날씨 리스트 -->
-					<ul class="weather__info">
-						<li>
+				<div class="wVertical">
+					<ul class="weather__info_1">
 							<!-- 도시별 이름+날씨 아이콘+기온-->
-							<ul class="weather__detail">
-								<li class="wIcon"><i class="fa-solid fa-cloud-sun"></i></li>
-								<li class="wTemp">28 &#8451;</li>
-								<li class="wCity">서울</li>
-							</ul>
-						</li>
-						<li>
-							<ul class="weather__detail">
-								<li class="wIcon"><i class="fa-solid fa-sun"></i></li>
-								<li class="wTemp">31 &#8451;</li>
-								<li class="wCity">대전</li>
-							</ul>
-						</li>
-						<li>
-							<ul class="weather__detail">
-								<li class="wIcon"><i class="fa-solid fa-sun"></i></li>
-								<li class="wTemp">33 &#8451;</li>
-								<li class="wCity">부산</li>
-							</ul>
-						</li>
-						<li>
-							<ul class="weather__detail">
-								<li class="wIcon"><i class="fa-solid fa-cloud-rain"></i>    </li>
-								<li class="wTemp">26 &#8451;</li>
-								<li class="wCity">제주</li>
-							</ul>
-						</li>
 					</ul>
-				<i class="fa-solid fa-angle-right"></i>
+					<ul class="weather__info_2">
+							
+					</ul>
+				</div>
+				<i class="fa-solid fa-angle-right" id="wRight"></i>
 			</div>
-			<div class="weather__page">
-				<i class="fa-regular fa-circle"></i>
-				<i class="fa-regular fa-circle"></i>
-				<i class="fa-solid fa-circle"></i>
-				<i class="fa-regular fa-circle"></i>
+			<div class="weather__page">	
+				<li><i class="fa-regular fa-circle"></i></li>
+				<li><i class="fa-regular fa-circle"></i></li>
+				<li><i class="fa-regular fa-circle"></i></li>
+				<li><i class="fa-regular fa-circle"></i></li>
 			</div>
 		</section>
+
 		<!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
 	    	<div class="maps_background">
 	    		<div class="maps_div">
 	    			<div class="maps_content">지도에서 한눈에 찾아보기</div>
-	    			<hr style="width:50%;height:10px;border:none;background-color:white;margin: auto;">
+	    			<div class="maps_line"></div>
     			</div>
    			</div>
 	    <section class="maps">
@@ -198,7 +177,6 @@
 		              <option value="general16">충북</option>
 		            </select>
 		          </div>
-	          
 		          <div class="search_box">
 		          	<span>시/구/군</span>
 		            <select name="" id="search_box_2">
@@ -258,7 +236,8 @@
   			<!-- 축제 관련해서도 추후에 추가해야함 -->
  		</section>
  <!-- ------------------------------------------------------------------------------------------------------  -->    
-		<!-- THEME RECOMMENDATION -->
+		
+ <!-- THEME RECOMMENDATION -->
 		<section class="theme">
 			<div class="theme__title">
 				평범한 여행은 이제 재미없어! <br>
