@@ -520,5 +520,163 @@ header .header__menu>i:hover,
 	overflow: auto;
 }
 
+/*---------------------지도한눈에 보기~ 구글맵 전까지-------------------------*/
+.maps_background{
+	display: flex;
+	height: 360px;
+	background: var(--unnamed-color-4f6083) 0% 0% no-repeat padding-box;
+	background: #4F6083 0% 0% no-repeat padding-box;
+	z-index: 0;
+	
+}
+.maps_div{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 88px;
+	z-index: 3;
+	margin: auto
+}
 
+.maps_content{
+	width: 100%;
+	height: 200px;
+	font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-50)/var(--unnamed-line-spacing-66) var(--unnamed-font-family-roboto);
+	letter-spacing: var(--unnamed-character-spacing-0);
+	color: var(--unnamed-color-ffffff);
+	text-align: center;
+	font: normal normal bold 50px/66px Roboto;
+	color: #FFFFFF;
+
+}
+
+.maps_search{
+	position: relative;
+	flex-direction: column;
+	display: flex;
+	top: -100px;
+	width: 90%;
+	height: 200px;
+	margin:auto;
+	background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	box-shadow: 0px 10px 20px #00000029;
+	border-radius: 20px;
+}
+.maps_search_subject{
+	width: 200px;
+	height: 40px;
+	font: normal normal bold 26px/31px Apple SD Gothic Neo;
+	color: #191919;
+	margin:auto;
+}
+.maps_search_content{
+	width:75%;
+	height: 40px;
+	margin:auto;
+	display: flex;
+	justify-content: space-between;
+}
+.search_box_1, #search_box_2, .search_box{
+	text-align: left;
+	font: normal normal bold 26px/31px Apple SD Gothic Neo;
+	margin:auto;
+}
+/* ---------------------googleMaps------------------------- */
+.gmap_section{
+	display: flex;
+	margin:auto;
+	justify-content: space-between;
+	height: 700px;
+}
+.gmap_search{
+	width: 38%;
+	height: 700px;
+	background: var(--unnamed-color-f2f2f2) 0% 0% no-repeat padding-box;
+	background: #F2F2F2 0% 0% no-repeat padding-box;
+	box-shadow: 0px 10px 20px #00000029;
+	border-radius: 20px;
+}
+#googleMapView{
+	width: 60%;
+	height: 700px;
+	box-shadow: 0px 10px 10px #00000029;
+	border-radius: 20px;
+}
+/* ---------------------------------맞춤여행지----------------------------------- */
+.search_result{
+	flex-direction: column;
+	display: flex;
+}
+.search_result_div1{
+	display: flex;
+	flex-direction: column;
+	margin:auto;
+	width: 80%;
+	height: 200px;
+}
+.search_result_title{
+	width: 80%;
+	margin:auto auto 0px;
+	color: var(--unnamed-color-ffffff);
+	text-align: center;
+	font: normal normal bold 50px/66px Roboto;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+
+.search_result_hr{
+	width:90%;
+	height:5px;
+	border:none;
+	background-color:black;
+	margin:0 auto auto auto;
+}
+.touristSpot{
+	display: flex;
+	height: 250px;
+	width: 100%;
+	margin:15px, auto, auto, 15px;
+	background: var(--unnamed-color-e1e8ef) 0% 0% no-repeat padding-box;
+	background: #E1E8EF 0% 0% no-repeat padding-box;
+	box-shadow: 0px 3px 6px #00000029;
+	opacity: 1;
+	filter: blur(0px);
+}
+.touristSpot_img{
+	margin-right: auto;
+	width:20%;
+	height:90%;
+	background-color: orange;
+	margin:auto;
+	box-shadow: 0px 3px 6px #00000029;
+	opacity: 1;
+	filter: blur(0px);
+	
+}
+.touristSpot_div{
+	width:75%;
+	height:90%;
+	display: flex;
+	flex-direction: column;
+	margin:auto;
+}
+.touristSpot_subject{
+	text-align: left;
+	font: normal normal bold 30px/39px Roboto;
+	opacity: 1;
+	}
+.touristSpot_content{
+	height:150px;
+	text-align: left;
+}
+.touristSpot_fav{
+	width:30px;
+}
+.touristSpot_div2{
+	display: flex;
+	justify-content: space-between
+}
+/* ------------------------------------------------------------------------------ */
 
