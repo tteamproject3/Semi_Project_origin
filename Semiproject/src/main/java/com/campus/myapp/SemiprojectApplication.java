@@ -1,4 +1,4 @@
-package com.campus.myapp.vo;
+package com.campus.myapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

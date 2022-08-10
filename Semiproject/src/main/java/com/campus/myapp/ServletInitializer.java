@@ -1,4 +1,4 @@
-package com.campus.myapp.vo;
+package com.campus.myapp;
 
 import java.util.Collections;
 
