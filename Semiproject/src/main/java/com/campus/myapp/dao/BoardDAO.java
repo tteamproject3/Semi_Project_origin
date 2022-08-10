@@ -11,7 +11,7 @@ import com.campus.myapp.vo.PagingVO;
 @Mapper
 @Repository
 public interface BoardDAO {
-    //글목록
+
 	public List<BoardVO> boardList(PagingVO pVO);
 	//글등록
 	public int boardWriteOk(BoardVO vo);
@@ -27,5 +27,5 @@ public interface BoardDAO {
 	public int totalRecord(PagingVO pVO);
 	//여러개의 레코드 삭제
 	public int boardMultiDel(BoardVO vo);
-	
+
 }
