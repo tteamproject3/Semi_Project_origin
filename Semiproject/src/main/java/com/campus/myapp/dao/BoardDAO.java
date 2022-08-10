@@ -27,4 +27,5 @@ public interface BoardDAO {
 	public int totalRecord(PagingVO pVO);
 	//여러개의 레코드 삭제
 	public int boardMultiDel(BoardVO vo);
+	
 }

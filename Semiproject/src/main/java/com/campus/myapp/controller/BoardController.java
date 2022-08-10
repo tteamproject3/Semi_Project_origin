@@ -1,13 +1,11 @@
 package com.campus.myapp.controller;
 
-
 import java.nio.charset.Charset;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.campus.myapp.service.BoardService;
 import com.campus.myapp.vo.BoardVO;
 import com.campus.myapp.vo.PagingVO;
+
 
 @RestController
 @RequestMapping("/board/*")
