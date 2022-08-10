@@ -76,6 +76,3 @@ public class BoardVO {
 	public void setReply_count(int reply_count) {
 		this.reply_count = reply_count;
 	}
-	
-
-}

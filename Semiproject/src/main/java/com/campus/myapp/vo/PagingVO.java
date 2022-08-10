@@ -5,7 +5,7 @@ public class PagingVO {
 	private int onePageRecord=10; // 한페이지에 출력할 레코드수
 	private int totalRecord; // 총레코드수
 	private int totalPage;// 총페이지수
-	private int offsetPoint; //
+	private int offsetPoint; // 페이지 레코드 서낵할 위치
 	
 	//페이지 번호
 	private int startPage = 1;
@@ -13,7 +13,7 @@ public class PagingVO {
 	
 	//검색
 	private String searchKey;
-	private String searchWord; 
+	private String searchWord; //boardList의 searchword와 같아야함.
 	
 	
 	public int getStartPage() {
@@ -94,7 +94,4 @@ public class PagingVO {
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
 	}
-	
-	
-	
 }

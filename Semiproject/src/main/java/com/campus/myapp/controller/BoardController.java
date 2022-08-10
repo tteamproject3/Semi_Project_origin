@@ -1,11 +1,9 @@
 package com.campus.myapp.controller;
 
 import java.nio.charset.Charset;
-
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,19 +23,19 @@ import com.campus.myapp.vo.PagingVO;
 @RestController
 @RequestMapping("/board/*")
 public class BoardController {
-	@Autowired
-	BoardService service;
-	
-	ModelAndView mav = null; //변수를 초기화 해놔야함
-	
-	//게시판
+
+    @Inject
+    BoardService service;
+    
+	ModelAndView mav = null;
+
+  //게시판
 	@GetMapping("boardList") //a태그
 	public ModelAndView boardList(PagingVO pVO) {
 		mav = new ModelAndView();
 		
 		//총 레코드 수
 		pVO.setTotalRecord(service.totalRecord(pVO));
-		
 		
 		//DB 레코드 선택 - 페이지, 검색어
 		mav.addObject("list",service.boardList(pVO));

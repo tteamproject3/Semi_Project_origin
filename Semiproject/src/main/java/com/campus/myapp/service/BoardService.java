@@ -1,4 +1,8 @@
 package com.campus.myapp.service;
+import java.util.List;
+
+import com.campus.myapp.vo.BoardVO;
+import com.campus.myapp.vo.PagingVO;
 
 import java.util.List;
 
@@ -6,7 +10,8 @@ import com.campus.myapp.vo.BoardVO;
 import com.campus.myapp.vo.PagingVO;
 
 public interface BoardService {
-	//글목록
+
+  //글목록
 	public List<BoardVO> boardList(PagingVO pVO);
 	//글등록
 	public int boardWriteOk(BoardVO vo);
@@ -23,3 +28,5 @@ public interface BoardService {
 	//여러개 삭제
 	public int boardMultiDel(BoardVO vo);
 }
+
+
