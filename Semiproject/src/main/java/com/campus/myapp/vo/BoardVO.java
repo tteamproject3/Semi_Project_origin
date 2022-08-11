@@ -1,106 +1,78 @@
 package com.campus.myapp.vo;
+import java.util.List;
 
 public class BoardVO {
-	private int postid;
-	private String google_id;
-	private String post_type;
-	private String festival_id;
-	private String tour_id;
-	private String post_title;
-	private String post_content;
-	private int post_hit;
-	private int post_review_rating;
-	private String post_registration_date;
-	private String post_file1;
-	private String post_file2;
-	private String post_file3;
-
+	private int no;
+	private String subject;
+	private String content;
+	private String userid;
+	private String ip;
+	private int hit;
+	private String writedate;
+	
+	//여러개의 레코드 번호를 저장하는 컬렉션 선언
+	private List<Integer> noList;
+	
+	///여러개의 레코드 번호를 저장할 컬렉션 선언
+	private int reply_count;
 	
 	@Override
 	public String toString() {
-		return "BoardVO [postid=" + postid + ", google_id=" + google_id + ", post_type=" + post_type + ", festival_id="
-				+ festival_id + ", tour_id=" + tour_id + ", post_title=" + post_title + ", post_content=" + post_content
-				+ ", post_hit=" + post_hit + ", post_review_rating=" + post_review_rating + ", post_registration_date="
-				+ post_registration_date + ", post_file1=" + post_file1 + ", post_file2=" + post_file2 + ", post_file3="
-				+ post_file3 + "]";
+		return "BoardVO [no=" + no + ", subject=" + subject + ", content=" + content + ", userid=" + userid + ", ip="
+				+ ip + ", hit=" + hit + ", writedate=" + writedate + "]";
 	}
-	public int getPostid() {
-		return postid;
+	public int getNo() {
+		return no;
 	}
-	public void setPostid(int postid) {
-		this.postid = postid;
+	public void setNo(int no) {
+		this.no = no;
 	}
-	public String getGoogle_id() {
-		return google_id;
+	public String getSubject() {
+		return subject;
 	}
-	public void setGoogle_id(String google_id) {
-		this.google_id = google_id;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
-	public String getPost_type() {
-		return post_type;
+	public String getContent() {
+		return content;
 	}
-	public void setPost_type(String post_type) {
-		this.post_type = post_type;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getFestival_id() {
-		return festival_id;
+	public String getUserid() {
+		return userid;
 	}
-	public void setFestival_id(String festival_id) {
-		this.festival_id = festival_id;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-	public String getTour_id() {
-		return tour_id;
+	public String getIp() {
+		return ip;
 	}
-	public void setTour_id(String tour_id) {
-		this.tour_id = tour_id;
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
-	public String getPost_title() {
-		return post_title;
+	public int getHit() {
+		return hit;
 	}
-	public void setPost_title(String post_title) {
-		this.post_title = post_title;
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
-	public String getPost_content() {
-		return post_content;
+	public String getWritedate() {
+		return writedate;
 	}
-	public void setPost_content(String post_content) {
-		this.post_content = post_content;
+	public void setWritedate(String writedate) {
+		this.writedate = writedate;
 	}
-	public int getPost_hit() {
-		return post_hit;
+	public List<Integer> getNoList() {
+		return noList;
 	}
-	public void setPost_hit(int post_hit) {
-		this.post_hit = post_hit;
+	public void setNoList(List<Integer> noList) {
+		this.noList = noList;
 	}
-	public int getPost_review_rating() {
-		return post_review_rating;
+	public int getReply_count() {
+		return reply_count;
 	}
-	public void setPost_review_rating(int post_review_rating) {
-		this.post_review_rating = post_review_rating;
+	public void setReply_count(int reply_count) {
+		this.reply_count = reply_count;
 	}
-	public String getPost_registration_date() {
-		return post_registration_date;
-	}
-	public void setPost_registration_date(String post_registration_date) {
-		this.post_registration_date = post_registration_date;
-	}
-	public String getPost_file1() {
-		return post_file1;
-	}
-	public void setPost_file1(String post_file1) {
-		this.post_file1 = post_file1;
-	}
-	public String getPost_file2() {
-		return post_file2;
-	}
-	public void setPost_file2(String post_file2) {
-		this.post_file2 = post_file2;
-	}
-	public String getPost_file3() {
-		return post_file3;
-	}
-	public void setPost_file3(String post_file3) {
-		this.post_file3 = post_file3;
-	}
-	// board내용 변경
 }

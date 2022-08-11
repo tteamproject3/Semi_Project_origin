@@ -17,7 +17,7 @@
 			}
 			return true;
 		});
-	});
+	});//
 </script>
 <div class = "container">
 	<h1>글쓰기 폼</h1>

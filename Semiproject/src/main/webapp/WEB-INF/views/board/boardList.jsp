@@ -25,6 +25,7 @@ $(function(){
 		if($("#searchWord").val()==""){
 			alert("검색어를 입력하세요.");
 			return false;
+
 		}
 		return true;
 	});
@@ -32,7 +33,6 @@ $(function(){
 	$("#allChk").click(function(){
 		$("#board input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));
 	});
-	//선택된 갯수를 구하여 여러개를 삭제하도록 한다.
 	$("#multiDel").click(function(){
 		//체크 갯수 확인
 		var countChk = 0;//				반복문					input input input

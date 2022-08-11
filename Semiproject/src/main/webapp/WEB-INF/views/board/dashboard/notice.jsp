@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -17,7 +19,7 @@
 		float:left; line-height:40px; border-bottom:1px solid #ddd; width: 10%;
 	}
 	#board li:nth-child(6n+1){width:10%;
-	/*white-space:nowrap; overflow:hidden; text-overflow:ellipsis;*/
+	/*white--space:nowrap; overflow:hidden; text-overflow:ellipsis;*/
 	}
 	#board li:nth-child(6n+2){
 	width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -92,8 +94,8 @@
 		<!-- BOARD NAV + BUTTON -->
 		<div class="board__bar">
 			<ul class="board__nav">
-				<li><a href = "#">공지</a></li>
-				<li class="active"><a href = "#">전체글</a></li>
+				<li class="active"><a href = "#">공지</a></li>
+				<li ><a href = "#">전체글</a></li>
 				<li><a href = "#">여행후기</a></li>
 				<li><a href = "#">축제후기</a></li>
 				<li><a href = "#">맛집추천</a></li>
