@@ -12,20 +12,7 @@ import com.campus.myapp.vo.PagingVO;
 @Repository
 public interface BoardDAO {
 
-    public int totalRecord(PagingVO pVO);
-	//글등록
-	public int boardWriteOk(BoardVO vo);
-	//글선택(수정). 글내용보기
-	public BoardVO getBoard(int no);
-	//글수정
-	public int boardEditOk(BoardVO vo);
-	//글삭제
-	public int boardDel(int no, String userid);
-	//조회수 증가
-	public void hitCount(int no);
-	//총레코드수
+	public List<BoardVO> boardList(PagingVO pVO);
 	public int totalRecord(PagingVO pVO);
-	//여러개의 레코드 삭제
-	public int boardMultiDel(BoardVO vo);
 
 }

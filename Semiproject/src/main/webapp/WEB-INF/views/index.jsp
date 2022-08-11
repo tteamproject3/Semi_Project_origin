@@ -54,7 +54,7 @@
     <section class="search">
 
 				<!-- SEARCH FORM -->
-				<form method="" action="" >
+				<form method="get" action="DBdata/festData" >
 					<ul>
 						<li>
 								<div class="search__title">여행 방법</div>
@@ -71,7 +71,7 @@
 							<div class="input__wrapper">
 								<input class="input__box" type="text" id="curLoc" name="curLoc">
 								<div>
-									<i class="fa-solid fa-location-crosshairs"></i>
+									<i class="fa-solid fa-location-crosshairs" id="GPS"></i> <!-- 사용자 위치 받아오는 버튼 -->
 									<i class="fa-solid fa-magnifying-glass"></i>
 								</div>
 							</div>
@@ -115,36 +115,8 @@
 					</ul>
 				</form>
 		</section>
-		
-		<!-- WEATHER BANNER -->
-    <section class="weather">
-			<div class="weather__title">
-				<div class="title">지금 여행하기 좋은 곳은?</div>
-				전국의 날씨 알아보기
-			</div>
-			<!-- 날씨 정보 -->
-			<div class="weather__list">
-				<i class="fa-solid fa-angle-left" id="wLeft"></i>
-				<!-- 도시+날씨 리스트 -->
-				<div class="wVertical">
-					<ul class="weather__info_1">
-							<!-- 도시별 이름+날씨 아이콘+기온-->
-					</ul>
-					<ul class="weather__info_2">
-							
-					</ul>
-				</div>
-				<i class="fa-solid fa-angle-right" id="wRight"></i>
-			</div>
-			<div class="weather__page">	
-				<li><i class="fa-regular fa-circle"></i></li>
-				<li><i class="fa-regular fa-circle"></i></li>
-				<li><i class="fa-regular fa-circle"></i></li>
-				<li><i class="fa-regular fa-circle"></i></li>
-			</div>
-		</section>
-
-		<!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
+<!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
+							<input type="button" value="바로 검색" class="aasz">
 	    	<div class="maps_background">
 	    		<div class="maps_div">
 	    			<div class="maps_content">지도에서 한눈에 찾아보기</div>
@@ -235,7 +207,34 @@
   			<br/>
   			<!-- 축제 관련해서도 추후에 추가해야함 -->
  		</section>
- <!-- ------------------------------------------------------------------------------------------------------  -->    
+ <!-- ------------------------------------------------------------------------------------------------------  -->   
+		<!-- WEATHER BANNER -->
+    <section class="weather">
+			<div class="weather__title">
+				<div class="title">지금 여행하기 좋은 곳은?</div>
+				전국의 날씨 알아보기
+			</div>
+			<!-- 날씨 정보 -->
+			<div class="weather__list">
+				<i class="fa-solid fa-angle-left" id="wLeft"></i>
+				<!-- 도시+날씨 리스트 -->
+				<div class="wVertical">
+					<ul class="weather__info_1">
+							<!-- 도시별 이름+날씨 아이콘+기온-->
+					</ul>
+					<ul class="weather__info_2">
+							
+					</ul>
+				</div>
+				<i class="fa-solid fa-angle-right" id="wRight"></i>
+			</div>
+			<div class="weather__page">	
+				<li><i class="fa-regular fa-circle"></i></li>
+				<li><i class="fa-regular fa-circle"></i></li>
+				<li><i class="fa-regular fa-circle"></i></li>
+				<li><i class="fa-regular fa-circle"></i></li>
+			</div>
+		</section>
 		
  <!-- THEME RECOMMENDATION -->
 		<section class="theme">
