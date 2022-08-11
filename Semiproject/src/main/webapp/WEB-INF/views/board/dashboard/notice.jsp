@@ -92,8 +92,8 @@
 		<!-- BOARD NAV + BUTTON -->
 		<div class="board__bar">
 			<ul class="board__nav">
-				<li><a href = "#">공지</a></li>
-				<li class="active"><a href = "#">전체글</a></li>
+				<li class="active"><a href = "#">공지</a></li>
+				<li ><a href = "#">전체글</a></li>
 				<li><a href = "#">여행후기</a></li>
 				<li><a href = "#">축제후기</a></li>
 				<li><a href = "#">맛집추천</a></li>

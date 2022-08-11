@@ -47,8 +47,8 @@
 			<div class="board__bar">
 				<ul class="board__nav">
 					<li><a href = "#">내가 쓴 글</a></li>
-					<li class="active"><a href = "#">내가 쓴 댓글</a></li>
-					<li><a href = "#">찜한 여행지</a></li>
+					<li><a href = "#">내가 쓴 댓글</a></li>
+					<li class="active"><a href = "#">찜한 여행지</a></li>
 					<li><a href = "#">나의후기</a></li>
 				</ul>
 			</div>
