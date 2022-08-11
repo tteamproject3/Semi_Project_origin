@@ -25,7 +25,8 @@ $(function(){
 		if($("#searchWord").val()==""){
 			alert("검색어를 입력하세요.");
 			return false;
-		}//
+
+		}
 		return true;
 	});
 	//리스트 전체 선택
