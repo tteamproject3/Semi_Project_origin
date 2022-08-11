@@ -30,5 +30,5 @@
 		<li><textarea name = "content" id = "content">${vo.content}</textarea></li>
 		<li><input type = "submit" value = "글등록"/></li>
 	</ul>
-	</form><!-- 변경-->
+	</form>
 </div>
