@@ -314,7 +314,7 @@ header .header__menu>i:hover,
 }
 .search input:focus,
 .search select:focus {
-	outline: var(--basic-line)var(--bg-color-blue-2);
+	outline: var(--basic-line) var(--bg-color-blue-2);
 }
 .search input:focus + label {
 	color:var(--bg-color-blue-2);

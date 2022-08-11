@@ -207,10 +207,10 @@ $(function(){
 		$(this).css('color','gray');
 	}})
 });
-
+$(document).ready() 
 
 //select box------------------------------------------------------------------------------------------------------
-$(document).ready(function($) {
+$(function() {
     initMap();
 });
 function categoryChange(e) {
