@@ -18,7 +18,7 @@
 		float:left; line-height:40px; border-bottom:1px solid #ddd; width: 10%;
 	}
 	#board li:nth-child(6n+1){width:10%;
-	/*white-space:nowrap; overflow:hidden; text-overflow:ellipsis;*/
+	/*white-space:nowrap; overflow:hidden; text--overflow:ellipsis;*/
 	}
 	#board li:nth-child(6n+2){
 	width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;

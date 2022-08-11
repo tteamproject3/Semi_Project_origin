@@ -96,7 +96,7 @@
 					<li>&nbsp;&nbsp;&nbsp;<input type = "checkbox" id = "checkbox" value = "${vo.no}"></li>
 				
 			</ul>
-		<!-- PAGING + BUTTON
+		<!-- PAGING + BUTTON/
 			<div class="board__bottom">
 				<ul class="board__page">
 				<c:if test="${pVO.nowPage<=1}">

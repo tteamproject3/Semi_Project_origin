@@ -18,7 +18,7 @@
 		float:left; line-height:40px; border-bottom:1px solid #ddd; width: 10%;
 	}
 	#board li:nth-child(6n+1){width:10%;
-	/*white-space:nowrap; overflow:hidden; text-overflow:ellipsis;*/
+	/*white-space:nowrap; overflow:hidden; text-overflow:ellipsis;**/
 	}
 	#board li:nth-child(6n+2){
 	width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -90,7 +90,7 @@
 	<!-- BOARD -->
 	<section class="board">
 
-		<!-- BOARD NAV + BUTTON -->
+		<!-- BOARD NAV + BUTTON --->
 		<div class="board__bar">
 			<ul class="board__nav">
 				<li><a href = "#">공지</a></li>
