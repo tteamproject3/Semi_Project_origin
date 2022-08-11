@@ -207,10 +207,10 @@ $(function(){
 		$(this).css('color','gray');
 	}})
 });
-
+$(document).ready() 
 
 //select box------------------------------------------------------------------------------------------------------
-$(document).ready(function($) {
+$(function() {
     initMap();
 });
 function categoryChange(e) {
@@ -294,6 +294,36 @@ function initMap() {
 	var map = new google.maps.Map(document
 	.getElementById('googleMapView'), mapProperty);
 }
-//------------------------------------------------------------------------------------------------------
+// 사용자 위치정보 가져오기-----------------------------------------------------------------------------------
+//[ajax] Google Maps API는 AJAX를 사용할 때만 “Uncaught ReferenceError : google is not defined” 구글맵 첫 실행시 안나오는 오류 수정해야함
+//작업이 끝나면 숨기기 기능을 넣고
+//사용자가 gps버튼을 클릭하거나
+//위치정보를 입력할 경우 나타나게
+function getLocation() {
+  if ("geolocation" in navigator) { // GPS를 지원하면
+    navigator.geolocation.getCurrentPosition(function(position) {
+	//버튼 클릭시 구글맵 위치를 사용자 위치로 이동
+	latitude = position.coords.latitude
+	longitude = position.coords.longitude
+	initMap()
+    }, function(error) {
+      console.error(error);
+    }, {
+      enableHighAccuracy: false,
+      maximumAge: 0,
+      timeout: Infinity
+    });
+  } else {
+    alert('GPS를 지원하지 않습니다');
+  }
+}
 
-
+$(function () {
+	$('#GPS').click(function(){
+	getLocation();
+	});
+    $(".aasz").click(function () {
+	getLocation();
+    });
+ });
+//---------------------------------------------------------------------------------------------
