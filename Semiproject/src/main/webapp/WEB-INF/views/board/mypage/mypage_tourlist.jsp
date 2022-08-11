@@ -33,7 +33,7 @@
 		</div>
 	</header>
 
-	<!-- PAGE TITLE 표시 바 --->
+	<!-- PAGE TITLE 표시 바 -->
 	<section class="title">
 		<div class="title__bar">
 			<span>마이페이지</span>
