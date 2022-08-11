@@ -11,8 +11,6 @@ import com.campus.myapp.vo.PagingVO;
 @Mapper
 @Repository
 public interface BoardDAO {
-
 	public List<BoardVO> boardList(PagingVO pVO);
 	public int totalRecord(PagingVO pVO);
-
 }

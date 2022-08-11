@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://use.typekit.net/mss6mty.css">
 	<!-- <script type="text/javascript" nonce="48c4560b3fc84607a9070657664" src="//local.adguard.org?ts=1659786708849&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script><link rel="stylesheet" href="https://use.typekit.net/mss6mty.css"> -->
-	<link rel="stylesheet" href="/style/mypage.css">
+	<link rel="stylesheet" href="/style/indexStyle.css">
 	<script src="https://kit.fontawesome.com/ab847241fd.js" crossorigin="anonymous"></script>
 
 	<title>On the way mypage</title>

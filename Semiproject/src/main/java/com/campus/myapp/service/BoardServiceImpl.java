@@ -23,6 +23,4 @@ public class BoardServiceImpl implements BoardService {
 	public int totalRecord(PagingVO pVO) {
 		return 0;
 	}
-
-
 }
