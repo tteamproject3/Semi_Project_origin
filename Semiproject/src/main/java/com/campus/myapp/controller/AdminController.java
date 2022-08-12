@@ -33,61 +33,61 @@ public class AdminController {
 
 	//리뷰 게시판(reveiwList)
 	@GetMapping("reviewList")
-	public ModelAndView boardList(PagingVO pVO) {
+	public ModelAndView reviewList(PagingVO pVO) {
 		mav = new ModelAndView();
 		
 		//총 레코드 수
 		//pVO.setTotalRecord(service.totalRecord(pVO));
 		
 		//DB 레코드 선택 - 페이지, 검색어
-		//mav.addObject("list",service.boardList(pVO));
+		//mav.addObject("list",service.reviewList(pVO));
 		//mav.addObject("pVO",pVO);
 		mav.setViewName("/adminboard/reviewList");
 		
 		return mav;	
 	}
-	// //리뷰글 내용 보기(reviewView)
-	// @GetMapping("reviewView")
-	// public ModelAndView boardView(@RequestParam("no") int no, PagingVO pVO){	
+	 //리뷰글 내용 보기(reviewView)
+	 //@GetMapping("reviewView")
+	 //public ModelAndView boardView(@RequestParam("no") int no, PagingVO pVO){	
 
 		
-	// 	mav = new ModelAndView();
-	// 	//mav.addObject("vo",service.getBoard(no));
-	// 	//mav.addObject("pVO",pVO);
-	// 	mav.setViewName("adminboard/reviewView");
+	 //	mav = new ModelAndView();
+	 	//mav.addObject("vo",service.getBoard(no));
+	 	//mav.addObject("pVO",pVO);
+	 //	mav.setViewName("adminboard/reviewView");
 		
-	// 	return mav;
-	// }
+	 //	return mav;
+	 //}
+
 	////////////////////////////////////테마여행//////////////////////////////
 
-	// //테마여행 게시판
-	// @GetMapping("themeList") 
-	// public ModelAndView themeList(PagingVO pVO) {
-	// 	mav = new ModelAndView();
+	 //테마여행 게시판
+	 @GetMapping("themeList") 
+	 public ModelAndView themeList(PagingVO pVO) {
+	 	mav = new ModelAndView();
 		
-	// 	pVO.setTotalRecord(service.totalRecord(pVO));
+	 	//pVO.setTotalRecord(service.totalRecord(pVO));
 		
-	// 	mav.addObject("list",service.boardList(pVO));
-	// 	mav.addObject("pVO",pVO);
-	// 	mav.setViewName("adminboard/themeList");
+	 	//mav.addObject("list",service.themeList(pVO));
+	 	//mav.addObject("pVO",pVO);
+	 	mav.setViewName("adminboard/themeList");
 		
-	// 	return mav;	
-	// }
+	 	return mav;	
+	 }
 
-	// //테마여행 글쓰기 폼
-	// @GetMapping("themeForm")
-	// public ModelAndView themeForm(){
-	// 	mav = new ModelAndView();
-	// 	mav.setViewName("adminboard/themeForm");
+	 //테마여행 글쓰기 폼
+	 @GetMapping("themeForm")
+	 public ModelAndView themeForm(){
+	 	mav = new ModelAndView();
+	 	mav.setViewName("adminboard/themeForm");
 
-	// 	return mav;
-	// }
+	 	return mav;
+	 }
 
 	// //테마여행 글쓰기 DB
 	// @PostMapping("themeFormOk")
-	// public ResponseEntity<String> themeFormOk(BoardVO vo,HttpServletRequest request){
-	// 	vo.setUserid((String)request.getSession().getAttribute("logId"));//세션 로그인 아이디
-	// 	vo.setIp(request.getRemoteAddr());//접속자의 아이피
+	//public ResponseEntity<String> themeFormOk(BoardVO vo,HttpServletRequest request){
+	//	vo.setGoogle_id((String)request.getSession().getAttribute("logId"));//세션 로그인 아이디
 		
 	// 	String msg = "<script>";
 	// 	try {
@@ -155,30 +155,30 @@ public class AdminController {
 	// 	return new ResponseEntity<String>(msg,headers,HttpStatus.OK);
 	// }
 
-	// //테마 여행 글 삭제
-	//  @GetMapping("boardDel")
-	//  public ModelAndView boardDel(int no,HttpSession session) {
-	//  	int cnt = service.boardDel(no, (String) session.getAttribute("logId"));
-	//  	mav= new ModelAndView();
-	//  	if(cnt>0) {
-	//  		mav.setViewName("redirect:themeList");
-	//  	}else {
-	//  		mav.setViewName("redirect:themeView");
-	//  	}
+	//테마 여행 글 삭제
+	 @GetMapping("boardDel")
+	 public ModelAndView boardDel(int no,HttpSession session) {
+	 	int cnt = service.boardDel(no, (String) session.getAttribute("logId"));
+	 	mav= new ModelAndView();
+	 	if(cnt>0) {
+	 		mav.setViewName("redirect:themeList");
+	 	}else {
+	 		mav.setViewName("redirect:themeView");
+	 	}
 		
-	//  	return mav;
-	//  }
+	 	return mav;
+	 }
 
-	// // //테마 여행 글 여러개 삭제
-	// @PostMapping("multiDel")
-	// public ModelAndView multiDel(BoardVO vo) {
+	// //테마 여행 글 여러개 삭제
+	@PostMapping("multiDel")
+	public ModelAndView multiDel(BoardVO vo) {
 		
-	// 	int cnt = service.boardMultiDel(vo);
-	// 	System.out.println("삭제된 게시글 수:"+cnt);
+		int cnt = service.boardMultiDel(vo);
+		System.out.println("삭제된 게시글 수:"+cnt);
 			
-	// 	mav=new ModelAndView();
-	// 	mav.setViewName("redirect:themeView");
+		mav=new ModelAndView();
+		mav.setViewName("redirect:themeView");
 			
-	// 	return mav;
-	// }
+		return mav;
+	}
 }

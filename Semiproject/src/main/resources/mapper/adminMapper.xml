@@ -4,58 +4,58 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.campus.myapp.dao.AdminBoardDAO">
 	<select id = "themeList" resultType="BoardVO">
-  		select b1.no, b1.subject, b1.userid, b1.hit, b1.writedate, b2.reply_count 
+  		select b1.post_id, b1.post_title, b1.google_id, b1.post_hit, b1.post_registration_date, b2.reply_count 
   		from
-  		(select no, subject, userid, hit, date_format(writedate, '%m-%d %h:%i') writedate 
-  		from board
+  		(select post_id, post_title, google_id, post_hit, date_format(post_registration_date, '%m-%d %h:%i') post_registration_date 
+  		from post
   		<if test = "searchWord!=null">
   			where ${searchKey} like '%${searchWord}%'
   		</if>
-  		order by no desc 
+  		order by post_id desc 
   		limit ${onePageRecord} offset ${offsetPoint}) b1
   		left outer join
-  		(select no, count(no) reply_count from reply_board group by no) b2 
-  		on b1.no=b2.no
+  		(select post_id, count(post_id) reply_count from reply_board group by post_id) b2 
+  		on b1.post_id=b2.post_id
 	</select>
 	<select id = "reviewList" resultType="BoardVO">
-  		select b1.no, b1.subject, b1.userid, b1.hit, b1.writedate, b2.reply_count 
+  		select b1.post_id, b1.post_title, b1.google_id, b1.post_hit, b1.post_registration_date, b2.reply_count 
   		from
-  		(select no, subject, userid, hit, date_format(writedate, '%m-%d %h:%i') writedate 
-  		from board
+  		(select post_id, post_title, google_id, post_hit, date_format(post_registration_date, '%m-%d %h:%i') post_registration_date 
+  		from post
   		<if test = "searchWord!=null">
   			where ${searchKey} like '%${searchWord}%'
   		</if>
-  		order by no desc 
+  		order by post_id desc 
   		limit ${onePageRecord} offset ${offsetPoint}) b1
   		left outer join
-  		(select no, count(no) reply_count from reply_board group by no) b2 
-  		on b1.no=b2.no
+  		(select post_id, count(post_id) reply_count from reply_board group by post_id) b2 
+  		on b1.post_id=b2.post_id
   	</select>
 	  <insert id = "themeWriteOk">
-	  		insert into board(subject,content,userid,ip)
-	  		values(#{subject}, #{content}, #{userid}, #{ip})
+	  		insert into board(post_title,content,google_id,ip)
+	  		values(#{post_title}, #{content}, #{google_id}, #{ip})
 	  </insert>
 	  <select id = "totalRecord" resultType="int">
-	  		select count(no) cnt from board
+	  		select count(post_id) cnt from post
 	  		<if test='searchWord!=null'>
 	  			where ${searchKey} like '%${searchWord}%'
 	  		</if>
 	  </select>
 	  <select id = "getBoard" resultType = "BoardVO" parameterType = "int">
-	  		select no, subject, content, hit, userid, writedate
-	  		from board
-	  		where no = ${param1}	  
+	  		select post_id, post_title, content, post_hit, google_id, post_registration_date
+	  		from post
+	  		where post_id = ${param1}	  
 	  </select>
 	  <delete id = "boardDel">
-	  		delete from board where no =${param1} and userid=#{param2}
+	  		delete from post where post_id =${param1} and google_id=#{param2}
 	  </delete>
 	  <update id = "themeEditOk" parameterType = "BoardVO">
-	  		update board set subject=#{subject}, content=#{content} where no =${no} and userid =#{userid}
+	  		update board set post_title=#{post_title}, content=#{content} where post_id =${post_id} and google_id =#{google_id}
 	  </update>
 	  <delete id = "boardMultiDel">
-	  		delete from board 
+	  		delete from post 
 	  		<where>
-	  			<foreach item = "item" index = "index" collection="noList" open="no in (" separator ="," close=")">
+	  			<foreach item = "item" index = "index" collection="post_id_List" open="post_id in (" separator ="," close=")">
 	  				${item}	  			
 	  			</foreach>	  		
 	  		</where>
