@@ -3,7 +3,6 @@ package com.campus.myapp.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import com.campus.myapp.dao.AdminBoardDAO;
 import com.campus.myapp.vo.BoardVO;
 import com.campus.myapp.vo.PagingVO;
@@ -51,5 +50,4 @@ public class AdminBoardServiceImpl implements AdminBoardService {
     public int boardDel(int no, String userid) {
         return dao.boardDel(no, userid);
     }
-       
 }
