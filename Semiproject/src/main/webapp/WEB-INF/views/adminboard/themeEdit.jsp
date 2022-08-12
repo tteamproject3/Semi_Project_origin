@@ -20,8 +20,8 @@
 	});
 </script>
 <div class = "container">
-	<h1>글쓰기 폼</h1>
-	<form method = "post" action="/board/boardEditOk" id = "boardFrm">
+	<h1> 테마여행 추천:글 수정 </h1>
+	<form method = "post" action="/adminboard/themeFormOk" id = "boardFrm">
 	<input type = "hidden" name = "no" value = "${vo.no}"/>
 	<ul>
 		<li>제목</li>
