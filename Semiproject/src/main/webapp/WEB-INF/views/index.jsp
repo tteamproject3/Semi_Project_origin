@@ -1,4 +1,35 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <title>OnTheWay</title>
+</head>
+<body>
+    <!-- HEADER -->
+		<header>
+			<div class="wrapper">
+				<div class="header__menu">
+					<i class="fa-solid fa-bars"></i>
+				</div>
+				<div class="header__logo">
+					<a href="#">
+						<i class="fa-solid fa-plane-departure"></i>
+						<span>On The Way</span>
+					</a>
+				</div>
+				<div class="header__icon">
+					<!-- <i class="fa-solid fa-arrow-right-from-bracket"></i> -->
+					<i class="fa-regular fa-bell"></i>
+					<i class="fa-regular fa-user"></i>
+				</div>
+			</div>
+		</header>
+		<nav>
+			<ul>
+				<li><a href="#">홈페이지 소개</a></li>
+				<li><a href="#">게시판</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li><a href="#">개인정보보호정책</a></li>
+				<li><a href="#">고객문의</a></li>
+			</ul>
+		</nav>
 
 		<!-- TITLE + SEARCH AREA -->
     <div class="top">
@@ -314,4 +345,3 @@
 				</li>
 			</ul>
 		</section>
-
