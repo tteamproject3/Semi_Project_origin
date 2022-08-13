@@ -29,4 +29,36 @@
 		#{festival_lat},
 		#{festival_long})
 	</insert>
+	<insert id="inputdataT">
+		insert into touristSpot(
+		tour_id,
+		tour_content,
+		tour_parkinglot_num,
+		tour_phonenum,
+		tour_road_name_addr,
+		tour_lotnum_addr,
+		tour_lat,
+		tour_long)
+		values (
+		#{tour_id},
+		#{tour_content},
+		#{tour_parkinglot_num},
+		#{tour_phonenum},
+		#{tour_road_name_addr},
+		#{tour_lotnum_addr},
+		#{tour_lat},
+		#{tour_long})
+	</insert>
+	<delete id="deleteFDB">
+		delete from festival;
+	</delete>
+	<delete id="deleteTDB">
+		delete from touristSpot;
+	</delete>
+	<update id="updateFDB">
+		ALTER TABLE festival AUTO_INCREMENT = 1;
+	</update>
+	<update id="updateTDB">
+		ALTER TABLE touristSpot AUTO_INCREMENT = 1;
+	</update>
 </mapper>

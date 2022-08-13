@@ -318,12 +318,23 @@ function getLocation() {
   }
 }
 
+
 $(function () {
 	$('#GPS').click(function(){
 	getLocation();
 	});
     $(".aasz").click(function () {
-	getLocation();
+	$.ajax({
+	    url: "/DBdata/dataInsert",
+	    success: function(data){
+	        if (data == "true") {
+	    	    alert('API에서 데이터 가져오기 성공');
+	        }
+	        else {
+				alert('API에서 데이터 가져오기 실패');
+		    } 
+	        }
+    });
     });
  });
 //---------------------------------------------------------------------------------------------

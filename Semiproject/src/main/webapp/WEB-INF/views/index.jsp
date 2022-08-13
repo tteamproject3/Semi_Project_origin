@@ -69,7 +69,7 @@
 				</form>
 		</section>
 <!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
-							<input type="button" value="바로 검색" class="aasz">
+							<input type="button" value="API에서 축제, 관광지 데이터 가져오기 임시버튼" class="aasz">
 	    	<div class="maps_background">
 	    		<div class="maps_div">
 	    			<div class="maps_content">지도에서 한눈에 찾아보기</div>
