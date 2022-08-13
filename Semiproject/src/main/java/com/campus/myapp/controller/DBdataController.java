@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.DBdataService;
 import com.campus.myapp.vo.FestivalVO;
+import com.campus.myapp.vo.tourVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -37,16 +38,21 @@ public class DBdataController {
 	DBdataService service;
 	ModelAndView mav = null;
 	
-	@GetMapping("/festData")
-	public void allowBasic() throws JsonMappingException, JsonProcessingException{	
-
-        /* ---------------------------------------여기서부터 API연결 ---------------------------------------------*/
-		for(int i1 = 0;i1<2;i1++) { //한페이지에 출력되는 결과의 수가 999가 최대 // 1050여개를 DB에 넣기 위하여 2번 반복
+	@GetMapping("/dataInsert")
+	public String allowBasic() throws JsonMappingException, JsonProcessingException{
+		try {
+		/*-----------------데이터베이스에서 기존데이터 삭제----------------*/
+		service.deleteFDB();
+		service.deleteTDB();
+		/*-----------------데이터베이스의 AUTO_INCREMENT값 초기화----------------*/
+		service.updateFDB();
+		service.updateTDB();
+		/*-----------------축제 정보 API에서 가져와서 데이터베이스에 넣기----------------*/
 		StringBuffer result = new StringBuffer(); //결과값을 보여주는 result 를 try catch문 밖에서 선언
         try {
             StringBuilder urlBuilder = new StringBuilder("http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api"); /*API URL*/
-            urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=k%2BXUC8ZGTgciDc7GQP6q9XAd2Bd9IX5sbFqouotvyi4IQP2S%2BHFsLpGOxgYjnAlGImd%2FeNjPFPBu8xlS%2BhCLKw%3D%3D&pageNo="+i1); /*Service Key + pageNO*/
-            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("999", "UTF-8")); /*한 페이지 결과 수*/
+            urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=k%2BXUC8ZGTgciDc7GQP6q9XAd2Bd9IX5sbFqouotvyi4IQP2S%2BHFsLpGOxgYjnAlGImd%2FeNjPFPBu8xlS%2BhCLKw%3D%3D&pageNo=1"); /*Service Key + pageNO*/
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("2000", "UTF-8")); /*한 페이지 결과 수*/
             urlBuilder.append("&" + URLEncoder.encode("type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*XML/JSON 여부 무조건 소문자로*/
             URL url = new URL(urlBuilder.toString()); //주소완성
             /*---------------------------여기부터 API 서버연결 --------------------------------*/
@@ -116,8 +122,61 @@ public class DBdataController {
 //	        	System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
 //	        	ha2 = entrySet.getValue().toString();   
 //	        }
+		/*-----------------관광지 정보 API에서 가져와서 데이터베이스에 넣기----------------*/
+		StringBuffer result1 = new StringBuffer(); //결과값을 보여주는 result 를 try catch문 밖에서 선언
+        try {
+            StringBuilder urlBuilder = new StringBuilder("http://api.data.go.kr/openapi/tn_pubr_public_trrsrt_api"); /*API URL*/
+            urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=k%2BXUC8ZGTgciDc7GQP6q9XAd2Bd9IX5sbFqouotvyi4IQP2S%2BHFsLpGOxgYjnAlGImd%2FeNjPFPBu8xlS%2BhCLKw%3D%3D&pageNo=1"); /*Service Key + pageNO*/
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("900", "UTF-8")); /*한 페이지 결과 수*/
+            urlBuilder.append("&" + URLEncoder.encode("type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*XML/JSON 여부 무조건 소문자로*/
+            URL url = new URL(urlBuilder.toString()); //주소완성
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            BufferedReader rd;
+            if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+                rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+            } else {
+                rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+            }
+            String line;
+            while ((line = rd.readLine()) != null) {
+                result1.append(line);
+            }
+            conn.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String resultString1 = result1.substring(0);
+ 		JSONParser parse1 = new JSONParser();
+ 		JSONObject obj1;
+		try {
+			obj1 = (JSONObject) parse1.parse(resultString1);
+ 		JSONObject parse_response1 = (JSONObject) obj1.get("response"); 
+ 		JSONObject parse_body1 = (JSONObject) parse_response1.get("body");
+ 		JSONArray parse_items1 = (JSONArray) parse_body1.get("items");
+ 		tourVO tVO = new tourVO();
+ 		for (int i = 0; i < parse_items1.size(); i++) { //배열의 길이만큼 반복
+			JSONObject imsi = (JSONObject) parse_items1.get(i);
+			tVO.setTour_id((String)imsi.get("trrsrtNm"));
+			tVO.setTour_content((String)imsi.get("trrsrtIntrcn"));
+			tVO.setTour_parkinglot_num((String)imsi.get("prkplceCo"));
+			tVO.setTour_phonenum((String)imsi.get("phoneNumber"));
+			tVO.setTour_road_name_addr((String)imsi.get("rdnmadr"));
+			tVO.setTour_lotnum_addr((String)imsi.get("lnmadr"));
+			tVO.setTour_lat((String)imsi.get("latitude"));
+			tVO.setTour_long((String)imsi.get("longitude"));
+			//System.out.println(tVO.toString());
+			service.inputdataT(tVO);
+ 		}
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
+		return "true";
+	} catch (Exception e) {
+		e.printStackTrace();
+		return "false";
+	}	
     }
-
-
+	
+	
 }
