@@ -1,23 +1,127 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <style>
+
 	#board,#page{overflow:auto;}
 	#board li{
 		float:left; line-height:40px; border-bottom:1px solid #ddd; width: 10%;
 	}
-	#board li:nth-child(6n+1){width:5%;
+	#board li:nth-child(5n+1){width:10%;
 	/*white-space:nowrap; overflow:hidden; text-overflow:ellipsis;*/
 	}
-	#board li:nth-child(6n+3){width:55%;}
-	#board li:nth-child(6n+3)>div{float:left;}
-	#board li:nth-child(6n+3)>div:first-child{
-		white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+	#board li:nth-child(5n+2){
+	width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 	}
-	
- 	/* 페이지 */
- 	#page li{
- 		float:left; padding:10px;
- 	}
+
+	#board li:nth-child(5n+3){width:10%}
+
+
+	#board li:nth-child(5n+4){width:10%}
+
+	#board li:nth-child(5n+5){width:10%}
+
+.title{
+	text-align: center;
+	margin:0 auto;
+}
+
+.title__bar{ 
+	/* ���댄� 諛뺤뒪 �ㅼ젙 */
+	margin: var(--large-space) var(--medium-space);
+	padding: var(--medium-space) 0;
+	background-color: var(--bg-color-lightBlue-1);
+	border-radius: var(--strong-radius);
+	box-shadow: var(--basic-shadow);
+}
+.title__bar span{
+	/* ���댄� �고듃 �ㅼ젙 */
+	font-size: var(--large-font-size-3);
+	color: var(--main-color);
+	font-weight: bold;
+}
+/* BOARD BAR */
+.board__bar{
+	margin-top: var(--large-space);
+	width: 100%;
+	text-align: center;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	border-bottom: var(--bold-line) var(--ct-color-gray-dark) ;
+}
+.board__bar .board__nav{
+
+	display: flex;
+}
+.board__bar .board__nav li{
+
+	background-color: var(--bg-color-gray);
+	box-shadow: var(--up-basic-shadow);
+	border-radius: var(--strong-radius) var(--strong-radius) 0 0;
+
+	width: var(--button-width);
+	height: var(--button-height);
+	line-height: var(--button-height);
+
+	font-weight: bold;
+}
+.board__bar .board__nav .active{
+
+	background-color: var(--main-color);
+	color: var(--main-bg-color);
+}
+.board__bar .actionBtn{
+
+	border-radius: var(--mild-radius);
+	background-color: var(--main-color);
+	color: var(--main-bg-color);
+
+	width: var(--button-width);
+	height: calc( var(--button-height) - 8px);
+	line-height: calc( var(--button-height) - 8px);
+	font-weight: bold;
+	font-size: var(--medium-font-size-3);
+}
+
+/* BOARD CONTENT */
+.board__content{
+	/* board box */
+	border: var(--dotted-lind) var(--ct-color-gray-dark);
+	margin: var(--large-space) var(--medium-space);
+	padding: var(--medium-space);
+}
+.board__content .content__title{
+
+	display: flex;
+
+	border-bottom: var(--basic-line) var(--ct-color-gray-dark);
+}
+.board__content .content__list{
+
+	display: flex;
+	flex-wrap: nowrap;
+
+	font-size: var(--medium-font-size-3);
+}
+
+.board__bottom .board__page {
+		display: flex;
+	}
+	.board__bottom .DelBtn{
+	/* 우측 버튼 설정 */
+	/* 세부 */
+	border-radius: var(--mild-radius);
+	background-color: var(--main-color);
+	color: var(--main-bg-color);
+	/* 크기 */
+	width: 127px;
+	height: calc( var(--button-height) - 8px);
+	line-height: calc( var(--button-height) - 8px);
+	font-weight: bold;
+	font-size: var(--medium-font-size-3);
+}
 </style>
 <script>
 $(function(){
@@ -48,6 +152,7 @@ $(function(){
 		$("#listFrm").submit();
 	});
 });
+
 </script>
 <!-- PAGE TITLE 표시 바 -->
 	<section class="title">
@@ -55,24 +160,21 @@ $(function(){
 			<span>관리자 게시판</span>
 		</div>
 	</section>
-
-	
 	<section class = "board">
-
 			<!-- BOARD NAV + BUTTON --->
 			<div class="board__bar">
 				<ul class="board__nav">
-					<li><a href = "#">후기 별점</a></li>
-					<li class="active"><a href = "#">테마여행추천</a></li>
+					<li><a href = "/adminboard/reviewList">후기 별점</a></li>
+					<li class="active"><a href = "/adminboard/themeList">테마여행추천</a></li>
 				</ul>
-				<input type="button" class="actionBtn" value="작성하기"></div>
+				<div class= "actionBtn"><a href="/adminboard/themeForm">작성하기</a></div>
 			</div>
 
 			<!-- CONTENT -->
 		<form method="post" action="/adminboard/multiDel" id ="listFrm">
 			<div id = "board" class="board__content">
 				<ul id = "board" class="content__title">
-						<li>글번호</li>
+						<li>NO.</li>
 						<li>여행지/축제명</li>
 						<li>별점</li>
 						<li>위치</li>
@@ -119,8 +221,6 @@ $(function(){
 					<li>모두선택</li>
 					<li><input type="button" class="DelBtn" value="삭제하기"></li>
 				</ul>
-			</div> 
-			<div>
 				<form method = "get" action= "/adminboard/themeView" id = "searchFrm">
 					<select name = "searchKey">
 						<option value = "subject">제목</option>
@@ -128,7 +228,7 @@ $(function(){
 						<option value = "content">글내용</option>
 					</select>
 					<input type = "text" name="searchWord" id = "searchWord"/>
-					<input type = "submit" name="Search"/>
+					<input type = "submit" name="Search" value = "검색"/>
 				</form>
 			</div>			
 	</section>	
