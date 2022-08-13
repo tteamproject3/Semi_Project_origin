@@ -10,6 +10,13 @@
 *.project
 *.settings
 *.vscode
+*.idea
+.gradle
+gradle/
+.idea
+bin/
+build/
+.settings
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
@@ -22,6 +29,7 @@
 *.rar
 *.tar
 *.zip
+*.classpath
 
 # Logs and databases #
 ######################
