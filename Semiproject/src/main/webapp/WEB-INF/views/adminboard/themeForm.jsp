@@ -21,7 +21,7 @@
 </script>
 <div class = "container">
 	<h1>테마여행 글쓰기</h1>
-	<form method = "post" action="/adminboard/themeForm" id = "boardFrm">
+	<form method = "post" action="/adminboard/themeFormOk" id = "boardFrm">
 	<ul>
 		<li>제목</li>
 		<li><input type = "text" name="subject" id = "subject"/></li>
