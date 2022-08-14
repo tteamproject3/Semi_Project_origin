@@ -19,15 +19,23 @@
 		});
 	});
 </script>
-<div class = "container">
-	<h1>테마여행 글쓰기</h1>
+
+<section class="title">
+	<div class="title__bar">
+		<span>[관리자] 테마여행 글쓰기</span>
+	</div>
+</section>
+
+<section class = "container">
 	<form method = "post" action="/adminboard/themeFormOk" id = "boardFrm">
 	<ul>
 		<li>제목</li>
-		<li><input type = "text" name="subject" id = "subject"/></li>
+		<li><input type = "text" name="subject" id = "subject" style="width:800px"/></li>
+		<li>사이드 제목 </li>
+		<li><input type = "text" style="width:800px"/></li>
 		<li>글내용</li>
 		<li><textarea name = "content" id = "content"></textarea></li>
 		<li><input type = "submit" value = "글등록"/></li>
 	</ul>
 	</form>
-</div>
+</section>

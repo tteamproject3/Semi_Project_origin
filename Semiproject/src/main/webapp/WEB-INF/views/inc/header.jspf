@@ -38,7 +38,7 @@
 						<a href="/user/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
 					</c:if>
 					<!-- <i class="fa-solid fa-arrow-right-from-bracket"></i> -->
-					<a href="/mypage/myWrite"><i class="fa-regular fa-bell"></i></a>
+					<a href="/mypage/myWriteList"><i class="fa-regular fa-bell"></i></a>
 					<a href="/mypage/myTourList"><i class="fa-regular fa-user"></i></a>
 				</div>
 			</div>

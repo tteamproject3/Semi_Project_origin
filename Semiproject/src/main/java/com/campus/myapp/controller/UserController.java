@@ -56,7 +56,7 @@ public class UserController {
 			
 			session.setAttribute("logId",g_id);
 			session.setAttribute("logNickName",vo.getUser_nickname());
-			session.setAttribute("logMode",vo.getUser_role() ); //0: 유저모드, 1: 관리자모
+			session.setAttribute("logMode",vo.getUser_role() ); //0: 유저모드, 1: 관리자모드
 			session.setAttribute("logStatus", "Y");
 			mav.setViewName("redirect:/");
 			

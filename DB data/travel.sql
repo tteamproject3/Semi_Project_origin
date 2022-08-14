@@ -1,6 +1,19 @@
 use travel;
 show tables;
 
+-- reset하기 
+SET foreign_key_checks = 0;
+drop table comment;
+drop table festival;
+drop table notification;
+drop table post;
+drop table reply;
+drop table theme;
+drop table touristSpot;
+drop table user;
+drop table user_checklist;
+drop table user_favorite_theme;
+
 -- festival 데이터 
 
 -- *************************** 필수 ****************************
