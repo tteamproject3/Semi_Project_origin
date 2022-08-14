@@ -2,14 +2,19 @@ package com.campus.myapp.service;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 import com.campus.myapp.dao.AdminBoardDAO;
 import com.campus.myapp.vo.BoardVO;
+import com.campus.myapp.vo.FestivalVO;
 import com.campus.myapp.vo.PagingVO;
+import com.campus.myapp.vo.tourVO;
 
 @Service
 public class AdminBoardServiceImpl implements AdminBoardService {
 
+    @Inject
     AdminBoardDAO dao;
     @Override
     public List<BoardVO> reviewList(PagingVO pVO) {
@@ -49,5 +54,15 @@ public class AdminBoardServiceImpl implements AdminBoardService {
     @Override
     public int boardDel(int no, String userid) {
         return dao.boardDel(no, userid);
+    }
+
+    @Override
+    public List<FestivalVO> festivalList() {
+        return dao.festivalList();
+    }
+
+    @Override
+    public List<tourVO> tourList() {
+        return dao.tourList();
     }
 }
