@@ -45,5 +45,7 @@ select * from touristSpot order by tour_id;
 
 -- Query OK, 731 rows affected, 8 warnings (0.11 sec)
 -- Records: 734  Deleted: 0  Skipped: 3  Warnings: 8
+desc user;
 
-
+select * from user;
+delete from user;

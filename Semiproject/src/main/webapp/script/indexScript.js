@@ -96,62 +96,62 @@ $(function(){
 	'전주','군산','해남','남원','고창', '포항', '경주','울진','동해','제주'];
 
 	// ajax로 데이터 불러오기 
-	for(var i=0;i<engCity_1.length;i++){
-		$.ajax({
-			url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_1[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
-			dataType: 'json',
-			type: 'GET',
-			success: function(data){
-				var $icon = data.weather[0].icon;
-				var $temp = Math.floor(data.main.temp - 273.15) + "℃";
-				// var $eng = data.name;
-				var $index = engCity_1.indexOf(data.name);
-				var $city = korCity_1[$index];
-				var $iconUrl = "http://openweathermap.org/img/wn/" + $icon + "@2x.png";
+//	for(var i=0;i<engCity_1.length;i++){
+//		$.ajax({
+//			//url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_1[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
+//			dataType: 'json',
+//			type: 'GET',
+//			success: function(data){
+//				var $icon = data.weather[0].icon;
+//				var $temp = Math.floor(data.main.temp - 273.15) + "℃";
+//				// var $eng = data.name;
+//				var $index = engCity_1.indexOf(data.name);
+//				var $city = korCity_1[$index];
+//				var $iconUrl = "http://openweathermap.org/img/wn/" + $icon + "@2x.png";
+//				// console.log(data.name+"--"+$index+"--"+$city);
+//
+//				// 데이터 쓰기 
+//				// $('.weather__info').empty();
+//				var tag ='<li><ul class="weather__detail">';
+//				tag += '<li class="wIcon"><img src="'+$iconUrl+'" alt="icon" /></li>';
+//				tag += '<li class="wTemp">'+$temp+'</li>';
+//				tag += '<li class="wCity">'+$city+'</li></ul></li>';
+//
+//				$('.weather__info_1').append(tag);
+//				// $('.weather__info_2').append(tag);
+//			
+//			}, error:function(e){
+//				console.log(e.responseText);
+//			}
+//		});
+//		$.ajax({
+//			//url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_2[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
+//			dataType: 'json',
+//			type: 'GET',
+//			success: function(data){
+//				var $icon = data.weather[0].icon;
+//				var $temp = Math.floor(data.main.temp - 273.15) + "℃";
+//				// var $eng = data.name;
+//				var $index = engCity_2.indexOf(data.name);
+//				var $city = korCity_2[$index];
+//				var $iconUrl = "http://openweathermap.org/img/wn/" + $icon + "@2x.png";
 				// console.log(data.name+"--"+$index+"--"+$city);
 
 				// 데이터 쓰기 
 				// $('.weather__info').empty();
-				var tag ='<li><ul class="weather__detail">';
-				tag += '<li class="wIcon"><img src="'+$iconUrl+'" alt="icon" /></li>';
-				tag += '<li class="wTemp">'+$temp+'</li>';
-				tag += '<li class="wCity">'+$city+'</li></ul></li>';
+//				var tag ='<li><ul class="weather__detail">';
+//				tag += '<li class="wIcon"><img src="'+$iconUrl+'" alt="icon" /></li>';
+//				tag += '<li class="wTemp">'+$temp+'</li>';
+//				tag += '<li class="wCity">'+$city+'</li></ul></li>';
 
-				$('.weather__info_1').append(tag);
-				// $('.weather__info_2').append(tag);
+//				// $('.weather__info_1').append(tag);
+//				$('.weather__info_2').append(tag);
 			
-			}, error:function(e){
-				console.log(e.responseText);
-			}
-		});
-		$.ajax({
-			url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_2[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
-			dataType: 'json',
-			type: 'GET',
-			success: function(data){
-				var $icon = data.weather[0].icon;
-				var $temp = Math.floor(data.main.temp - 273.15) + "℃";
-				// var $eng = data.name;
-				var $index = engCity_2.indexOf(data.name);
-				var $city = korCity_2[$index];
-				var $iconUrl = "http://openweathermap.org/img/wn/" + $icon + "@2x.png";
-				// console.log(data.name+"--"+$index+"--"+$city);
-
-				// 데이터 쓰기 
-				// $('.weather__info').empty();
-				var tag ='<li><ul class="weather__detail">';
-				tag += '<li class="wIcon"><img src="'+$iconUrl+'" alt="icon" /></li>';
-				tag += '<li class="wTemp">'+$temp+'</li>';
-				tag += '<li class="wCity">'+$city+'</li></ul></li>';
-
-				// $('.weather__info_1').append(tag);
-				$('.weather__info_2').append(tag);
-			
-			}, error:function(e){
-				console.log(e.responseText);
-			}
-		});
-	}
+//			}, error:function(e){
+//				console.log(e.responseText);
+//			}
+//		});
+//	}
 	
 	//날짜페이지:포지션 {1:0, 2:-500%, 3:-1000%, 4:-1500%}
 	var wPage = 0;
