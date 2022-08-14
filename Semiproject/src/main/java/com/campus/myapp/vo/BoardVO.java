@@ -16,11 +16,11 @@ public class BoardVO {
 	// ///여러개의 레코드 번호를 저장할 컬렉션 선언
 	// private int reply_count;
 	
-	private String post_id;
+	private int post_id;
 	private String google_id;
 	private int touristSpot_tour_num;
 	private int festival_festival_num;
-	private String post_type;
+	private String post_type; // 테마 - 'theme' / 'fest', 'tour'
 	private String post_title;
 	private String post_content;
 	private int post_hit;
@@ -40,11 +40,11 @@ public class BoardVO {
 				+ post_type + ", reply_count=" + reply_count + ", touristSpot_tour_num=" + touristSpot_tour_num + "]";
 	}
 
-	public String getPost_id() {
+	public int getPost_id() {
 		return post_id;
 	}
 
-	public void setPost_id(String post_id) {
+	public void setPost_id(int post_id) {
 		this.post_id = post_id;
 	}
 

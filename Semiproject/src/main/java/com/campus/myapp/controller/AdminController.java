@@ -42,6 +42,7 @@ public class AdminController {
 		//DB 레코드 선택 - 페이지, 검색어
 		//mav.addObject("list",service.reviewList(pVO));
 		//mav.addObject("pVO",pVO);
+		
 		mav.setViewName("/adminboard/reviewList");
 		
 		return mav;	
