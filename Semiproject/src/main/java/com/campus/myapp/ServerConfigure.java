@@ -15,6 +15,11 @@ public class ServerConfigure implements WebMvcConfigurer {
 	//인터셉트가 처리될 매핑주소를 List 컬렉션으로 작성
 	private static final List<String> URL_PATTERNS = Arrays.asList(
 			"/mypage/myTourList" ,"/mypage/myWriteList" , "/mypage/myWriteList"
+
+				// "/adminboard/reviewList","/adminboard/reviewView","/adminboard/themeList",
+				// "/adminboard/themeForm","/adminboard/themeFormOk","/adminboard/themeView",
+				// "/adminboard/themeEdit","/adminboard/themeEditOk","/adminboard/boardDel",
+				// "/adminboard/multiDel"
 			);
 	
 	

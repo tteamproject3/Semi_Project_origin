@@ -57,7 +57,31 @@
 	  		<where>
 	  			<foreach item = "item" index = "index" collection="post_id_List" open="post_id in (" separator ="," close=")">
 	  				${item}	  			
-	  			</foreach>	  		
+	  			</foreach>
 	  		</where>
 	  </delete>
+	  <select id ="festivalList" resultType="FestivalVO">
+			select festival_id, festival_place
+								,festival_start_date
+								,festival_end_date
+								,festival_content
+								,festival_phonenum
+								,festival_site
+								,festival_road_name_addr
+								,festival_lotnum_addr
+								,festival_lat
+								,festival_long
+								from festival data order by festival_id desc
+	  </select>
+	  <select id ="tourList" resultType="tourVO">
+			select tour_id, tour_content
+							,tour_parkinglot_num
+							,tour_phonenum
+							,tour_road_name_addr
+							,tour_lotnum_addr
+							,tour_lat
+							,tour_long	
+							from touristSpot order by tour_id desc
+	  </select>
+
   </mapper>
