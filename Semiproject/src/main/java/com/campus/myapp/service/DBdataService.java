@@ -16,4 +16,5 @@ public interface DBdataService {
 	public void updateTDB();
 	public List<TourVO> GmapGo();
 	public List<TourVO> getPdata(int num);
+	public List<TourVO> getLI(String la, String lon);
 }
