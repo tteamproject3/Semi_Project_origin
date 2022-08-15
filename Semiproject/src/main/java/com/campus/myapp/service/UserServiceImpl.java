@@ -13,7 +13,7 @@ public class UserServiceImpl implements UserService {
 	UserDAO dao;
 
 	@Override
-	public int loginOk(String g_id, String g_name) {
+	public int loginOk(String g_id,String g_name) {
 		return dao.loginOk(g_id, g_name);
 	}
 

@@ -56,7 +56,6 @@
 	width:100%;
 	margin: var(--medium-space);
 	border: var(--basic-line) black;
-	padding:0;
 } 
 .aBtn{
 	border-radius: var(--mild-radius);

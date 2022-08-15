@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script src="/script/weather.js" type="text/javascript"></script>   
     <div class="top">
 			<div>
 				<div class="main_title">On The Way</div>
@@ -134,20 +133,48 @@
    			</div>
 		</section> -->
 <!-- ---------------------googleMaps-------------------------  -->   
-		<section class="gmap_section">\
-						<div class="gmap_search">
-					<form>
-					</form>
-				</div>
+		<section class="gmap_section">
 				<div id="googleMapView">
 				</div>
 		</section>
- <!-- ---------------------------------맞춤여행지-----------------------------------  --> 
- 		    <div class="search_result_div1">
+ <!-- ---------------------------------맞춤여행지-----------------------------------  -->  
+ 		<section class="search_result">
+		    <div class="search_result_div1">
 	   			<div class="search_result_title">${user_nickname} 님을 위한 맞춤 여행지</div>
 	   			<hr class="search_result_hr">
   			</div>
- 		<section class="search_result">
+  			<div class="touristSpot">
+	  			<div class="touristSpot_img">img파일 어디서구하지?</div>
+	  			<!-- 이미지파일을 구하는 방법을 정하면 그때가서 동그라미로 자르기 -->
+	  			<div class="touristSpot_div">
+		  			<div class="touristSpot_subject">은평역사한옥박물관</div>
+		  			<br/>
+		  			<spen>관광지 소개<br/></spen>
+		  			<div class="touristSpot_content">은평구의 문화유산과 한옥의 전통을 소개하는 박물관</div>
+		  			<div class="touristSpot_tel">관광지 관리기관 전화번호: 02-351-8525</div>
+			  		<div class="touristSpot_div2">
+			  		<div class="touristSpot_parking">주차가능공간: 26</div>
+			  		<div class="touristSpot_raiting">평점★: 4.6 &nbsp; &nbsp; <input class="touristSpot_fav" type="button" value="❤"/></div>
+			  		</div>
+	  			</div>	
+  			</div>
+  			<br/>
+  			<div class="touristSpot">
+	  			<div class="touristSpot_img">img파일 어디서구하지?</div>
+	  			<!-- 이미지파일을 구하는 방법을 정하면 그때가서 동그라미로 자르기 -->
+	  			<div class="touristSpot_div">
+		  			<div class="touristSpot_subject">은평역사한옥박물관</div>
+		  			<br/>
+		  			<spen>관광지 소개<br/></spen>
+		  			<div class="touristSpot_content">은평구의 문화유산과 한옥의 전통을 소개하는 박물관</div>
+		  			<div class="touristSpot_tel">관광지 관리기관 전화번호: 02-351-8525</div>
+			  		<div class="touristSpot_div2">
+			  		<div class="touristSpot_parking">주차가능공간: 26</div>
+			  		<div class="touristSpot_raiting">평점★: 4.6 &nbsp; &nbsp; <input class="touristSpot_fav" type="button" value="❤"/></div>
+			  		</div>
+	  			</div>	
+  			</div>
+  			<br/>
   			<!-- 축제 관련해서도 추후에 추가해야함 -->
  		</section>
  <!-- ------------------------------------------------------------------------------------------------------  -->   
@@ -187,24 +214,69 @@
 			</div>
 			<!-- theme section -->
 			<ul class="theme__list">
-				<c:forEach var="vo" items="${t_list}">
-					<li>
+				<li>
+					<!-- theme card -->
 					<div class="card">
-						<img src="${vo.post_file1 }" alt="">
-						<span class="title">${vo.post_title }</span>
+						<img src="img/nightsky-view.jpg" alt="">
+						<span class="title">한옥 카페 시리즈</span>
 						<div class="card__detail">
+							★ 4.5
 							<i class="fa-regular fa-heart"></i>
 						</div>
 					</div>
 					<div class="line"></div>	
 					<!-- theme description -->
 					<div class="descript">
-						<span class="desc__title">${vo.post_intro }</span>
-						<span class="desc__content">${vo.post_content }</span>
-						<a href="/userboard/boardView?post_id=${vo.post_id}"><span class="desc__detail">더보기</span></a>
+						<span class="desc__title">평범한 카페는 이제 그만</span>
+						<span class="desc__content">여행의 매력은 무궁무진하겠지만, 그 중 하나는
+							“일상에서 벗어난 낯섦에 대한 기대”이지 않을까?
+							
+							이 점에서 여행지에서 만나는 한옥카페는 여러분에게 낯선 공간을 제공하며 새로운 분위기를 만들어줄 수 있을 거예요. 대한민국 테마여행 10선 여행 중 만나는 한옥카페, 조용하고 고즈넉한 분위기 속에서 그 새로운 공간을 누려보는 건 어떨까요? </span>
+						<a href="#"><span class="desc__detail">더보기</span></a>
 					</div>
-					</li>
-				</c:forEach>
+				</li>
+				<li>
+					<!-- theme card -->
+					<div class="card">
+						<img src="img/nightsky-view.jpg" alt="">
+						<span class="title">한옥 카페 시리즈</span>
+						<div class="card__detail">
+							★ 4.5
+							<i class="fa-regular fa-heart"></i>
+						</div>
+					</div>
+					<div class="line"></div>	
+					<!-- theme description -->
+					<div class="descript">
+						<span class="desc__title">평범한 카페는 이제 그만</span>
+						<span class="desc__content">여행의 매력은 무궁무진하겠지만, 그 중 하나는
+							“일상에서 벗어난 낯섦에 대한 기대”이지 않을까?
+							
+							이 점에서 여행지에서 만나는 한옥카페는 여러분에게 낯선 공간을 제공하며 새로운 분위기를 만들어줄 수 있을 거예요. 대한민국 테마여행 10선 여행 중 만나는 한옥카페, 조용하고 고즈넉한 분위기 속에서 그 새로운 공간을 누려보는 건 어떨까요? </span>
+						<a href="#"><span class="desc__detail">더보기</span></a>
+					</div>
+				</li>
+				<li>
+					<!-- theme card -->
+					<div class="card">
+						<img src="img/nightsky-view.jpg" alt="">
+						<span class="title">한옥 카페 시리즈</span>
+						<div class="card__detail">
+							★ 4.5
+							<i class="fa-regular fa-heart"></i>
+						</div>
+					</div>
+					<div class="line"></div>	
+					<!-- theme description -->
+					<div class="descript">
+						<span class="desc__title">평범한 카페는 이제 그만</span>
+						<span class="desc__content">여행의 매력은 무궁무진하겠지만, 그 중 하나는
+							“일상에서 벗어난 낯섦에 대한 기대”이지 않을까?
+							
+							이 점에서 여행지에서 만나는 한옥카페는 여러분에게 낯선 공간을 제공하며 새로운 분위기를 만들어줄 수 있을 거예요. 대한민국 테마여행 10선 여행 중 만나는 한옥카페, 조용하고 고즈넉한 분위기 속에서 그 새로운 공간을 누려보는 건 어떨까요? </span>
+						<a href="#"><span class="desc__detail">더보기</span></a>
+					</div>
+				</li>
 			</ul>
 		</section>
     

@@ -1,145 +1,108 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <style>
-.board__bar{
-	margin-top: var(--large-space);
-	width: 100%;
-	text-align: center;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: var(--bold-line) var(--ct-color-gray-dark) ;
-}
-.board__bar .board__nav{
-	display: flex;
-}
-.board__bar .board__nav li{
-	background-color: var(--bg-color-gray);
-	box-shadow: var(--up-basic-shadow);
-	border-radius: var(--strong-radius) var(--strong-radius) 0 0;
-	width: var(--button-width);
-	height: var(--button-height);
-	line-height: var(--button-height);
-	font-weight: bold;
-}
-.board__bar .board__nav .active{
-	background-color: var(--main-color);
-	color: var(--main-bg-color);
-}
-
-.cBox{
-	border:var(--dotted-line) var(--main-color);
-	margin: var(--medium-space);
-	padding: var(--medium-space);
-}
-.cBox>ul{
-	width:100%;
-	display:flex;
-	flex-wrap: wrap;
-}
-.cBox>ul>li{
-	border-bottom:var(--dotted-line) #aaa;
-	line-height: 28px;
-	padding:0 2%;
-}
-.cBox>ul>li:nth-child(2n+1){
-	width:18%;
-	border-right:var(--dotted-line) #aaa;
-}
-.cBox>ul>li:nth-child(2n+2){
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	width:73%;
-} .cBox>ul>li:last-child{
-	width:100%;
-	margin: var(--medium-space);
-	border: var(--basic-line) black;
-} 
-.aBtn{
-	margin: var(--medium-space);
-	width:100%;
-	display:flex;
-}
-.aBtn div{
-	border-radius: var(--mild-radius);
-	background-color: var(--main-color);
-	color: var(--main-bg-color);
-	width: 100px;
-	height: calc( var(--button-height) - 4px);
-	font-weight: bold;
-	font-size: var(--medium-font-size-2);
-	text-align: center;
-	margin-right:var(--medium-space);
-}
-.cBtn{
-	border-radius: var(--mild-radius);
-	border:none;
-	background-color: var(--main-color);
-	color: var(--main-bg-color);
-	width: 80px;
-	height: calc( var(--button-height) - 4px);
-	font-size: var(--medium-font-size-3);
-	text-align: center;
-	margin-left:var(--medium-space);
-}
-#comment_content{	
-	width:98%;
-	margin:var(--medium-space);
-}
-#commentList>ul>li{
-	border-top: var(--dotted-line) gray;
-	margin-top: var(--medium-space)
-}
-</style>
-
-<script>
-function boardDel(){
-	if(confirm("이 글을 삭제하시겠습니까?")){
-		location.href="/adminboard/themeDel?post_id=${vo.post_id}";
+	#board,#page{overflow:auto;}
+	#board li{
+		float:left; line-height:40px; border-bottom:1px solid #ddd; width: 10%;
 	}
+	#board li:nth-child(6n+1){width:10%;
+	/*white-space:nowrap; overflow:hidden; text-overflow:ellipsis;**/
+	}
+	#board li:nth-child(6n+2){
+	width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+	}
+
+	.checkbox{
+		width:1em; height: 1em;
+	}
+	.board__page{
+		margin:0 auto; text-align: center;
+	}
+	.board__page>li{
+		font-size: 0.8em; align-items: center;
+	}
+	.board__bottom .board__page {
+		display: flex;
+	}
+	.board__bottom .DelBtn{
+	/* 우측 버튼 설정 */
+	/* 세부 */
+	border-radius: var(--mild-radius);
+	background-color: var(--main-color);
+	color: var(--main-bg-color);
+	/* 크기 */
+	width: 127px;;
+	height: calc( var(--button-height) - 8px);
+	line-height: calc( var(--button-height) - 8px);
+	font-weight: bold;
+	font-size: var(--medium-font-size-3);
 }
+.actionBtn{
+	width:127px; height: 34px;
+}
+
+
+</style>
+<script>
+
 
 </script>
 
-<!-- PAGE TITLE 표시 바 -->
-<section class="title">
-	<div class="title__bar">
-		<span>[관리자] 테마 글 내용</span>
-	</div>
-</section>
 
-<section class="container">
-	<div class="board__bar">
-		<ul class="board__nav">
-			<li><a href ="/adminboard/spotList">데이터 관리</a></li>
-			<li class="active"><a href ="/adminboard/themeList">테마여행추천</a></li>
-		</ul>
-	</div>	
-	<div class="cBox">
-		<ul>
-			<li>번호</li>
-			<li>${vo.post_id }</li>
-			<li>제목</li>
-			<li>${vo.post_title }</li>
-			<li>소제목</li>
-			<li>${vo.post_intro }</li>
-			<li>조회수</li>
-			<li>${vo.post_hit }</li>
-			<li>등록일</li>
-			<li>${vo.post_registration_date }</li>
-			<li>이미지파일</li>
-			<li>${vo.post_file1 }</li>
-			<li>${vo.post_content }</li>
-		</ul>
-		<div class="aBtn">
-			<div><a
-				href="/adminboard/themeList?nowPage=${pVO.nowPage}">
-				목록</a></div>
-	
-			<c:if test="${vo.google_id==logId }">
-				<div><a href="/adminboard/themeEdit?post_id=${vo.post_id }">수정</a></div>
-				<div><a href="javascript:boardDel()">삭제</a></div>
-			</c:if>
+	<!-- PAGE TITLE 표시 바 -->
+	<section class="title">
+		<div class="title__bar">
+			<span>관리자 게시판 themeviewpage</span>
 		</div>
-	</div>
-</section>
+	</section>
+
+	<!-- BOARD -->
+	<section class="board">
+
+		<!-- BOARD NAV + BUTTON --->
+		<div class="board__bar">
+			<ul class="board__nav">
+				<li><a href = "#">후기 별점</a></li>
+				<li class="active"><a href = "#">테마여행추천</a></li>
+			</ul>
+			<input type="button" class="actionBtn" value="작성하기">
+		</div>
+		
+		
+		<!-- CONTENT -->
+		<div id = "board" class="board__content">
+			<ul id = "board" class="content__title">
+					<li>글번호</li>
+					<li>여행지/축제명</li>
+					<li>별점</li>
+					<li>위치</li>
+					<li>선택</li>
+			</ul>
+			<ul class="content__list">
+				<li>{vo.no}</li>
+				<li><a href = "#">title sample for the board Sample page of 'ON THE WAY'</a></li>
+				<li></li>
+				<li>${vo.writedate}</li>
+				<!--  <li>${}</li>-->
+				<li>&nbsp;&nbsp;&nbsp;<input type = "checkbox" id = "allChk" class = "checkbox" value = "${vo.no}"></li>
+			</ul>
+			<div>
+				<a href="/board/boardList?nowPage=${pVO.nowPage}<c:if test ='${pVO.searchWord!=null}'> &searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord} </c:if>">목록</a>
+				<c:if test = "${vo.userid==logId}">
+					<a href = "/board/boardEdit/${vo.no}">수정</a>
+					<a href = "javascript:boardDel();">삭제</a>
+				</c:if>
+			</div>
+				<!-- 댓글달기 -->
+				<div>
+					<form method="post" id="replyFrm">
+						<input type = "hidden" name="no" value="${vo.no}"/>
+						<textarea maxlength="200" name="coment" id="coment" cols="50" rows ="3"></textarea>
+						<input type="submit" value="댓글쓰기"/>					
+					</form>	
+				</div>
+				<div id = "replyList">
+					<ul></ul>
+				</div>
+		</div>
+	</section>

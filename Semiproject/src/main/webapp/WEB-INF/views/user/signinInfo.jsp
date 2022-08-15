@@ -179,7 +179,8 @@ $(function(){
 							</li>
 							<li>
 								<span class="iTitle">생년월일</span>
-								<input type="date" name="user_birth" id="user_birth"> 
+								<input type="date" name="user_birth" id="user_birth">
+								<input type="hidden" name="email" id="email" value="${u_vo.email}">
 							</li>
 							<li>
 								<span class="iTitle">SNS 수신여부</span>

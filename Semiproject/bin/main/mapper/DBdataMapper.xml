@@ -38,8 +38,7 @@
 		tour_road_name_addr,
 		tour_lotnum_addr,
 		tour_lat,
-		tour_long
-		)
+		tour_long)
 		values (
 		#{tour_id},
 		#{tour_content},
@@ -48,8 +47,7 @@
 		#{tour_road_name_addr},
 		#{tour_lotnum_addr},
 		#{tour_lat},
-		#{tour_long}
-		)
+		#{tour_long})
 	</insert>
 	<delete id="deleteFDB">
 		delete from festival;
@@ -63,31 +61,4 @@
 	<update id="updateTDB">
 		ALTER TABLE touristSpot AUTO_INCREMENT = 1;
 	</update>
-	<select id="GmapGo" resultType="tourVO">
-		select
-		tour_num,
-		tour_id,
-		tour_content,
-		tour_parkinglot_num,
-		tour_phonenum,
-		tour_road_name_addr,
-		tour_lotnum_addr,
-		tour_lat,
-		tour_long
-		from touristSpot
-	</select>
-	<select id="getPdata" resultType="tourVO">
-		select
-		tour_num,
-		tour_id,
-		tour_content,
-		tour_parkinglot_num,
-		tour_phonenum,
-		tour_road_name_addr,
-		tour_lotnum_addr,
-		tour_lat,
-		tour_long
-		from touristSpot
-		where tour_num = ${param1} 
-	</select>
 </mapper>

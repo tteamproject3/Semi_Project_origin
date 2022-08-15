@@ -2,7 +2,17 @@ package com.campus.myapp.vo;
 
 
 public class FestivalVO {
-	private int festival_num;
+//	private String fstvlNm;
+//	private String opar;
+//	private String fstvlStartDate;
+//	private String fstvlEndDate;
+//	private String fstvlCo;
+//	private String phoneNumber;
+//	private String homepageUrl;
+//	private String rdnmadr;
+//	private String lnmadr;
+//	private String latitude;
+//	private String longitude;
 	private String festival_id;
 	private String festival_place;
 	private String festival_start_date;
@@ -14,8 +24,6 @@ public class FestivalVO {
 	private String festival_lotnum_addr;
 	private String festival_lat;
 	private String festival_long;
-	private String festivalcol;
-	
 	@Override
 	public String toString() {
 		return "FestivalVO [festival_id=" + festival_id + ", festival_place=" + festival_place
@@ -25,33 +33,6 @@ public class FestivalVO {
 				+ ", festival_lotnum_addr=" + festival_lotnum_addr + ", festival_lat=" + festival_lat
 				+ ", festival_long=" + festival_long + "]";
 	}
-	
-	
-	
-	public int getFestival_num() {
-		return festival_num;
-	}
-
-
-
-	public void setFestival_num(int festival_num) {
-		this.festival_num = festival_num;
-	}
-
-
-
-	public String getFestivalcol() {
-		return festivalcol;
-	}
-
-
-
-	public void setFestivalcol(String festivalcol) {
-		this.festivalcol = festivalcol;
-	}
-
-
-
 	public String getFestival_id() {
 		return festival_id;
 	}

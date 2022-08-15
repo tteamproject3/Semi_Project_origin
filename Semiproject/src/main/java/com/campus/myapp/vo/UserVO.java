@@ -6,6 +6,7 @@ public class UserVO {
 	private int user_role;
 	private String user_nickname;
 	private String user_register_date;
+	private String email;
 	
 	private String user_phonenum;
 	private String tel1;
@@ -34,6 +35,12 @@ public class UserVO {
 	}
 	public void setGoogle_id(String google_id) {
 		this.google_id = google_id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getGoogle_username() {
 		return google_username;

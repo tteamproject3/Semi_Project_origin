@@ -126,15 +126,16 @@ function boardDel(){
 							tag += "<input type='button' value='Edit' class='cBtn'/>";
 							tag += "<input type='button' value='Del' class='cBtn' title='"+vo.comment_id+"'/>";
 						}
-						tag += "<br/><div id='comment_content'>ㄴ" +vo.comment_content+"</div></div>" ;
+						tag += "<br/><div id='comment_content'>ㄴ" +vo.comment_content+"<div></div>" ;
 						//로그인 아이디와 댓글쓴이가 같으면 폼을 만들어준다.
 						if(vo.google_id=='${logId}'){
 							tag += "<div style='display:none;'><form>";
 							tag += "<input type='hidden' name='comment_id' value='"+vo.comment_id+"'/>";
-							tag += "<textarea name='comment_content' rows='4' cols='80'>"+vo.comment_content+"</textarea>";
+							tag += "<textarea name='comment_content' id ='comment_content' rows='4' cols='80'>"+vo.comment_content+"</textarea>";
 							tag += "<input type='submit' value='댓글수정하기' class='cBtn'/>";
 							tag += "</form></div>";
 						}
+						
 						tag += "</li>";
 						
 						$('#commentList>ul').append(tag);
@@ -150,8 +151,8 @@ function boardDel(){
 		
 		//댓글 수정하기 (폼보기)
 		$(document).on('click','#commentList input[value=Edit]', function(){
- 			$(this).parent().css('display','none'); //Edit	버튼의 부모 숨김
-			$(this).parent().next().css("display","block"); 
+			$(this).parent().css('display','none'); //Edit	버튼의 부모 숨김
+			$(this).parent().next().css("display","block");
 		});
 		
 		//댓글 수정하기 (DB수정하기)

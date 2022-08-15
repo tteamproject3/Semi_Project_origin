@@ -2,8 +2,7 @@ package com.campus.myapp.service;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.PostDAO;
@@ -12,7 +11,7 @@ import com.campus.myapp.vo.PostVO;
 
 @Service
 public class PostServiceImpl implements PostService{
-	@Inject
+	@Autowired
 	PostDAO dao;
 
 	@Override
@@ -53,15 +52,5 @@ public class PostServiceImpl implements PostService{
 	@Override
 	public int boardMultiDel(PostVO vo) {
 		return dao.boardMultiDel(vo);
-	}
-
-	@Override
-	public List<PostVO> getThemeList(PagingVO pVO) {
-		return dao.getThemeList(pVO);
-	}
-
-	@Override
-	public int totalThemeRecord(PagingVO pVO) {
-		return dao.totalThemeRecord(pVO);
 	}
 }

@@ -16,7 +16,7 @@
 	<script src="https://kit.fontawesome.com/ab847241fd.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 	<script src="/script/indexScript.js" type="text/javascript"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwSEWBBCWNZzbZ6_ItQYHifWBj_gVVgWQ&region=kr&callback=initMap"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwSEWBBCWNZzbZ6_ItQYHifWBj_gVVgWQ&region=kr"></script>
 	
     <title>OnTheWay</title>
 </head>
@@ -38,11 +38,8 @@
 						<a href="/user/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
 					</c:if>
 					<!-- <i class="fa-solid fa-arrow-right-from-bracket"></i> -->
-					<!-- <a href="/mypage/myWriteList"><i class="fa-regular fa-bell"></i></a> -->
-					<a href="/mypage/myTourList"><i class="fa-solid fa-user"></i></a>
-					<c:if test="${logMode == '1'}" >
-						<a href="/adminboard/themeList"><i class="fa-solid fa-bars-progress"></i></a>
-					</c:if>
+					<a href="/mypage/myWriteList"><i class="fa-regular fa-bell"></i></a>
+					<a href="/mypage/myTourList"><i class="fa-regular fa-user"></i></a>
 				</div>
 			</div>
 		</header>

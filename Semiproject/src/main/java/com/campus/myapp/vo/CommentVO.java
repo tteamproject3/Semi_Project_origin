@@ -1,7 +1,5 @@
 package com.campus.myapp.vo;
 
-import java.util.List;
-
 public class CommentVO {
 	private int comment_id;
 	private int post_id;
@@ -9,27 +7,9 @@ public class CommentVO {
 	private String comment_content;
 	private String comment_registration_date;
 	
-	//원글 제목
-	private String post_title;
-	
-	//여러개의 레코드 번호를 저장할 콜렉션 
-	private List<Integer> noList;
 	
 	
 	
-	
-	public List<Integer> getNoList() {
-		return noList;
-	}
-	public void setNoList(List<Integer> noList) {
-		this.noList = noList;
-	}
-	public String getPost_title() {
-		return post_title;
-	}
-	public void setPost_title(String post_title) {
-		this.post_title = post_title;
-	}
 	@Override
 	public String toString() {
 		return "CommentVO [comment_id=" + comment_id + ", post_id=" + post_id + ", google_id=" + google_id

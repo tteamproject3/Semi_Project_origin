@@ -33,43 +33,4 @@
 		where post_id=${param1}
 	</select>
 	
-	<select id="getMyComment" resultType="CommentVO">
-		select
-		t1.comment_id,
-		t1.post_id,
-		t1.comment_content,
-		t1.comment_registration_date, 
-		t2.post_title
-		from
-		(select 
-		comment_id, post_id, comment_content,
-		date_format(comment_registration_date ,'%m-%d %h:%i') comment_registration_date 
-		from comment
-		<if test="searchWord!=null">
-			where ${searchKey} like '%${searchWord}%'
-		</if>
-		order by post_id desc
-		limit ${onePageRecord} offset ${offsetPoint}) t1
-		left outer join
-		(select 
-		post_id, post_title
-		from post) t2
-		on t1.post_id = t2.post_id
-	</select>
-	
-	<delete id="commentMultiDel">
-		delete from comment
-		<where>
-			<foreach item="item" index="index" collection="noList" open="comment_id in (" separator="," close=")">
-              ${item}
-			</foreach>
-		</where>
-	</delete>
-	
-	<select id="totalRecord" resultType="int">
-		select count(comment_id) cnt from comment
-		<if test="searchWord!=null">
-			where ${searchKey} like '%${searchWord}%'
-		</if>
-	</select>
 </mapper>

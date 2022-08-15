@@ -49,15 +49,13 @@
 }
 .board__content .content__list{
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	font-size: var(--medium-font-size-3);
 }
 .board__content .content__title li,
 .board__content .content__list li{
 	/* 각 칸의 넓이 설정 */
-	width: 5%;
-	height: 28px;
-	line-height: 28px;
+	width: 8%;
 	/*  border */
 	border-right: var(--dotted-line) var(--ct-color-gray-light);
 	border-bottom: var(--dotted-line) var(--ct-color-gray-light);
@@ -66,32 +64,29 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	/* 폰트*/
-	font-size: var(--medium-font-size-2);
+	font-size: var(--medium-font-size-3);
 	/* 정렬 */
 	text-align: center;
+	line-height: var(--large-font-size-3);
 	padding: 0 var(--small-space);
 }
 .board__content .content__title li{
-	font-size:var(--medium-font-size-2);
+	font-size:var(--medium-font-size-3);
 	font-weight: bold;
 }
-.board__content .content__title li:nth-child(5n+2),
-.board__content .content__title li:nth-child(5n+3){
+.board__content .content__title li:nth-child(4n+2),
+.board__content .content__title li:nth-child(4n+3){
 	/* 제목칸 */
-	width: 35%;
+	width: 40%;
 }
-.board__content .content__list li:nth-child(5n+2),
-.board__content .content__list li:nth-child(5n+3){
+.board__content .content__list li:nth-child(4n+2),
+.board__content .content__list li:nth-child(4n+3){
 	/* 제목칸 */
-	width: 35%;
+	width: 40%;
 	text-align: left;
 }
-.board__content .content__title li:nth-child(5n+4),
-.board__content .content__list li:nth-child(5n+4){
-	width: 12%;
-}
-.board__content .content__title li:nth-child(5n+5),
-.board__content .content__list li:nth-child(5n+5){
+.board__content .content__title li:nth-child(4n+4),
+.board__content .content__list li:nth-child(4n+4){
 	/* 마지막 border-right 없애기 */
 	width: 5%;
 	border-right: none;
@@ -103,7 +98,7 @@
 	text-align: right;
 	margin-right:var(--medium-space);
 }
-.board__bottom .board__delete .delBtn{
+.board__bottom .board__delete .multiDel{
 	/* 세부 */
 	border:none;
 	border-radius: var(--mild-radius);
@@ -144,15 +139,14 @@ $(function(){
 		}
 		return true;
 	});
-	
 	//리스트 전체 선택
-	$(".allChk").click(function(){
-		$(".board input[type=checkbox]").prop("checked",$(".allChk").prop("checked"));
+	$("#allChk").click(function(){
+		$("#board input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));
 	});
-	$(".delBtn").click(function(){
+	$(".multiDel").click(function(){
 		//체크 갯수 확인
 		var countChk = 0;//				반복문					input input input
-		$(".board input[name=noList]").each(function(idx,obj){
+		$("#board input[name=noList]").each(function(idx,obj){
 			if(obj.checked){ // input 태그가 체크 상태이면 true
 				countChk++;
 			}
@@ -179,8 +173,8 @@ $(function(){
 	<!-- BOARD NAV + BUTTON --->
 	<div class="board__bar">
 		<ul class="board__nav">
-			<li><a href ="/adminboard/spotList">데이터 관리</a></li>
-			<li class="active"><a href ="/adminboard/themeList">테마여행추천</a></li>
+			<li><a href="/adminboard/reviewList">후기 별점</a></li>
+			<li class="active"><a href="/adminboard/themeList">테마여행추천</a></li>
 		</ul>
 		<div class="actionBtn">
 			<a href="/adminboard/themeForm">작성하기</a>
@@ -192,92 +186,98 @@ $(function(){
 		<div id="board" class="board__content">
 			<ul id="board" class="content__title">
 				<li>NO.</li>
-				<li>테마추천 글이름</li>
-				<li>테마위치</li>
-				<li>작성일</li>
+				<li>테마명</li>
+				<li>테마세부</li>
 				<li>선택</li>
 			</ul>
 			<ul class="content__list">
+				<li>NO.</li>
+				<li>샘플테마명</li>
+				<li>샘플테마 사이드 제목</li>
+				<li><input type="checkbox"></li>
+
+
 				<c:forEach var="vo" items="${list}">
+					<li><input type="checkbox" name="noList" value="${vo.post_id}"></li>
 					<li>${vo.post_id}</li>
-					<!-- 제목 -->
 					<li>
-						<a href="/adminboard/themeView?post_id=${vo.post_id}&nowPage=${pVO.nowPage}<c:if test ='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">
-						${vo.post_title}</a>
+						<div
+							<c:if test="${vo.subject.length()>=30}">
+									style='width:90%'
+								</c:if>>
+							<a
+								href="/adminboard/themeView?no=${vo.no} &nowPage=${pVO.nowPage}
+								<c:if test ='${pVO.searchWord!=null}'>
+										&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}
+								</c:if>">
+								${vo.subject} </a>
+						</div>
+						<div>
+							<!-- 댓글수 -->
+							<c:if test="${vo.reply_count>0}">
+										[${vo.reply_count}]
+									</c:if>
+						</div>
 					</li>
-					<li>${vo.post_intro}</li>
-					<li>${vo.post_registration_date}</li>							
-					<li><!-- 관리자일때만 체크박스  -->
-						<c:if test="${logStatus == 'Y'}">	
-							<c:if test="${logMode == 1 }">
-								<input type="checkbox" name="noList" value="${vo.post_id}">
-							</c:if>
-						</c:if>
-					</li>
+					<li>${vo.google_id}</li>
+					<li>${vo.hit}</li>
+					<li>${vo.writedate}</li>
 				</c:forEach>
 			</ul>
-			
-			
 			<!-- PAGING + BUTTON-->
 			<div class="board__bottom">
 				<div class="board__delete">
-					<input type="checkbox" class="allChk"/> 모두선택 
-					<input type="submit" value="삭제하기" class="delBtn">
+					<input type="checkbox" /> 모두선택 <input type="submit" value="삭제하기" class="multiDel">
 				</div>
-				
 				<ul class="board__page">
-					<!-- 페이지 번호 -->
-					<c:if test="${pVO.nowPage<=1 }">
-						<!-- 이전 페이지가 없을 때  -->
-						<li><i class="fa-solid fa-angle-left"></i></li>
+							<!-- 페이지 번호 -->
+					<c:if test="${pVO.nowPage<=1}"><!-- 이전페이지가 없을때 -->
+						<i class="fa-solid fa-angle-left"></i>
 					</c:if>
-					<c:if test="${pVO.nowPage>1 }">
-						<!-- 이전 페이지가 있을 때  -->
-						<li><a
-							href="/adminboard/themeList?nowPage=${pVO.nowPage-1 }<c:if test="${pVO.searchWord!=null }">&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>
-								<c:if test="${pVO.searchType!=null }">&searchType=${pVO.searchType }</c:if>"><i class="fa-solid fa-angle-left"></i></a></li>
+					<c:if test = "${pVO.nowPage>1}">  <!-- 이전페이지 존재 -->
+						<li><a href = "/adminboard/reviewList?nowPage=${pVO.nowPage-1}
+							<c:if test ='${pVO.searchWord!=null}'>
+								&searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord}
+							</c:if>"><i class="fa-solid fa-angle-left"></i></a>
+						</li>
 					</c:if>
-
-					<c:forEach var="p" begin="${pVO.startPage }" end="${pVO.startPage + pVO.onePageCount - 1 }">
-						<!-- 출력할 페이지 번호가 총 페이지 수보다 작거나 같을 때만 출력  -->
-						<c:if test="${p<=pVO.totalPage }">
+					<c:forEach var = "p" begin="${pVO.startPage}" end ="${pVO.startPage+pVO.onePageCount-1}">
+						<!-- 출력할페이지 번호보다 작거나 같을때 -->
+						<c:if test="${p<=pVO.totalPage}">
 							<li
-								<c:if test="${p==pVO.nowPage }">
-								style = "color:#111;font-weight:bold;"
+							<c:if test="${p==pVO.nowPage}">
+								<li class="active">${p}</li>
 							</c:if>
-							>
-							<a
-								href="/adminboard/themeList?nowPage=${p }
-								<c:if test="${pVO.searchWord!=null }">&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>
-								<c:if test="${pVO.searchType!=null }">&searchType=${pVO.searchType }</c:if>">
-								${p }</a>
-							</li>
+							><a href ="/adminboard/reviewList?nowPage=${p}
+							<c:if test ='${pVO.searchWord!=null}'>
+								&searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord}
+							</c:if>">${p}</a></li>
 						</c:if>
 					</c:forEach>
-
+					
 					<!-- 다음페이지 -->
-					<c:if test="${pVO.nowPage>=pVO.totalPage }">
-						<!-- 다음 페이지가 없을 때  -->
+					
+					<c:if test="${pVO.nowPage==pVO.totalPage }">
 						<li><i class="fa-solid fa-angle-right"></i></li>
 					</c:if>
-					<c:if test="${pVO.nowPage<pVO.totalPage}">
-						<!-- 다음 페이지가 있을 때  -->
-						<li><a
-							href="/adminboard/themeList?nowPage=${pVO.nowPage+1 }<c:if test="${pVO.searchWord!=null }">&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>
-								<c:if test="${pVO.searchType!=null }">&searchType=${pVO.searchType }</c:if>"><i class="fa-solid fa-angle-right"></i></a></li>
+					<c:if test ="${pVO.nowPage<pVO.totalPage }">
+						<li><a href = "/adminboard/reviewList?nowPage=${pVO.nowPage+1}
+							<c:if test ='${pVO.searchWord!=null}'>
+								&searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord}
+							</c:if>"><i class="fa-solid fa-angle-right"></i></a>
+						</li>
 					</c:if>
-				</ul>
 				</ul>
 			</div>
 		</div>
 	</form>
-	<form method="get" action="/adminboard/themeList" id="searchFrm">
-		<input type="hidden" name="searchType" value="theme"/>
+	<form method="get" action="/adminboard/themeView" id="searchFrm">
 		<select name="searchKey">
-			<option value="post_title">제목</option>
-			<option value="post_content">글내용</option>
-		</select> <input type="text" name="searchWord" id="searchWord" /> 
-		<input type="submit" name="Search" value="검색" />
+			<option value="subject">제목</option>
+			<option value="userid">작성자</option>
+			<option value="content">글내용</option>
+		</select> <input type="text" name="searchWord" id="searchWord" /> <input
+			type="submit" name="Search" value="검색" />
 	</form>
 </section>
 

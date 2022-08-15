@@ -5,10 +5,6 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<mappers>
-		<mapper resource="mapper/CommentMapper.xml"></mapper>
-		<mapper resource="mapper/DBdataMapper.xml"></mapper>
-		<mapper resource="mapper/FestivalMapper.xml"></mapper>
-		<mapper resource="mapper/UserboardMapper.xml"></mapper>
-		<mapper resource="mapper/UserMapper.xml"></mapper>
+		<mapper resource="mapper/memberMapper.xml"></mapper>
 	</mappers>
 </configuration>

@@ -110,11 +110,11 @@ header .wrapper {
 	align-items: center;
 }
 header>div>div{
-	width: 22%;
+	width: 20%;
 	padding: var(--medium-space);
 }
 header>div>div:nth-child(2){
-	width: 56%;
+	width: 60%;
 }
 header i {
 	/* 아이콘 크기   */

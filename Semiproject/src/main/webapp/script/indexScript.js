@@ -34,7 +34,6 @@ $(function(){
 	//현재위치 검색하기 
 
 
-
 	//날짜입력창에 현재날짜 넣기 
 	var today = new Date();
 	var year = today.getFullYear();
@@ -78,7 +77,81 @@ $(function(){
 		}	
 		return true;
 	});
+	// ----- Weather Theme ------
+	// openweather api에서 날씨 불러오기
+	// key: c33d4e9868e43efdaaf477c172906bb8
+	// 주요 도시 영문명 리스트
+
+	var engCity_1 = ["Seoul", "Incheon", "Suwon-si","Seongnam-si","Paju", "Icheon-si","Pyeongtaek-si","Chuncheon",
+	"Wŏnju" ,"Gangneung","Daejeon","Hongseong","Cheongju-si","Chungju","Gwangju", "Mokpo",
+	"Yeosu","Suncheon","Boseong","Naju"];
+
+	var engCity_2 = ["Gochang","Muju","Busan","Ulsan","Masan","Changwon","Jinju","Imsil","Goseong","Daegu","Andong",
+	"Junju","Gunsan","Haenam","Namwon","Koch'ang","Pohang", "Gyeongju","Ulchin","Tonghae","Jeju-do"];
 	
+	// 주요 도시 한국명 리스트 
+	var korCity_1 = ['서울','인천','수원','성남','파주','이천','평택','춘천','원주','강릉','대전',
+		'세종','홍성','청주','충주','광주','목포','여수','순천','보성','나주'];
+	var korCity_2 = ['고창','무주','부산','울산','마산','창원','진주','임실','통영', '대구','안동',
+	'전주','군산','해남','남원','고창', '포항', '경주','울진','동해','제주'];
+
+	// ajax로 데이터 불러오기 
+//	for(var i=0;i<engCity_1.length;i++){
+//		$.ajax({
+//			//url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_1[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
+//			dataType: 'json',
+//			type: 'GET',
+//			success: function(data){
+//				var $icon = data.weather[0].icon;
+//				var $temp = Math.floor(data.main.temp - 273.15) + "℃";
+//				// var $eng = data.name;
+//				var $index = engCity_1.indexOf(data.name);
+//				var $city = korCity_1[$index];
+//				var $iconUrl = "http://openweathermap.org/img/wn/" + $icon + "@2x.png";
+//				// console.log(data.name+"--"+$index+"--"+$city);
+//
+//				// 데이터 쓰기 
+//				// $('.weather__info').empty();
+//				var tag ='<li><ul class="weather__detail">';
+//				tag += '<li class="wIcon"><img src="'+$iconUrl+'" alt="icon" /></li>';
+//				tag += '<li class="wTemp">'+$temp+'</li>';
+//				tag += '<li class="wCity">'+$city+'</li></ul></li>';
+//
+//				$('.weather__info_1').append(tag);
+//				// $('.weather__info_2').append(tag);
+//			
+//			}, error:function(e){
+//				console.log(e.responseText);
+//			}
+//		});
+//		$.ajax({
+//			//url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_2[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
+//			dataType: 'json',
+//			type: 'GET',
+//			success: function(data){
+//				var $icon = data.weather[0].icon;
+//				var $temp = Math.floor(data.main.temp - 273.15) + "℃";
+//				// var $eng = data.name;
+//				var $index = engCity_2.indexOf(data.name);
+//				var $city = korCity_2[$index];
+//				var $iconUrl = "http://openweathermap.org/img/wn/" + $icon + "@2x.png";
+				// console.log(data.name+"--"+$index+"--"+$city);
+
+				// 데이터 쓰기 
+				// $('.weather__info').empty();
+//				var tag ='<li><ul class="weather__detail">';
+//				tag += '<li class="wIcon"><img src="'+$iconUrl+'" alt="icon" /></li>';
+//				tag += '<li class="wTemp">'+$temp+'</li>';
+//				tag += '<li class="wCity">'+$city+'</li></ul></li>';
+
+//				// $('.weather__info_1').append(tag);
+//				$('.weather__info_2').append(tag);
+			
+//			}, error:function(e){
+//				console.log(e.responseText);
+//			}
+//		});
+//	}
 	
 	//날짜페이지:포지션 {1:0, 2:-500%, 3:-1000%, 4:-1500%}
 	var wPage = 0;
@@ -206,148 +279,20 @@ function categoryChange(e) {
 }
 
 //googlemaps --------------------------------------------------------------------------------------
-	$.ajax({
-		url: "/DBdata/gmapGo",
-		success: function(data){
-			console.log(data);
-			console.log(data[1].tour_id);
-		},error:function(){
-			console.log("가져오기 실패")
-		}
-    });
-   
-    
 var map;
-var latitude = 37.5642135;
-var longitude = 127.0016985;			
+var latitude = 37.5729503;
+var longitude = 126.9793578;			
+var lat = [37.562685,37.462685,37.7862685];
+var log = [126.8793578,126.8393578,126.8893578];
 function initMap() {
 	var myCenter = new google.maps.LatLng(latitude, longitude)
 	var mapProperty = {
 		center : myCenter,
-		zoom : 13,
-		mapTypeId : google.maps.MapTypeId.roadmap
-		/*
-		roadmap displays the default road map view. This is the default map type.
-		satellite displays Google Earth satellite images.
-		hybrid displays a mixture of normal and satellite views.
-		terrain displays a physical map based on terrain information.
-		*/
+		zoom : 10,
+		mapTypeId : google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map(document
 	.getElementById('googleMapView'), mapProperty);
-	
-	var lat = "";
-	var long = "";
-	var i = 0;
-	var abc= "";
-	var img = "";
-	var msg = "";
-	console.log(11);
-	$.ajax({
-		url: "/DBdata/gmapGo",
-		success: function(data){
-			console.log(data[1].tour_id);
-			console.log(data.length);
-			console.log(data[1].tour_lat);
-			for(i;i<data.length;i++){
-			lat= data[i].tour_lat;
-			long = data[i].tour_long;
-			var latlong = new google.maps.LatLng(data[i].tour_lat,data[i].tour_long)
-			var infowindow = new google.maps.InfoWindow();
-			var marker = new google.maps.Marker({
-				//icon : '../../img/tour.png',
-				position: latlong,
-				map:map,
-				title:""+data[i].tour_num,
-			})
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
-						//abc= data[i].tour_id;
-						//$.ajax({
-						//	url: "/DBdata/getImgUrl",
-						//	data: {name : data[i].tour_id},
-						//	success: function(aa){
-						//		img = aa;
-						//	},error:function(aaa){
-						//		console.log("가져오기 실패")
-						//		console.log(aaa)
-						//	}
-						//});
-						console.log(data[i].tour_id);
-						MSG = "관광지명 : "+data[i].tour_id+"<hr/>";
-						MSG += "관광지 정보 : "+data[i].tour_content+"<br/>";
-						//MSG += "주소 : "+data[i].tour_road_name_addr+"<br/>";
-						//MSG += "<li><img src='"+img+"'width'150' height'150'/></li>";
-                        //html로 표시될 인포 윈도우의 내용
-                        var infowindow = new google.maps.InfoWindow({content:MSG});
-                        //인포윈도우가 표시될 위치
-                        infowindow.open(map, marker);
-                    }
-                })(marker, i));
-                var data3 = [];
-                if (marker) {
-                    marker.addListener('click', function() {
-                        //중심 위치를 클릭된 마커의 위치로 변경
-                        map.setCenter(this.getPosition());
-                        //마커 클릭 시의 줌 변화
-                        map.setZoom(14);
-                    console.log(99);
-                    console.log(this.title);
-                    console.log(this);
-					
-					$.ajax({
-						url: "/DBdata/getPdata",
-						data: {num : this.title},
-						success: function(data2){
-							console.log(data2)
-							data3 = data2;
-							//User-Agent
-							var appenddiv = "<div class='touristSpot'>";
-		                    appenddiv +="<div class='touristSpot_img'><img src='"+data3[0].tour_img+"'style='width\"300\" height\"300\"/'></div>";
-							appenddiv +="<div class='touristSpot_div'>"
-							appenddiv +="<div class='touristSpot_subject'>"+data3[0].tour_id+"</div>";
-							appenddiv +="<br/>";
-							appenddiv +="<spen>관광지 소개<br/></spen>";
-							appenddiv +="<div class='touristSpot_content'>"+data3[0].tour_content+"</div>";
-							appenddiv +="<div class='touristSpot_tel'>관광지 주소: "+data3[0].tour_road_name_addr+"</div>";
-							appenddiv +="<div class='touristSpot_tel'>관광지 관리기관 전화번호: "+data3[0].tour_phonenum+"</div>";
-							appenddiv +="<div class='touristSpot_div2'>";
-							appenddiv +="<div class='touristSpot_parking'>주차가능공간: "+data3[0].tour_parkinglot_num+"</div>";
-							appenddiv +="<div class='touristSpot_raiting'> &nbsp; &nbsp;";
-							appenddiv +="<input class='touristSpot_fav' type='button' value='❤'/></div>";
-							appenddiv +="</div>";
-						  	appenddiv +="</div>";
-							appenddiv +="</div>";
-							appenddiv +="<br/>";
-		                        $('.search_result').prepend(appenddiv)
-							
-							
-						},error:function(aaa){
-							console.log("가져오기 실패")
-							console.log(aaa)
-						}
-					});
-					 console.log(this);
-
-                    });
-                }
-
-
-
-            
-			//var info = new google.maps.InfoWindow({content:data[i].tour_id});
-			//google.maps.event.addListener(marker, 'mouseover', function(){
-			//	info.open(map, marker);
-			//})
-
-	}
-		},error:function(){
-			console.log("가져오기 실패")
-		}
-    });
-	
-	
-
 }
 // 사용자 위치정보 가져오기-----------------------------------------------------------------------------------
 //[ajax] Google Maps API는 AJAX를 사용할 때만 “Uncaught ReferenceError : google is not defined” 구글맵 첫 실행시 안나오는 오류 수정해야함
@@ -379,16 +324,6 @@ $(function () {
 	getLocation();
 	});
     $(".aasz").click(function () {
-							//$.ajax({
-							//url: "/DBdata/getImgUrl",
-							//data: {abc : data[i].tour_id},
-							//success: function(aa){
-							//	img = aa;
-							//},error:function(aaa){
-							//	console.log("가져오기 실패")
-							//	console.log(aaa)
-							//}
-						//});
 	$.ajax({
 	    url: "/DBdata/dataInsert",
 	    success: function(data){
@@ -400,7 +335,6 @@ $(function () {
 		    } 
 	        }
     });
-   
     });
-});
+ });
 //---------------------------------------------------------------------------------------------

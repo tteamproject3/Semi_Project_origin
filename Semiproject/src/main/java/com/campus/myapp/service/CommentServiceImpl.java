@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.CommentDAO;
 import com.campus.myapp.vo.CommentVO;
-import com.campus.myapp.vo.PagingVO;
 
 
 @Service
@@ -34,21 +33,6 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public int commentDelete(int comment_id, String google_id) {
 		return dao.commentDelete(comment_id, google_id);
-	}
-
-	@Override
-	public List<CommentVO> getMyComment(PagingVO pVO) {
-		return dao.getMyComment(pVO);
-	}
-
-	@Override
-	public int commentMultiDel(CommentVO vo) {
-		return dao.commentMultiDel(vo);
-	}
-
-	@Override
-	public int totalRecord(PagingVO pVO) {
-		return dao.totalRecord(pVO);
 	}
 
 

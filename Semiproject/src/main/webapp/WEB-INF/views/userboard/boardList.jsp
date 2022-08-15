@@ -56,8 +56,6 @@
 .board__content .content__list li{
 	/* 각 칸의 넓이 설정 */
 	width: 6%;
-	height: 28px;
-	line-height: 28px;
 	/*  border */
 	border-right: var(--dotted-line) var(--ct-color-gray-light);
 	border-bottom: var(--dotted-line) var(--ct-color-gray-light);
@@ -69,6 +67,7 @@
 	font-size: var(--medium-font-size-3);
 	/* 정렬 */
 	text-align: center;
+	line-height: var(--large-font-size-3);
 	padding: 0 var(--small-space);
 }
 .board__content .content__title li{
@@ -84,14 +83,6 @@
 	width: 46%;
 	text-align: left;
 	
-}
-.board__content .content__list li:nth-child(6n+2)>div{
-	float:left;
-}
-.board__content .content__list li:nth-child(6n+2)>div:first-child{
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 }
 .board__content .content__title li:nth-child(6n+3),
 .board__content .content__list li:nth-child(6n+3),
@@ -234,22 +225,8 @@ $(function(){
 
 				<c:forEach var="vo" items="${list}">
 					<li>${vo.post_id}</li>
-					<!-- 제목 -->
-					<li>
-						<div <c:if test="${vo.post_title.length()>=40 }">
-							style='width:94%'
-						</c:if> >
-							<a href="/userboard/boardView?post_id=${vo.post_id}&nowPage=${pVO.nowPage}<c:if test ='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">
-							${vo.post_title}</a>
-						</div>
-						<div>
-							<c:if test="${vo.comment_count>0 }">
-								[${vo.comment_count }]
-							</c:if>
-						</div>
-					</li>
-						
-						
+					<li><a href="/userboard/boardView?post_id=${vo.post_id}&nowPage=${pVO.nowPage}<c:if test ='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">
+						${vo.post_title}</a></li>
 					<li>${vo.post_registration_date}</li>	
 					<li>${vo.google_id}</li>
 					<li>${vo.post_hit}</li>							
@@ -273,7 +250,7 @@ $(function(){
 					</c:if>
 				</c:if>
 				<ul class="board__page">
-					<!-- 페이지 번호 -->
+						<!-- 페이지 번호 -->
 					<c:if test="${pVO.nowPage<=1 }">
 						<!-- 이전 페이지가 없을 때  -->
 						<li><i class="fa-solid fa-angle-left"></i></li>
@@ -285,7 +262,8 @@ $(function(){
 								<c:if test="${pVO.searchType!=null }">&searchType=${pVO.searchType }</c:if>"><i class="fa-solid fa-angle-left"></i></a></li>
 					</c:if>
 
-					<c:forEach var="p" begin="${pVO.startPage }" end="${pVO.startPage + pVO.onePageCount - 1 }">
+					<c:forEach var="p" begin="${pVO.startPage }"
+						end="${pVO.startPage + pVO.onePageCount - 1 }">
 						<!-- 출력할 페이지 번호가 총 페이지 수보다 작거나 같을 때만 출력  -->
 						<c:if test="${p<=pVO.totalPage }">
 							<li
