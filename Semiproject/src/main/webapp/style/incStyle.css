@@ -194,3 +194,26 @@ header .header__menu>i:hover,
 	color: var(--bg-color-blue-1);
 }
 
+
+
+/* -------------------------------- side page ---------------------------------------------------- */
+/* ----- title bar ----- */
+.title{
+	text-align: center;
+}
+.title__bar{ 
+	/* 타이틀 박스 설정 */
+	margin: var(--large-space) var(--medium-space);
+	padding: var(--medium-space) 0;
+	background-color: var(--bg-color-lightBlue-1);
+	border-radius: var(--strong-radius);
+	box-shadow: var(--basic-shadow);
+}
+.title__bar span{
+	/* 타이틀 폰트 설정 */
+	font-size: var(--large-font-size-3);
+	color: var(--main-color);
+	font-weight: bold;
+}
+
+

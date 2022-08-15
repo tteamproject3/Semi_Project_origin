@@ -1,6 +1,19 @@
 use travel;
 show tables;
 
+-- reset하기 
+SET foreign_key_checks = 0;
+drop table comment;
+drop table festival;
+drop table notification;
+drop table post;
+drop table reply;
+drop table theme;
+drop table touristSpot;
+drop table user;
+drop table user_checklist;
+drop table user_favorite_theme;
+
 -- festival 데이터 
 
 -- *************************** 필수 ****************************
@@ -45,5 +58,7 @@ select * from touristSpot order by tour_id;
 
 -- Query OK, 731 rows affected, 8 warnings (0.11 sec)
 -- Records: 734  Deleted: 0  Skipped: 3  Warnings: 8
+desc user;
 
-
+select * from user;
+delete from user;

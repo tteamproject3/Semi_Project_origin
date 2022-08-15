@@ -1,23 +1,133 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <style>
-	#board,#page{overflow:auto;}
-	#board li{
-		float:left; line-height:40px; border-bottom:1px solid #ddd; width: 10%;
-	}
-	#board li:nth-child(6n+1){width:5%;
-	/*white-space:nowrap; overflow:hidden; text-overflow:ellipsis;*/
-	}
-	#board li:nth-child(6n+3){width:55%;}
-	#board li:nth-child(6n+3)>div{float:left;}
-	#board li:nth-child(6n+3)>div:first-child{
-		white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-	}
-	
- 	/* 페이지 */
- 	#page li{
- 		float:left; padding:10px;
- 	}
+/* BOARD BAR */
+.board__bar{
+	margin-top: var(--large-space);
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: var(--bold-line) var(--ct-color-gray-dark) ;
+}
+.board__bar .board__nav{
+	display: flex;
+}
+.board__bar .board__nav li{
+	background-color: var(--bg-color-gray);
+	box-shadow: var(--up-basic-shadow);
+	border-radius: var(--strong-radius) var(--strong-radius) 0 0;
+	width: var(--button-width);
+	height: var(--button-height);
+	line-height: var(--button-height);
+	font-weight: bold;
+}
+.board__bar .board__nav .active{
+	background-color: var(--main-color);
+	color: var(--main-bg-color);
+}
+.board__bar .actionBtn{
+	border-radius: var(--mild-radius);
+	background-color: var(--main-color);
+	color: var(--main-bg-color);
+	width: var(--button-width);
+	height: calc( var(--button-height) - 4px);
+	font-weight: bold;
+	font-size: var(--medium-font-size-2);
+}
+
+/* BOARD CONTENT */
+.board__content{
+	/* board box */
+	border: var(--dotted-line) var(--ct-color-gray-dark);
+	margin: var(--large-space) var(--medium-space);
+	padding: var(--medium-space);
+}
+.board__content .content__title{
+	display: flex;
+	border-bottom: var(--basic-line) var(--ct-color-gray-dark);
+}
+.board__content .content__list{
+	display: flex;
+	flex-wrap: nowrap;
+	font-size: var(--medium-font-size-3);
+}
+.board__content .content__title li,
+.board__content .content__list li{
+	/* 각 칸의 넓이 설정 */
+	width: 8%;
+	/*  border */
+	border-right: var(--dotted-line) var(--ct-color-gray-light);
+	border-bottom: var(--dotted-line) var(--ct-color-gray-light);
+	/* 말줄임표 처리 */
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	/* 폰트*/
+	font-size: var(--medium-font-size-3);
+	/* 정렬 */
+	text-align: center;
+	line-height: var(--large-font-size-3);
+	padding: 0 var(--small-space);
+}
+.board__content .content__title li{
+	font-size:var(--medium-font-size-3);
+	font-weight: bold;
+}
+.board__content .content__title li:nth-child(4n+2),
+.board__content .content__title li:nth-child(4n+3){
+	/* 제목칸 */
+	width: 40%;
+}
+.board__content .content__list li:nth-child(4n+2),
+.board__content .content__list li:nth-child(4n+3){
+	/* 제목칸 */
+	width: 40%;
+	text-align: left;
+}
+.board__content .content__title li:nth-child(4n+4),
+.board__content .content__list li:nth-child(4n+4){
+	/* 마지막 border-right 없애기 */
+	width: 5%;
+	border-right: none;
+}
+
+
+/* BOARD PAGING */
+.board__bottom .board__delete{
+	text-align: right;
+	margin-right:var(--medium-space);
+}
+.board__bottom .board__delete .multiDel{
+	/* 세부 */
+	border:none;
+	border-radius: var(--mild-radius);
+	background-color: var(--main-color);
+	color: var(--main-bg-color);
+	/* 크기 */
+	width: var(--button-width);
+	height: calc( var(--button-height) - 4px);
+	font-weight: bold;
+	font-size: var(--medium--font-size-3);
+	margin:var(--medium-space);
+}
+.board__bottom .board__page{
+	display: flex;
+	justify-content: center;
+	/* font */
+	font-size: var(--small-font-size-1);
+	color: var(--ct-color-gray-light);
+	/* 여백 설정 */
+	margin-top: calc(var(--medium-space)*2);
+}
+.board__bottom .board__page li{
+	width: 5%;
+}
+.board__bottom .board__page li:first-child,
+.board__bottom .board__page li:last-child,
+.board__bottom .board__page .active{
+	color: var(--ct-color-gray-dark);
+}
 </style>
 <script>
 $(function(){
@@ -33,7 +143,7 @@ $(function(){
 	$("#allChk").click(function(){
 		$("#board input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));
 	});
-	$("#multiDel").click(function(){
+	$(".multiDel").click(function(){
 		//체크 갯수 확인
 		var countChk = 0;//				반복문					input input input
 		$("#board input[name=noList]").each(function(idx,obj){
@@ -42,99 +152,137 @@ $(function(){
 			}
 		});
 		if(countChk<=0){
-			alert("삭제할 레코드를 선택 후 삭제하세요.");
+			alert("삭제할 게시글을 선택 후 삭제하세요.");
 			return false;
 		}
 		$("#listFrm").submit();
 	});
 });
+
 </script>
+
+
 <!-- PAGE TITLE 표시 바 -->
-	<section class="title">
-		<div class="title__bar">
-			<span>관리자 게시판</span>
+<section class="title">
+	<div class="title__bar">
+		<span>관리자 게시판</span>
+	</div>
+</section>
+
+<section class="board">
+	<!-- BOARD NAV + BUTTON --->
+	<div class="board__bar">
+		<ul class="board__nav">
+			<li><a href="/adminboard/reviewList">후기 별점</a></li>
+			<li class="active"><a href="/adminboard/themeList">테마여행추천</a></li>
+		</ul>
+		<div class="actionBtn">
+			<a href="/adminboard/themeForm">작성하기</a>
 		</div>
-	</section>
+	</div>
 
-	
-	<section class = "board">
+	<!-- CONTENT -->
+	<form method="post" action="/adminboard/multiDel" id="listFrm">
+		<div id="board" class="board__content">
+			<ul id="board" class="content__title">
+				<li>NO.</li>
+				<li>테마명</li>
+				<li>테마세부</li>
+				<li>선택</li>
+			</ul>
+			<ul class="content__list">
+				<li>NO.</li>
+				<li>샘플테마명</li>
+				<li>샘플테마 사이드 제목</li>
+				<li><input type="checkbox"></li>
 
-			<!-- BOARD NAV + BUTTON --->
-			<div class="board__bar">
-				<ul class="board__nav">
-					<li><a href = "#">후기 별점</a></li>
-					<li class="active"><a href = "#">테마여행추천</a></li>
-				</ul>
-				<input type="button" class="actionBtn" value="작성하기"></div>
-			</div>
 
-			<!-- CONTENT -->
-		<form method="post" action="/adminboard/multiDel" id ="listFrm">
-			<div id = "board" class="board__content">
-				<ul id = "board" class="content__title">
-						<li>글번호</li>
-						<li>여행지/축제명</li>
-						<li>별점</li>
-						<li>위치</li>
-						<li>선택</li>
-				</ul>
-				<ul class="content__list">
-					<c:forEach var = "vo" items="${list}">
-							<li><input type = "checkbox" name = "noList" value = "${vo.no}"></li>
-							<li>${vo.no}</li>
-							<li>
-							<div
-								<c:if test="${vo.subject.length()>=30}">
+				<c:forEach var="vo" items="${list}">
+					<li><input type="checkbox" name="noList" value="${vo.post_id}"></li>
+					<li>${vo.post_id}</li>
+					<li>
+						<div
+							<c:if test="${vo.subject.length()>=30}">
 									style='width:90%'
-								</c:if>
-							>
-							<a href="/adminboard/themeView?no=${vo.no} &nowPage=${pVO.nowPage}
+								</c:if>>
+							<a
+								href="/adminboard/themeView?no=${vo.no} &nowPage=${pVO.nowPage}
 								<c:if test ='${pVO.searchWord!=null}'>
 										&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}
 								</c:if>">
-								${vo.subject}
-								</a>
-							</div>
-
-								<div>
-									<!-- 댓글수 -->
-									<c:if test="${vo.reply_count>0}">
+								${vo.subject} </a>
+						</div>
+						<div>
+							<!-- 댓글수 -->
+							<c:if test="${vo.reply_count>0}">
 										[${vo.reply_count}]
 									</c:if>
-								</div>
-							</li>
-							<li>${vo.userid}</li>
-							<li>${vo.hit}</li>
-							<li>${vo.writedate}</li>
+						</div>
+					</li>
+					<li>${vo.google_id}</li>
+					<li>${vo.hit}</li>
+					<li>${vo.writedate}</li>
+				</c:forEach>
+			</ul>
+			<!-- PAGING + BUTTON-->
+			<div class="board__bottom">
+				<div class="board__delete">
+					<input type="checkbox" /> 모두선택 <input type="submit" value="삭제하기" class="multiDel">
+				</div>
+				<ul class="board__page">
+							<!-- 페이지 번호 -->
+					<c:if test="${pVO.nowPage<=1}"><!-- 이전페이지가 없을때 -->
+						<i class="fa-solid fa-angle-left"></i>
+					</c:if>
+					<c:if test = "${pVO.nowPage>1}">  <!-- 이전페이지 존재 -->
+						<li><a href = "/adminboard/reviewList?nowPage=${pVO.nowPage-1}
+							<c:if test ='${pVO.searchWord!=null}'>
+								&searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord}
+							</c:if>"><i class="fa-solid fa-angle-left"></i></a>
+						</li>
+					</c:if>
+					<c:forEach var = "p" begin="${pVO.startPage}" end ="${pVO.startPage+pVO.onePageCount-1}">
+						<!-- 출력할페이지 번호보다 작거나 같을때 -->
+						<c:if test="${p<=pVO.totalPage}">
+							<li
+							<c:if test="${p==pVO.nowPage}">
+								<li class="active">${p}</li>
+							</c:if>
+							><a href ="/adminboard/reviewList?nowPage=${p}
+							<c:if test ='${pVO.searchWord!=null}'>
+								&searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord}
+							</c:if>">${p}</a></li>
+						</c:if>
 					</c:forEach>
+					
+					<!-- 다음페이지 -->
+					
+					<c:if test="${pVO.nowPage==pVO.totalPage }">
+						<li><i class="fa-solid fa-angle-right"></i></li>
+					</c:if>
+					<c:if test ="${pVO.nowPage<pVO.totalPage }">
+						<li><a href = "/adminboard/reviewList?nowPage=${pVO.nowPage+1}
+							<c:if test ='${pVO.searchWord!=null}'>
+								&searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord}
+							</c:if>"><i class="fa-solid fa-angle-right"></i></a>
+						</li>
+					</c:if>
 				</ul>
 			</div>
-		</form>
-		<!-- PAGING + BUTTON-->
-			<div class="board__bottom">
-				<ul class="board__page">
-					<li><a href="#"> <i id = "" class="fa-solid fa-angle-left"></i></a></li>
-					<li><a href="#"> <i id = "" class="fa-solid fa-angle-right"></i></a></li>				
-					<li><input type = "checkbox" id = "allChk" class="checkbox"></li>
-					<li>모두선택</li>
-					<li><input type="button" class="DelBtn" value="삭제하기"></li>
-				</ul>
-			</div> 
-			<div>
-				<form method = "get" action= "/adminboard/themeView" id = "searchFrm">
-					<select name = "searchKey">
-						<option value = "subject">제목</option>
-						<option value = "userid">작성자</option>
-						<option value = "content">글내용</option>
-					</select>
-					<input type = "text" name="searchWord" id = "searchWord"/>
-					<input type = "submit" name="Search"/>
-				</form>
-			</div>			
-	</section>	
-	
+		</div>
+	</form>
+	<form method="get" action="/adminboard/themeView" id="searchFrm">
+		<select name="searchKey">
+			<option value="subject">제목</option>
+			<option value="userid">작성자</option>
+			<option value="content">글내용</option>
+		</select> <input type="text" name="searchWord" id="searchWord" /> <input
+			type="submit" name="Search" value="검색" />
+	</form>
+</section>
 
 
 
-    
-    
+
+
+

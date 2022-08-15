@@ -223,7 +223,9 @@ i{
 }
 /* ----- Setting ----- */
 /* banner titles */
-.title{
+.weather .title,
+.festival .title,
+.theme .title{
 	font-size: var(--large-font-size-2);
 	font-weight: bold;
 	margin: var(--medium-space) 0;

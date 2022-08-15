@@ -28,15 +28,18 @@
 					<i class="fa-solid fa-bars"></i>
 				</div>
 				<div class="header__logo">
-					<a href="#">
+					<a href="/">
 						<i class="fa-solid fa-plane-departure"></i>
 						<span>On The Way</span>
 					</a>
 				</div>
 				<div class="header__icon">
+					<c:if test="${logStatus == 'Y'}" >
+						<a href="/user/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+					</c:if>
 					<!-- <i class="fa-solid fa-arrow-right-from-bracket"></i> -->
-					<a href=""><i class="fa-regular fa-bell"></i></a>
-					<a href="/mypage/myTouristList"><i class="fa-regular fa-user"></i></a>
+					<a href="/mypage/myWriteList"><i class="fa-regular fa-bell"></i></a>
+					<a href="/mypage/myTourList"><i class="fa-regular fa-user"></i></a>
 				</div>
 			</div>
 		</header>
