@@ -288,6 +288,8 @@ function categoryChange(e) {
 			console.log("가져오기 실패")
 		}
     });
+   
+    
 var map;
 var latitude = 37.5642135;
 var longitude = 127.0016985;			
@@ -306,7 +308,7 @@ function initMap() {
 	};
 	var map = new google.maps.Map(document
 	.getElementById('googleMapView'), mapProperty);
-	
+	MyOverlay.prototype = new google.maps.OverlayView();
 	var lat = "";
 	var long = "";
 	var i = 0;
