@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.DBdataService;
 import com.campus.myapp.vo.FestivalVO;
-import com.campus.myapp.vo.tourVO;
+import com.campus.myapp.vo.TourVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -174,7 +174,7 @@ public class DBdataController {
 				JSONObject parse_response1 = (JSONObject) obj1.get("response");
 				JSONObject parse_body1 = (JSONObject) parse_response1.get("body");
 				JSONArray parse_items1 = (JSONArray) parse_body1.get("items");
-				tourVO tVO = new tourVO();
+				TourVO tVO = new TourVO();
 				for (int i = 0; i < parse_items1.size(); i++) { // 배열의 길이만큼 반복
 					JSONObject imsi = (JSONObject) parse_items1.get(i);
 					tVO.setTour_id((String) imsi.get("trrsrtNm"));
@@ -289,14 +289,14 @@ public class DBdataController {
 	}
 	
 	@GetMapping("/gmapGo")
-	public List<tourVO> gmapGo() {
+	public List<TourVO> gmapGo() {
 		return service.GmapGo();
 	}
 	
 	@GetMapping("/getPdata")
-	public List<tourVO> getPdata(@RequestParam("num") String num) {
+	public List<TourVO> getPdata(@RequestParam("num") String num) {
 		System.out.println(num);
-		List<tourVO> TVO = service.getPdata(Integer.parseInt(num));
+		List<TourVO> TVO = service.getPdata(Integer.parseInt(num));
 		TVO.get(0).setTour_img(getImgUrl(TVO.get(0).getTour_id()));
 		System.out.println(TVO.toString());
 		//TVO.get(0).getTour_id();

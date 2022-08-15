@@ -6,22 +6,18 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.campus.myapp.dao.FestivalDAO;
-import com.campus.myapp.vo.FestivalVO;
+import com.campus.myapp.dao.TourDAO;
 import com.campus.myapp.vo.PagingVO;
+import com.campus.myapp.vo.TourVO;
 
 @Service
-public class FestivalServiceImpl implements FestivalService {
+public class TourServiceImpl implements TourService {
+
 	@Inject
-	FestivalDAO dao;
-
+	TourDAO dao;
+	
 	@Override
-	public List<FestivalVO> getFestivalList() {
-		return dao.getFestivalList();
-	}
-
-	@Override
-	public List<FestivalVO> getList(PagingVO pVO) {
+	public List<TourVO> getList(PagingVO pVO) {
 		return dao.getList(pVO);
 	}
 
@@ -29,4 +25,5 @@ public class FestivalServiceImpl implements FestivalService {
 	public int totalRecord(PagingVO pVO) {
 		return dao.totalRecord(pVO);
 	}
+
 }

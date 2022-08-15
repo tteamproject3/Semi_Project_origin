@@ -3,21 +3,45 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campus.myapp.dao.FestivalDAO">
-	<select id="" resultType="FestivalVO">
+	<select id="getFestivalList" resultType="FestivalVO">
 		select
 		festival_num,
 		festival_id,
 		festival_place,
 		date_format(festival_start_date,'%m-%d') festival_start_date,
-		date_format(festival_end_date,'%m-%d')festival_end_date,
+		date_format(festival_end_date,'%m-%d') festival_end_date,
 		festival_content,
 		festival_site,
 		festival_road_name_addr,
 		festivalcol
+		
 		from
 		festival
-		where festival_start_date between '2022-08-15' and '2022-10-15'
+		
+		where festival_start_date between '2022-08-27' and '2022-10-15'
 		order by festival_start_date
 		limit 4 offset 0
+	</select>
+	
+	<select id="getList" resultType="festivalVO">
+		select 
+ 		festival_num, 
+ 		festival_id, 
+ 		festival_content, 
+ 		festival_place, 
+		festival_road_name_addr,
+		date_format(festival_start_date,'%m-%d') festival_start_date,
+		date_format(festival_end_date,'%m-%d') festival_end_date
+		from festival
+		<if test="searchWord!=null">
+			and ${searchKey} like '%${searchWord}%'
+		</if>
+		order by festival_num desc
+		limit ${onePageRecord} offset ${offsetPoint}
+	</select>
+	
+	<select id="totalRecord" resultType="int">
+		select count(festival_num) cnt
+		from festival
 	</select>
 </mapper>

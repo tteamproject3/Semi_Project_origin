@@ -1,42 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <style>
 /* BOARD BAR */
 .board__bar{
-	margin-top: var(--large-space) auto 0;
+	margin-top: var(--large-space);
 	width: 100%;
 	text-align: center;
-	/* bar 요소 정렬 */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/* 하단 border */
 	border-bottom: var(--bold-line) var(--ct-color-gray-dark) ;
 }
 .board__bar .board__nav{
-	/* nav 요소 정렬 */
 	display: flex;
 }
 .board__bar .board__nav li{
-	/* nav 탭 세부 설정 */
 	background-color: var(--bg-color-gray);
 	box-shadow: var(--up-basic-shadow);
 	border-radius: var(--strong-radius) var(--strong-radius) 0 0;
-	/* 탭 크기 */
 	width: var(--button-width);
 	height: var(--button-height);
 	line-height: var(--button-height);
-	/* 폰트 */
-	font-size: var(--medium-font-size-3);
 	font-weight: bold;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 }
 .board__bar .board__nav .active{
-	/* 현재 선택된 탭만 대비 컬러 설정 */
 	background-color: var(--main-color);
 	color: var(--main-bg-color);
 }
+.board__bar #actBtn{
+	border-radius: var(--mild-radius);
+	background-color: var(--main-color);
+	color: var(--main-bg-color);
+	width: var(--button-width);
+	height: calc( var(--button-height) - 4px);
+	font-weight: bold;
+	font-size: var(--medium-font-size-2);
+	border:none;
+}
+
 /* BOARD CONTENT */
 .board__content{
 	/* board box */
@@ -44,22 +45,20 @@
 	margin: var(--large-space) var(--medium-space);
 	padding: var(--medium-space);
 }
-.board__content .content__title {
-	/* 리스트 정렬 */
+.board__content .content__title{
 	display: flex;
-	/* 하단 border */
 	border-bottom: var(--basic-line) var(--ct-color-gray-dark);
 }
 .board__content .content__list{
-	/* 리스트 정렬 */
 	display: flex;
 	flex-wrap: wrap;
+	font-size: var(--medium-font-size-3);
 }
 .board__content .content__title li,
 .board__content .content__list li{
 	/* 각 칸의 넓이 설정 */
 	width: 6%;
-	height: 28px;
+	height:28%;
 	line-height: 28px;
 	/*  border */
 	border-right: var(--dotted-line) var(--ct-color-gray-light);
@@ -74,31 +73,25 @@
 	text-align: center;
 	padding: 0 var(--small-space);
 }
-.board__content .content__title li{
-	font-size:var(--medium-font-size-2);
-	font-weight: bold;
+
+.board__content .content__title li:nth-child(4n+2),
+.board__content .content__list li:nth-child(4n+2){
+	width: 21%;
+	text-align: left;
 }
-.board__content .content__title li:nth-child(5n+2),
-.board__content .content__title li:nth-child(5n+3){
-	/* 제목칸 */
-	width: 34%;
-}
-.board__content .content__list li:nth-child(5n+2),
-.board__content .content__list li:nth-child(5n+3){
-	/* 제목칸 */
-	width: 34%;
+.board__content .content__title li:nth-child(4n+3),
+.board__content .content__list li:nth-child(4n+3),
+.board__content .content__title li:nth-child(4n+4),
+.board__content .content__list li:nth-child(4n+4){
+	width: 33%;
+	border-right: none;
 	text-align: left;
 }
 
-.board__content .content__title li:nth-child(5n+4),
-.board__content .content__list li:nth-child(5n+4){
-	width: 12%;
-}
-.board__content .content__title li:nth-child(5n+5),
-.board__content .content__list li:nth-child(5n+5){
-	/* 마지막 border-right 없애기 */
-	width: 6%;
-	border-right: none;
+.board__content .content__title li{
+	font-size:var(--medium-font-size-3);
+	font-weight: bold;
+	text-align:center;
 }
 
 /* BOARD PAGING */
@@ -106,7 +99,7 @@
 	text-align: right;
 	margin-right:var(--medium-space);
 }
-.board__bottom .board__delete .delBtn{
+.board__bottom .board__delete .multiDel{
 	/* 세부 */
 	border:none;
 	border-radius: var(--mild-radius);
@@ -137,88 +130,79 @@
 	color: var(--ct-color-gray-dark);
 }
 
-
 </style>
-<script type="text/javascript">
-//리스트 전체 선택
+<script>
 $(function(){
-	$(".allChk").click(function(){
-		console.log("확인");
-		$(".board input[type=checkbox]").prop("checked",$(".allChk").prop("checked"));
+	$("#searchFrm").submit(function(){
+		if($("#searchWord").val()==""){
+			alert("검색어를 입력하세요.");
+			return false;
+		}
+		return true;
 	});
-
-	$(".delBtn").click(function(){
+	//리스트 전체 선택
+	$("#allChk").click(function(){
+		$("#board input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));
+	});
+	$(".multiDel").click(function(){
 		//체크 갯수 확인
 		var countChk = 0;//				반복문					input input input
-		$(".board input[name=noList]").each(function(idx,obj){
+		$("#board input[name=noList]").each(function(idx,obj){
 			if(obj.checked){ // input 태그가 체크 상태이면 true
 				countChk++;
 			}
 		});
 		if(countChk<=0){
-			alert("삭제할 레코드를 선택 후 삭제하세요.");
+			alert("삭제할 게시글을 선택 후 삭제하세요.");
 			return false;
 		}
 		$("#listFrm").submit();
 	});
+	
 });
 </script>
 
-	<!-- PAGE TITLE 표시 바 -->
+<!-- PAGE TITLE 표시 바 -->
 	<section class="title">
 		<div class="title__bar">
-			<span>[마이페이지] 내가 쓴 글</span>
+			<span>[관리자 게시판]</span>
 		</div>
 	</section>
 
-	<!-- BOARD -->
 	<section class="board">
 
 		<!-- BOARD NAV + BUTTON -->
 		<div class="board__bar">
 			<ul class="board__nav">
-				<li ><a href="/mypage/myWriteList">내가 쓴 글</a></li>
-				<li class="active"><a href="/mypage/myCommentList">내가 쓴 댓글</a></li>
-				<li ><a href="/mypage/mySavedList">찜한 여행지</a></li>
+				<li><a href = "/adminboard/tourList">여행지 관리</a></li>
+				<li class="active"><a href = "/adminboard/festivalList">축제 관리</a></li>
+				<li><a href = "/adminboard/themeList">테마여행추천</a></li>
 			</ul>
+			<input type="button" value="API 갱신" id="actBtn" class="aasz">
 		</div>
-		
+			
 		<!-- CONTENT -->
-		<!-- CONTENT -->
-	<div class="board__content">
-		<form method="post" action="/mypage/commentMultiDel" id="listFrm">
-		<ul class="content__title">
-			<li>댓번호</li>
-			<li>원글제목</li>
-			<li>댓글내용</li>
-			<li>작성일</li>
-			<li>선택</li>
-		</ul>
-		<ul class="content__list">
+		<form method="post" action="/board/multiDel" id ="listFrm">
+		<div id="board" class="board__content">
+			<ul id="board" class="content__title">
+				<li>번호</li>
+				<li>여행지/축제명</li>
+				<li>소개</li>
+				<li>위치</li>
+			</ul>
+			<ul class="content__list">
 				<c:forEach var="vo" items="${list}">
-					<li>${vo.comment_id }</li>
-					<!-- 제목 -->
-					<li>
-					<!-- &nowPage=${pVO.nowPage}<c:if test ='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if> -->
-					<a href="/userboard/boardView?post_id=${vo.post_id}">
-					${vo.post_title}</a>
-					</li>	
-					<li>${vo.comment_content }</li>
-					<li>${vo.comment_registration_date}</li>
-					<c:if test="${logStatus == 'Y'}">	
-						<li><input type="checkbox" name="noList" value="${vo.comment_id}"></li>
-					</c:if>	
+					<li>${vo.festival_num}</li>
+					<li>${vo.festival_id}</li>
+					<li>${vo.festival_content}</li>
+					<li>${vo.festival_road_name_addr}</li>
 				</c:forEach>
-		</ul>
-
-		<!-- PAGING + BUTTON-->
-		<div class="board__bottom">
-			<div class="board__delete">
-				<input type="checkbox" class ="allChk" /> 모두선택 
-				<input type="submit" value="삭제하기" class="delBtn">
-			</div>
-			<ul class="board__page">
-						<!-- 페이지 번호 -->
+			</ul>
+			
+			<!-- PAGING + BUTTON-->
+			<div class="board__bottom">
+								<ul class="board__page">
+					<!-- 페이지 번호 -->
 					<c:if test="${pVO.nowPage<=1 }">
 						<!-- 이전 페이지가 없을 때  -->
 						<li><i class="fa-solid fa-angle-left"></i></li>
@@ -226,12 +210,11 @@ $(function(){
 					<c:if test="${pVO.nowPage>1 }">
 						<!-- 이전 페이지가 있을 때  -->
 						<li><a
-							href="/mypage/myWriteList?nowPage=${pVO.nowPage-1 }<c:if test="${pVO.searchWord!=null }">&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>
+							href="/adminboard/festivalList?nowPage=${pVO.nowPage-1 }<c:if test="${pVO.searchWord!=null }">&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>
 								<c:if test="${pVO.searchType!=null }">&searchType=${pVO.searchType }</c:if>"><i class="fa-solid fa-angle-left"></i></a></li>
 					</c:if>
 
-					<c:forEach var="p" begin="${pVO.startPage }"
-						end="${pVO.startPage + pVO.onePageCount - 1 }">
+					<c:forEach var="p" begin="${pVO.startPage }" end="${pVO.startPage + pVO.onePageCount - 1 }">
 						<!-- 출력할 페이지 번호가 총 페이지 수보다 작거나 같을 때만 출력  -->
 						<c:if test="${p<=pVO.totalPage }">
 							<li
@@ -240,7 +223,7 @@ $(function(){
 							</c:if>
 							>
 							<a
-								href="/mypage/myWriteList?nowPage=${p }
+								href="/adminboard/festivalList?nowPage=${p }
 								<c:if test="${pVO.searchWord!=null }">&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>
 								<c:if test="${pVO.searchType!=null }">&searchType=${pVO.searchType }</c:if>">
 								${p }</a>
@@ -256,11 +239,14 @@ $(function(){
 					<c:if test="${pVO.nowPage<pVO.totalPage}">
 						<!-- 다음 페이지가 있을 때  -->
 						<li><a
-							href="/mypage/myWriteList?nowPage=${pVO.nowPage+1 }<c:if test="${pVO.searchWord!=null }">&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>
+							href="/adminboard/festivalList?nowPage=${pVO.nowPage+1 }<c:if test="${pVO.searchWord!=null }">&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>
 								<c:if test="${pVO.searchType!=null }">&searchType=${pVO.searchType }</c:if>"><i class="fa-solid fa-angle-right"></i></a></li>
 					</c:if>
 				</ul>
+			</div>
 		</div>
-		</form>
-	</div>
-  </section>
+	</form>
+	</section>
+
+    
+    

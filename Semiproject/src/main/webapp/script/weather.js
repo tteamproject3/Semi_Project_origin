@@ -20,7 +20,7 @@ $(function(){
 	// ajax로 데이터 불러오기 
 	for(var i=0;i<engCity_1.length;i++){
 		$.ajax({
-			//url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_1[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
+			url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_1[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
 			dataType: 'json',
 			type: 'GET',
 			success: function(data){
@@ -46,7 +46,7 @@ $(function(){
 			}
 		});
 		$.ajax({
-			//url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_2[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
+			url: "https://api.openweathermap.org/data/2.5/weather?q="+engCity_2[i]+"&appid=c33d4e9868e43efdaaf477c172906bb8&lang=kr",
 			dataType: 'json',
 			type: 'GET',
 			success: function(data){

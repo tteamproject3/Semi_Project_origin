@@ -179,7 +179,7 @@ $(function(){
 			<ul class="board__nav">
 				<li class="active"><a href="/mypage/myWriteList">내가 쓴 글</a></li>
 				<li ><a href="/mypage/myCommentList">내가 쓴 댓글</a></li>
-				<li ><a href="/mypage/myTourList">찜한 여행지</a></li>
+				<li ><a href="/mypage/mySavedList">찜한 여행지</a></li>
 			</ul>
 		</div>
 		

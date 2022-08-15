@@ -179,7 +179,8 @@ $(function(){
 	<!-- BOARD NAV + BUTTON --->
 	<div class="board__bar">
 		<ul class="board__nav">
-			<li><a href ="/adminboard/spotList">데이터 관리</a></li>
+			<li><a href = "/adminboard/tourList">여행지 관리</a></li>
+			<li><a href = "/adminboard/festivalList">축제 관리</a></li>
 			<li class="active"><a href ="/adminboard/themeList">테마여행추천</a></li>
 		</ul>
 		<div class="actionBtn">
@@ -193,7 +194,7 @@ $(function(){
 			<ul id="board" class="content__title">
 				<li>NO.</li>
 				<li>테마추천 글이름</li>
-				<li>테마위치</li>
+				<li>테마소개</li>
 				<li>작성일</li>
 				<li>선택</li>
 			</ul>
@@ -267,7 +268,7 @@ $(function(){
 								<c:if test="${pVO.searchType!=null }">&searchType=${pVO.searchType }</c:if>"><i class="fa-solid fa-angle-right"></i></a></li>
 					</c:if>
 				</ul>
-				</ul>
+				
 			</div>
 		</div>
 	</form>

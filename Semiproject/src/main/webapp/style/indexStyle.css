@@ -427,6 +427,7 @@ i{
 }
 .festival__list li{
 	margin: calc(var(--medium-space)*2);
+	width:25%;
 }
 .festival__list .festival__info{
 	display: flex;
@@ -434,6 +435,12 @@ i{
 	font-size: var(--small-font-size-1);
 	color: var(--ct-color-gray-dark);
 	text-align: left;
+	width: 100%;
+}
+.festival__list .festival__info>*{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .festival__list .festival__info img{
 	width: 100%;
@@ -441,7 +448,7 @@ i{
 }
 .festival__list .festival__info i{
 	/* 좋아요 버튼 */
-	color: var(--main-bg-color);
+	color: black;
 	font-size:var(--large-font-size-2);
 	align-self: flex-end;
 	/* 위치 이동 */
