@@ -10,4 +10,17 @@ public class HomeController {
 		return "index";
 	}
 
+	@RequestMapping("/home/term")
+	public String term() {
+		return "home/term";
+	}
+	
+	@RequestMapping("/home/aboutus")
+	public String aboutus() {
+		return "home/aboutus";
+	}
+	@RequestMapping("/home/policy")
+	public String policy() {
+		return "home/policy";
+	}
 }

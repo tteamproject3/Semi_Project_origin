@@ -26,7 +26,6 @@
 		});
 	});
 </script>
-
 <style>
 .cBox{
 	border:var(--dotted-line) var(--main-color);
@@ -74,7 +73,7 @@
 
 <section class="title">
 	<div class="title__bar">
-		<span>[게시판] 글쓰기</span>
+		<span>[게시판] 공지쓰기</span>
 	</div>
 </section>
 
@@ -86,12 +85,9 @@
 			<li><input type = "text" name="post_title" id = "post_title" style="width:100%"/></li>
 			<li>구분 ${pVO.searchType }</li>
 			<li><select name="post_type" id="post_type" style="width:100%">
-				<option value="none">-</option>
-				<option value="tourspot">여행후기</option>
-				<option value="festival">축제후기</option>
-				<option value="food">맛집추천</option>
+				<option value="notice">공지</option>
 			</select></li>
-			<li><textarea name = "post_content" id = "post_content"></textarea></li>
+			<li><textarea name = "post_content" id = "post_content"></textarea></li>			
 		</ul>
 		<input type = "submit" value = "글등록" class="aBtn"/>
 		</form>

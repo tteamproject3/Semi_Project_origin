@@ -9,20 +9,38 @@
 				<!-- SEARCH FORM -->
 				<form method="get" action="DBdata/festData" >
 					<ul>
-						<li>
+					<!-- 	<li>
 								<div class="search__title">여행 방법</div>
 								<input type="radio" name="tripPlan" id="roundTrip" value="rountTrip" checked>
 								<label for="roundTrip">왕복</label>&nbsp;&nbsp;&nbsp;
 								<input type="radio" name="tripPlan" id="oneWay" value="oneWay">
 								<label for="oneWay">편도</label>
-						</li>
+						</li> -->
 
 						<li>
 							<label for="curLoc" >
 								<div class="search__title">현재 위치</div>
 							</label>
 							<div class="input__wrapper">
-								<input class="input__box" type="text" id="curLoc" name="curLoc">
+								<select name="" class="search_box_1" onchange="categoryChange(this)">
+					              <option value>시/도 선택</option>
+					              <option value="general01">강원</option>
+					              <option value="general02">경기</option>
+					              <option value="general03">경남</option>
+					              <option value="general04">경북</option>
+					              <option value="general05">광주</option>
+					              <option value="general06">대구</option>
+					              <option value="general07">대전</option>
+					              <option value="general08">부산</option>
+					              <option value="general09">서울</option>
+					              <option value="general10">울산</option>
+					              <option value="general11">인천</option>
+					              <option value="general12">전남</option>
+					              <option value="general13">전북</option>
+					              <option value="general14">제주</option>
+					              <option value="general15">충남</option>
+					              <option value="general16">충북</option>
+					            </select>
 								<div>
 									<i class="fa-solid fa-location-crosshairs" id="GPS"></i> <!-- 사용자 위치 받아오는 버튼 -->
 									<i class="fa-solid fa-magnifying-glass"></i>
@@ -38,7 +56,7 @@
 							<input type="date" class="input__box" id="end_Itnr" name="end_Itnr"> 
 						</li>
 
-						<li>
+					<!-- 	<li>
 							<div class="search__title">이동수단</div>
 							<select class="input__box" id="transfort" >
 								<option value="">-</option>
@@ -60,23 +78,26 @@
 								<option value="range_1">300Km ~ 400Km</option>
 								<option value="range_1">400Km ~ </option>
 							</select>
-						</li>
+						</li> -->
 
 						<li>
 							<input type="submit" value="바로 검색" class="button">
 						</li>
 					</ul>
 				</form>
+				
+				
+				<input type="button" value="API에서 축제, 관광지 데이터 가져오기 임시버튼" class="aasz">
 		</section>
 <!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
-							<input type="button" value="API에서 축제, 관광지 데이터 가져오기 임시버튼" class="aasz">
-	    	<div class="maps_background">
+	
+	   <!--  <div class="maps_background">
 	    		<div class="maps_div">
 	    			<div class="maps_content">지도에서 한눈에 찾아보기</div>
 	    			<div class="maps_line"></div>
     			</div>
-   			</div>
-	    <section class="maps">
+   			</div> -->
+<!-- 	    <section class="maps">
    			<div class="maps_search">
    				<div class="maps_search_subject">세부 검색 설정</div>
    				<div class="maps_search_content">
@@ -110,13 +131,9 @@
 		          </div>
 				</div>
    			</div>
-		</section>
+		</section> -->
 <!-- ---------------------googleMaps-------------------------  -->   
 		<section class="gmap_section">
-				<div class="gmap_search">
-					<form>
-					</form>
-				</div>
 				<div id="googleMapView">
 				</div>
 		</section>

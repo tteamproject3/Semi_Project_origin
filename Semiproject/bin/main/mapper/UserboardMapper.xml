@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.campus.myapp.dao.PostDAO">
+	<select id="boardList" resultType="PostVO">
+		select post_id, google_id, post_type, post_title, post_intro, 
+		post_content, post_hit, date_format(post_registration_date,'%m-%d %h:%i') post_registration_date, post_file1
+		from post
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		<if test="searchType!=null">
+			where post_type like '%${searchType}%'
+		</if>
+		order by post_id desc
+		limit ${onePageRecord} offset ${offsetPoint}
+	</select>
+	
+	<select id="totalRecord" resultType="int">
+		select count(post_id) cnt from post
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		<if test="searchType!=null">
+			where post_type like '%${searchType}%'
+		</if>
+	</select>
+	
+	<insert id="postWriteOk">
+		insert into post(post_title, post_type, post_content, google_id)
+		values(#{post_title},#{post_type}, #{post_content}, #{google_id})
+	</insert>
+	
+	<update id="hitCount">
+		update post
+		set post_hit = post_hit +1 
+		where post_id=${param1}
+	</update>
+	
+	<select id="getBoard" resultType="PostVO" parameterType="int">
+		select post_id, post_title, post_type, post_intro, post_content, post_hit, google_id, post_registration_date
+		from post
+		where post_id=${param1}
+	</select>
+	
+	<delete id="boardDel">
+		delete from post
+		where post_id=${param1} and google_id=#{param2}
+	</delete>
+	
+	<update id="boardEditOk" parameterType="PostVO">
+		update post
+		set post_title=#{post_title}, post_type=#{post_type}, post_content=#{post_content}
+		where post_id=${post_id} and google_id=#{google_id}
+	</update> 
+	
+	<delete id="boardMultiDel">
+		delete from post
+		<where>
+			<foreach item="item" index="index" collection="noList" open="post_id in (" separator="," close=")">
+              ${item}
+			</foreach>
+		</where>
+	</delete>
+</mapper>

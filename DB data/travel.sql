@@ -1,6 +1,11 @@
 use travel;
 show tables;
 
+desc post;
+select * from post;
+
+
+
 -- reset하기 
 SET foreign_key_checks = 0;
 drop table comment;
@@ -33,7 +38,8 @@ desc touristSpot;
 -- ALTER TABLE touristSpot MODIFY COLUMN tour_id varchar(20) FIRST;
 -- touristSpot 컬럼 순서 변경
 
-
+desc post;
+desc festival;
 
 -- *************************** 필수 ****************************
 ALTER TABLE touristSpot MODIFY COLUMN tour_content varchar(400) after tour_id;
@@ -62,3 +68,9 @@ desc user;
 
 select * from user;
 delete from user;
+delete from touristSpot;
+delete from festival;
+
+select count(festival_id) from festival;
+select count(tour_id) from touristSpot;
+select * from touristSpot;

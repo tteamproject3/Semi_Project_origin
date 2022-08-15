@@ -6,11 +6,10 @@
 			<a href="#"><i class="fa-solid fa-share-from-square"></i></a>
 		</div>
 		<div class="footer__info">
-			<a href="#">About Us</a> | 
-			<a href="#">Support</a> |
-			<a href="#">Term of Use</a> |
-			<a href="#">Private Policy</a> <br>
-			©2022 NoviceCoders. All Right Reserved.
+			<a href="/home/aboutus">About Us</a> | 
+			<a href="/home/term">Term of Use</a> |
+			<a href="/home/policy">Private Policy</a> <br>
+			â“’2022 NoviceCoders. All Right Reserved.
 		</div>
 	</footer>
 </body>

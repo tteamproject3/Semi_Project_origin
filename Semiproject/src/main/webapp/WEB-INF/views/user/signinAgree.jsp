@@ -85,6 +85,26 @@
 </style>			
 <script>
 $(function(){
+	var agree_all = 'Y';
+	
+	$('.allChk').click(function(){	 
+		console.log("동의");
+		 if(agree_all == 'Y'){
+		        $("input:radio[id='check_1_yes']").prop("checked",true);
+		        $("input:radio[id='check_2_yes']").prop("checked",true);
+		        agree_all = 'N';
+		        
+		 }else{
+		        $("input:radio[id='check_1_yes']").prop("checked",false);
+		        $("input:radio[id='check_2_yes']").prop("checked",false);
+		        agree_all = 'Y';
+		  }
+	});
+	    
+	function changeAgree(){
+		
+	}
+	
 	$('.aFrm').submit(function(){
 		if($('input[name="check_1"]:checked').val()=='no'){
 			alert("약관에 동의해주세요");

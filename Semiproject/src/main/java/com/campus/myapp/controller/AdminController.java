@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.AdminBoardService;
-import com.campus.myapp.vo.BoardVO;
 import com.campus.myapp.vo.PagingVO;
 
 
@@ -37,7 +36,7 @@ public class AdminController {
 		mav = new ModelAndView();
 		
 		//총 레코드 수
-		pVO.setTotalRecord(service.totalRecord(pVO));
+		//pVO.setTotalRecord(service.totalRecord(pVO));
 		
 		//DB 레코드 선택 - 페이지, 검색어
 		//mav.addObject("list",service.reviewList(pVO));
@@ -51,7 +50,7 @@ public class AdminController {
 	 public ModelAndView boardView(@RequestParam("post_id") int post_id, PagingVO pVO){	
 
 	 	mav = new ModelAndView();
-	 	mav.addObject("vo",service.getBoard(post_id));
+	 	//mav.addObject("vo",service.getBoard(post_id));
 	 	mav.addObject("pVO",pVO);
 	 	mav.setViewName("adminboard/reviewView");
 		
@@ -65,7 +64,7 @@ public class AdminController {
 	 public ModelAndView themeList(PagingVO pVO) {
 	 	mav = new ModelAndView();
 		
-		pVO.setTotalRecord(service.totalRecord(pVO));
+		//pVO.setTotalRecord(service.totalRecord(pVO));
 		
 	 	//mav.addObject("list",service.themeList(pVO));
 	 	mav.addObject("pVO",pVO);
@@ -85,33 +84,33 @@ public class AdminController {
 
 	 //테마여행 글쓰기 DB
 	@PostMapping("themeFormOk")
-	public ResponseEntity<String> themeFormOk(BoardVO vo,HttpServletRequest request){
-		vo.setGoogle_id((String)request.getSession().getAttribute("logId"));//세션 로그인 아이디
-		
-	 	String msg = "<script>";
-	 	try {
-	 		//service.boardWriteOk(vo);
-	 		msg += "location.href='/adminboard/themeList';";
-	 	}catch(Exception e) {
-	 		msg += "alert('글 등록이 실패하였습니다.');";
-	 		msg += "history.go(-1)";
-	 	}
-		
-	 	msg+="</script>";
-	 	HttpHeaders headers = new HttpHeaders();
-	 	headers.setContentType(new MediaType("text","html", Charset.forName("UTF-8")));
-	 	headers.add("Content-Type","text/html; charset=UTF-8");
-	 	ResponseEntity<String> entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
-		
-	 	return entity;
-	 }
+//	public ResponseEntity<String> themeFormOk(BoardVO vo,HttpServletRequest request){
+//		vo.setGoogle_id((String)request.getSession().getAttribute("logId"));//세션 로그인 아이디
+//		
+//	 	String msg = "<script>";
+//	 	try {
+//	 		//service.boardWriteOk(vo);
+//	 		msg += "location.href='/adminboard/themeList';";
+//	 	}catch(Exception e) {
+//	 		msg += "alert('글 등록이 실패하였습니다.');";
+//	 		msg += "history.go(-1)";
+//	 	}
+//		
+//	 	msg+="</script>";
+//	 	HttpHeaders headers = new HttpHeaders();
+//	 	headers.setContentType(new MediaType("text","html", Charset.forName("UTF-8")));
+//	 	headers.add("Content-Type","text/html; charset=UTF-8");
+//	 	ResponseEntity<String> entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
+//		
+//	 	return entity;
+//	 }
 
 	 //테마 여행 글내용보기 (themeView)
 	 @GetMapping("themeView")
 	 public ModelAndView themeView(@RequestParam("no") int no, PagingVO pVO) {
 
 	 	mav = new ModelAndView();
-	 	mav.addObject("vo",service.getBoard(no));
+	 	//mav.addObject("vo",service.getBoard(no));
 	 	mav.addObject("pVO",pVO);
 	 	mav.setViewName("adminboard/themeView");
 		
@@ -123,7 +122,7 @@ public class AdminController {
 	 public ModelAndView boardEdit(@PathVariable("num") int no) {
 		
 	 	mav = new ModelAndView();
-	 	mav.addObject("vo",service.getBoard(no));
+	 	//mav.addObject("vo",service.getBoard(no));
 	 	mav.setViewName("adminboard/themeEdit");
 		
 	 	return mav;
@@ -155,29 +154,29 @@ public class AdminController {
 	// }
 
 	//테마 여행 글 삭제
-	 @GetMapping("boardDel")
-	 public ModelAndView boardDel(int no,HttpSession session) {
-	 	int cnt = service.boardDel(no, (String) session.getAttribute("logId"));
-	 	mav= new ModelAndView();
-	 	if(cnt>0) {
-	 		mav.setViewName("redirect:themeList");
-	 	}else {
-	 		mav.setViewName("redirect:themeView");
-	 	}
-		
-	 	return mav;
-	 }
+//	 @GetMapping("boardDel")
+//	 public ModelAndView boardDel(int no,HttpSession session) {
+//	 	int cnt = service.boardDel(no, (String) session.getAttribute("logId"));
+//	 	mav= new ModelAndView();
+//	 	if(cnt>0) {
+//	 		mav.setViewName("redirect:themeList");
+//	 	}else {
+//	 		mav.setViewName("redirect:themeView");
+//	 	}
+//		
+//	 	return mav;
+//	 }
 
 	// //테마 여행 글 여러개 삭제
-	@PostMapping("multiDel")
-	public ModelAndView multiDel(BoardVO vo) {
-		
-		int cnt = service.boardMultiDel(vo);
-		System.out.println("삭제된 게시글 수:"+cnt);
-			
-		mav=new ModelAndView();
-		mav.setViewName("redirect:themeView");
-			
-		return mav;
-	}
+//	@PostMapping("multiDel")
+//	public ModelAndView multiDel(BoardVO vo) {
+//		
+//		int cnt = service.boardMultiDel(vo);
+//		System.out.println("삭제된 게시글 수:"+cnt);
+//			
+//		mav=new ModelAndView();
+//		mav.setViewName("redirect:themeView");
+//			
+//		return mav;
+//	}
 }

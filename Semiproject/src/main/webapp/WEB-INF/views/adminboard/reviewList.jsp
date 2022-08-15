@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+
 <style>
 /* BOARD BAR */
 .board__bar{
@@ -178,7 +178,7 @@ $(function(){
 		<!-- BOARD NAV + BUTTON -->
 		<div class="board__bar">
 			<ul class="board__nav">
-				<li class="active"><a href = "/adminboard/reviewList">후기 별점</a></li>
+				<li class="active"><a href = "/adminboard/reviewList">여행지/축제 확인</a></li>
 				<li><a href = "/adminboard/themeList">테마여행추천</a></li>
 			</ul>
 		</div>
@@ -189,18 +189,20 @@ $(function(){
 			<ul id="board" class="content__title">
 				<li>NO.</li>
 				<li>여행지/축제명</li>
-				<li>별점</li>
+				<li></li>
 				<li>위치</li>
-				<li>선택</li>
 			</ul>
 			<ul class="content__list">
 				<!-- sample -->
-				<%-- <li>NO.#</li>
+				<%-- 
+				<li>NO.#</li>
 				<li>서울 한강 밤도깨비 시장</li>
+				<li></li>
+				<li></li>
 				<li>4.5</li>
 				<li>수도권</li>
-				<li><input type="checkbox"></li> --%>
-
+				<li><input type="checkbox"></li> 
+				--%>
 
 				<c:forEach var="vo" items="${list}">
 					<!-- vo안에 댓글 수 있음 -->
