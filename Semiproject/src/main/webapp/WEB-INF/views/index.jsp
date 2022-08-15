@@ -137,44 +137,12 @@
 				<div id="googleMapView">
 				</div>
 		</section>
- <!-- ---------------------------------맞춤여행지-----------------------------------  -->  
- 		<section class="search_result">
-		    <div class="search_result_div1">
+ <!-- ---------------------------------맞춤여행지-----------------------------------  --> 
+ 		    <div class="search_result_div1">
 	   			<div class="search_result_title">${user_nickname} 님을 위한 맞춤 여행지</div>
 	   			<hr class="search_result_hr">
   			</div>
-  			<div class="touristSpot">
-	  			<div class="touristSpot_img"><img src="https:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/e\/ef\/Goseokjeong%2C_a_natural_tower_of_granite_rock%2C_at_Hantan_River.jpg\/1200px-Goseokjeong%2C_a_natural_tower_of_granite_rock%2C_at_Hantan_River.jpg"></div>
-	  			<!-- 이미지파일을 구하는 방법을 정하면 그때가서 동그라미로 자르기 -->
-	  			<div class="touristSpot_div">
-		  			<div class="touristSpot_subject">은평역사한옥박물관</div>
-		  			<br/>
-		  			<spen>관광지 소개<br/></spen>
-		  			<div class="touristSpot_content">은평구의 문화유산과 한옥의 전통을 소개하는 박물관</div>
-		  			<div class="touristSpot_tel">관광지 관리기관 전화번호: 02-351-8525</div>
-			  		<div class="touristSpot_div2">
-			  		<div class="touristSpot_parking">주차가능공간: 26</div>
-			  		<div class="touristSpot_raiting">평점★: 4.6 &nbsp; &nbsp; <input class="touristSpot_fav" type="button" value="❤"/></div>
-			  		</div>
-	  			</div>	
-  			</div>
-  			<br/>
-  			<div class="touristSpot">
-	  			<div class="touristSpot_img">img파일 어디서구하지?</div>
-	  			<!-- 이미지파일을 구하는 방법을 정하면 그때가서 동그라미로 자르기 -->
-	  			<div class="touristSpot_div">
-		  			<div class="touristSpot_subject">은평역사한옥박물관</div>
-		  			<br/>
-		  			<spen>관광지 소개<br/></spen>
-		  			<div class="touristSpot_content">은평구의 문화유산과 한옥의 전통을 소개하는 박물관</div>
-		  			<div class="touristSpot_tel">관광지 관리기관 전화번호: 02-351-8525</div>
-			  		<div class="touristSpot_div2">
-			  		<div class="touristSpot_parking">주차가능공간: 26</div>
-			  		<div class="touristSpot_raiting">평점★: 4.6 &nbsp; &nbsp; <input class="touristSpot_fav" type="button" value="❤"/></div>
-			  		</div>
-	  			</div>	
-  			</div>
-  			<br/>
+ 		<section class="search_result">
   			<!-- 축제 관련해서도 추후에 추가해야함 -->
  		</section>
  <!-- ------------------------------------------------------------------------------------------------------  -->   

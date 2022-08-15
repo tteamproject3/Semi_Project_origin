@@ -331,29 +331,76 @@ function initMap() {
 				//icon : '../../img/tour.png',
 				position: latlong,
 				map:map,
-				title:data[i].tour_id,
+				title:""+data[i].tour_num,
 			})
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-						abc= data[i].tour_id;
+						//abc= data[i].tour_id;
+						//$.ajax({
+						//	url: "/DBdata/getImgUrl",
+						//	data: {name : data[i].tour_id},
+						//	success: function(aa){
+						//		img = aa;
+						//	},error:function(aaa){
+						//		console.log("가져오기 실패")
+						//		console.log(aaa)
+						//	}
+						//});
 						console.log(data[i].tour_id);
 						MSG = "관광지명 : "+data[i].tour_id+"<hr/>";
 						MSG += "관광지 정보 : "+data[i].tour_content+"<br/>";
 						MSG += "주소 : "+data[i].tour_road_name_addr+"<br/>";
-						//MSG += "<li><img src='"+img+"'width'150'  height'150'/></li>";
+						//MSG += "<li><img src='"+img+"'width'150' height'150'/></li>";
                         //html로 표시될 인포 윈도우의 내용
                         var infowindow = new google.maps.InfoWindow({content:MSG});
                         //인포윈도우가 표시될 위치
                         infowindow.open(map, marker);
                     }
                 })(marker, i));
-                
+                var data3 = [];
                 if (marker) {
                     marker.addListener('click', function() {
                         //중심 위치를 클릭된 마커의 위치로 변경
                         map.setCenter(this.getPosition());
                         //마커 클릭 시의 줌 변화
                         map.setZoom(14);
+                    console.log(99);
+                    console.log(this.title);
+                    console.log(this);
+					
+					$.ajax({
+						url: "/DBdata/getPdata",
+						data: {num : this.title},
+						success: function(data2){
+							console.log(data2)
+							data3 = data2;
+							var appenddiv = "<div class='touristSpot'>";
+		                    appenddiv +="<div class='touristSpot_img'><img src='"+data3[0].tour_img+"'></div>";
+							appenddiv +="<div class='touristSpot_div'>"
+							appenddiv +="<div class='touristSpot_subject'>"+data3[0].tour_id+"</div>";
+							appenddiv +="<br/>";
+							appenddiv +="<spen>관광지 소개<br/></spen>";
+							appenddiv +="<div class='touristSpot_content'>"+data3[0].tour_content+"</div>";
+							appenddiv +="<div class='touristSpot_tel'>관광지 주소: "+data3[0].tour_road_name_addr+"</div>";
+							appenddiv +="<div class='touristSpot_tel'>관광지 관리기관 전화번호: "+data3[0].tour_phonenum+"</div>";
+							appenddiv +="<div class='touristSpot_div2'>";
+							appenddiv +="<div class='touristSpot_parking'>주차가능공간: "+data3[0].tour_parkinglot_num+"</div>";
+							appenddiv +="<div class='touristSpot_raiting'> &nbsp; &nbsp;";
+							appenddiv +="<input class='touristSpot_fav' type='button' value='❤'/></div>";
+							appenddiv +="</div>";
+						  	appenddiv +="</div>";
+							appenddiv +="</div>";
+							appenddiv +="<br/>";
+		                        $('.search_result').prepend(appenddiv)
+							
+							
+						},error:function(aaa){
+							console.log("가져오기 실패")
+							console.log(aaa)
+						}
+					});
+					 console.log(this);
+
                     });
                 }
 
