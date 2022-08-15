@@ -44,13 +44,13 @@ public class UserController {
 		//db 확인 
 		int result = service.loginOk(g_id, g_name);
 		if (result==0) { 
-			System.out.println("신규회원");
+			//System.out.println("신규회원");
 			//회원아님 -> 회원가입
 			mav.addObject("u_vo", u_vo);
 			mav.setViewName("/user/signinAgree");
 			
 		} else if(result ==1) {
-			System.out.println("기존회원");
+			//System.out.println("기존회원");
 			//회원임 -> 로그인 절차 
 			UserVO vo = service.getUser(g_id);
 			
