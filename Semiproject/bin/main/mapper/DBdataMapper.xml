@@ -38,7 +38,8 @@
 		tour_road_name_addr,
 		tour_lotnum_addr,
 		tour_lat,
-		tour_long)
+		tour_long,
+		tour_img)
 		values (
 		#{tour_id},
 		#{tour_content},
@@ -47,7 +48,8 @@
 		#{tour_road_name_addr},
 		#{tour_lotnum_addr},
 		#{tour_lat},
-		#{tour_long})
+		#{tour_long},
+		#{tour_img})
 	</insert>
 	<delete id="deleteFDB">
 		delete from festival;

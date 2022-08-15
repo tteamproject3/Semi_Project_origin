@@ -60,4 +60,17 @@
 	  			</foreach>	  		
 	  		</where>
 	  </delete>
+	  	  <select id ="alist" resultType="FestivalVO">
+			select festival_id, festival_place,
+								,festival_start_date
+								,festival_end_date
+								,festival_content
+								,festival_phonenum
+								,festival_site
+								,festival_road_name_addr
+								,festival_lotnum_addr
+								,festival_lat
+								,festival_long
+								from festival data order by festival_id desc
+	  </select>
   </mapper>

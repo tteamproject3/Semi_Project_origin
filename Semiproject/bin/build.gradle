@@ -47,6 +47,10 @@ dependencies {
 	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
 	implementation 'com.google.code.gson:gson:2.8.7'
 	
+	// Html parser를 위한 라이브러리 ( 이미지 크롤링 )
+	implementation group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
+	
+	
 }
 
 tasks.named('test') {
