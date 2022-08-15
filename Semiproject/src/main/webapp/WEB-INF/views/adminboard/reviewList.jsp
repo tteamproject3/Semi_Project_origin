@@ -103,7 +103,7 @@
 	text-align: right;
 	margin-right:var(--medium-space);
 }
-.board__bottom .board__delete .delBtn{
+.board__bottom .board__delete .multiDel{
 	/* 세부 */
 	border:none;
 	border-radius: var(--mild-radius);
@@ -148,7 +148,7 @@ $(function(){
 	$("#allChk").click(function(){
 		$("#board input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));
 	});
-	$("#multiDel").click(function(){
+	$(".multiDel").click(function(){
 		//체크 갯수 확인
 		var countChk = 0;//				반복문					input input input
 		$("#board input[name=noList]").each(function(idx,obj){
@@ -157,7 +157,7 @@ $(function(){
 			}
 		});
 		if(countChk<=0){
-			alert("삭제할 레코드를 선택 후 삭제하세요.");
+			alert("삭제할 게시글을 선택 후 삭제하세요.");
 			return false;
 		}
 		$("#listFrm").submit();
@@ -194,28 +194,32 @@ $(function(){
 			</ul>
 			<ul class="content__list">
 				<!-- sample -->
+				<%-- 
 				<li>NO.#</li>
 				<li>서울 한강 밤도깨비 시장</li>
 				<li></li>
 				<li></li>
-
+				<li>4.5</li>
+				<li>수도권</li>
+				<li><input type="checkbox"></li> 
+				--%>
 
 				<c:forEach var="vo" items="${list}">
 					<!-- vo안에 댓글 수 있음 -->
-					<li><input type="checkbox" name="noList" value="${vo.no}"></li>
+					<li><input type="checkbox" name="noList" value="${vo.post_id}"></li>
 					<!--  name: 변수 value: 값 -->
-					<li>${vo.no}</li>
+					<li>${vo.post_id}</li>
 					<li>
 						<div
 							<c:if test="${vo.subject.length()>=30}">
 								style='width:90%'
 							</c:if>>
 							<a
-								href="/board/boardView?no=${vo.no} &nowPage=${pVO.nowPage}
+								href="/board/boardView?no=${vo.post_id} &nowPage=${pVO.nowPage}
 							<c:if test ='${pVO.searchWord!=null}'>
 									&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}
 							</c:if>">
-								${vo.subject} </a>
+								${vo.post_title} </a>
 						</div>
 						<div>
 							<!-- 댓글수 -->
@@ -224,7 +228,7 @@ $(function(){
 								</c:if>
 						</div>
 					</li>
-					<li>${vo.userid}</li>
+					<li>${vo.google_id}</li>
 					<li>${vo.hit}</li>
 					<li>${vo.writedate}</li>
 				</c:forEach>
@@ -232,17 +236,46 @@ $(function(){
 			<!-- PAGING + BUTTON-->
 			<div class="board__bottom">
 				<div class="board__delete">
-					<input type="checkbox" /> 모두선택 <input type="submit" value="삭제하기"
-						class="delBtn">
+					<input type="checkbox" /> 모두선택 <input type="submit" value="삭제하기" class = "multiDel">
 				</div>
 				<ul class="board__page">
-					<li><a href="#"> <i class="fa-solid fa-angle-left"></i></a></li>
-					<li><a href="#">1</a></li>
-					<li class="active"><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#"> <i class="fa-solid fa-angle-right"></i></a></li>
+							<!-- 페이지 번호 -->
+					<c:if test="${pVO.nowPage<=1}"><!-- 이전페이지가 없을때 -->
+						<i class="fa-solid fa-angle-left"></i>
+					</c:if>
+					<c:if test = "${pVO.nowPage>1}">  <!-- 이전페이지 존재 -->
+						<li><a href = "/adminboard/reviewList?nowPage=${pVO.nowPage-1}
+							<c:if test ='${pVO.searchWord!=null}'>
+								&searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord}
+							</c:if>"><i class="fa-solid fa-angle-left"></i></a>
+						</li>
+					</c:if>
+					<c:forEach var = "p" begin="${pVO.startPage}" end ="${pVO.startPage+pVO.onePageCount-1}">
+						<!-- 출력할페이지 번호보다 작거나 같을때 -->
+						<c:if test="${p<=pVO.totalPage}">
+							<li
+							<c:if test="${p==pVO.nowPage}">
+								<li class="active">${p}</li>
+							</c:if>
+							><a href ="/adminboard/reviewList?nowPage=${p}
+							<c:if test ='${pVO.searchWord!=null}'>
+								&searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord}
+							</c:if>">${p}</a></li>
+						</c:if>
+					</c:forEach>
+					
+					<!-- 다음페이지 -->
+					
+					<c:if test="${pVO.nowPage==pVO.totalPage }">
+						<li><i class="fa-solid fa-angle-right"></i></li>
+					</c:if>
+					<c:if test ="${pVO.nowPage<pVO.totalPage }">
+						<li><a href = "/adminboard/reviewList?nowPage=${pVO.nowPage+1}
+							<c:if test ='${pVO.searchWord!=null}'>
+								&searchKey=${pVO.searchKey} &searchWord=${pVO.searchWord}
+							</c:if>"><i class="fa-solid fa-angle-right"></i></a>
+						</li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
