@@ -206,20 +206,147 @@ function categoryChange(e) {
 }
 
 //googlemaps --------------------------------------------------------------------------------------
+	$.ajax({
+		url: "/DBdata/gmapGo",
+		success: function(data){
+			console.log(data);
+			console.log(data[1].tour_id);
+		},error:function(){
+			console.log("가져오기 실패")
+		}
+    });
+   
+    
 var map;
-var latitude = 37.5729503;
-var longitude = 126.9793578;			
-var lat = [37.562685,37.462685,37.7862685];
-var log = [126.8793578,126.8393578,126.8893578];
+var latitude = 37.5642135;
+var longitude = 127.0016985;			
 function initMap() {
 	var myCenter = new google.maps.LatLng(latitude, longitude)
 	var mapProperty = {
 		center : myCenter,
-		zoom : 10,
-		mapTypeId : google.maps.MapTypeId.ROADMAP
+		zoom : 13,
+		mapTypeId : google.maps.MapTypeId.roadmap
+		/*
+		roadmap displays the default road map view. This is the default map type.
+		satellite displays Google Earth satellite images.
+		hybrid displays a mixture of normal and satellite views.
+		terrain displays a physical map based on terrain information.
+		*/
 	};
 	var map = new google.maps.Map(document
 	.getElementById('googleMapView'), mapProperty);
+	
+	var lat = "";
+	var long = "";
+	var i = 0;
+	var abc= "";
+	var img = "";
+	var msg = "";
+	console.log(11);
+	$.ajax({
+		url: "/DBdata/gmapGo",
+		success: function(data){
+			console.log(data[1].tour_id);
+			console.log(data.length);
+			console.log(data[1].tour_lat);
+			for(i;i<data.length;i++){
+			lat= data[i].tour_lat;
+			long = data[i].tour_long;
+			var latlong = new google.maps.LatLng(data[i].tour_lat,data[i].tour_long)
+			var infowindow = new google.maps.InfoWindow();
+			var marker = new google.maps.Marker({
+				//icon : '../../img/tour.png',
+				position: latlong,
+				map:map,
+				title:""+data[i].tour_num,
+			})
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+						//abc= data[i].tour_id;
+						//$.ajax({
+						//	url: "/DBdata/getImgUrl",
+						//	data: {name : data[i].tour_id},
+						//	success: function(aa){
+						//		img = aa;
+						//	},error:function(aaa){
+						//		console.log("가져오기 실패")
+						//		console.log(aaa)
+						//	}
+						//});
+						console.log(data[i].tour_id);
+						MSG = "관광지명 : "+data[i].tour_id+"<hr/>";
+						MSG += "관광지 정보 : "+data[i].tour_content+"<br/>";
+						MSG += "주소 : "+data[i].tour_road_name_addr+"<br/>";
+						//MSG += "<li><img src='"+img+"'width'150' height'150'/></li>";
+                        //html로 표시될 인포 윈도우의 내용
+                        var infowindow = new google.maps.InfoWindow({content:MSG});
+                        //인포윈도우가 표시될 위치
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+                var data3 = [];
+                if (marker) {
+                    marker.addListener('click', function() {
+                        //중심 위치를 클릭된 마커의 위치로 변경
+                        map.setCenter(this.getPosition());
+                        //마커 클릭 시의 줌 변화
+                        map.setZoom(14);
+                    console.log(99);
+                    console.log(this.title);
+                    console.log(this);
+					
+					$.ajax({
+						url: "/DBdata/getPdata",
+						data: {num : this.title},
+						success: function(data2){
+							console.log(data2)
+							data3 = data2;
+							var appenddiv = "<div class='touristSpot'>";
+		                    appenddiv +="<div class='touristSpot_img'><img src='"+data3[0].tour_img+"'></div>";
+							appenddiv +="<div class='touristSpot_div'>"
+							appenddiv +="<div class='touristSpot_subject'>"+data3[0].tour_id+"</div>";
+							appenddiv +="<br/>";
+							appenddiv +="<spen>관광지 소개<br/></spen>";
+							appenddiv +="<div class='touristSpot_content'>"+data3[0].tour_content+"</div>";
+							appenddiv +="<div class='touristSpot_tel'>관광지 주소: "+data3[0].tour_road_name_addr+"</div>";
+							appenddiv +="<div class='touristSpot_tel'>관광지 관리기관 전화번호: "+data3[0].tour_phonenum+"</div>";
+							appenddiv +="<div class='touristSpot_div2'>";
+							appenddiv +="<div class='touristSpot_parking'>주차가능공간: "+data3[0].tour_parkinglot_num+"</div>";
+							appenddiv +="<div class='touristSpot_raiting'> &nbsp; &nbsp;";
+							appenddiv +="<input class='touristSpot_fav' type='button' value='❤'/></div>";
+							appenddiv +="</div>";
+						  	appenddiv +="</div>";
+							appenddiv +="</div>";
+							appenddiv +="<br/>";
+		                        $('.search_result').prepend(appenddiv)
+							
+							
+						},error:function(aaa){
+							console.log("가져오기 실패")
+							console.log(aaa)
+						}
+					});
+					 console.log(this);
+
+                    });
+                }
+
+
+
+            
+			//var info = new google.maps.InfoWindow({content:data[i].tour_id});
+			//google.maps.event.addListener(marker, 'mouseover', function(){
+			//	info.open(map, marker);
+			//})
+
+	}
+		},error:function(){
+			console.log("가져오기 실패")
+		}
+    });
+	
+	
+
 }
 // 사용자 위치정보 가져오기-----------------------------------------------------------------------------------
 //[ajax] Google Maps API는 AJAX를 사용할 때만 “Uncaught ReferenceError : google is not defined” 구글맵 첫 실행시 안나오는 오류 수정해야함
@@ -251,17 +378,28 @@ $(function () {
 	getLocation();
 	});
     $(".aasz").click(function () {
-	$.ajax({
-	    url: "/DBdata/dataInsert",
-	    success: function(data){
-	        if (data == "true") {
-	    	    alert('API에서 데이터 가져오기 성공');
-	        }
-	        else {
-				alert('API에서 데이터 가져오기 실패');
-		    } 
-	        }
+							$.ajax({
+							url: "/DBdata/getImgUrl",
+							data: {abc : data[i].tour_id},
+							success: function(aa){
+								img = aa;
+							},error:function(aaa){
+								console.log("가져오기 실패")
+								console.log(aaa)
+							}
+						});
+	//$.ajax({
+	//    url: "/DBdata/dataInsert",
+	//    success: function(data){
+	//        if (data == "true") {
+	//    	    alert('API에서 데이터 가져오기 성공');
+	//        }
+	//        else {
+	//			alert('API에서 데이터 가져오기 실패');
+	//	    } 
+	//        }
+   // });
+   
     });
-    });
- });
+});
 //---------------------------------------------------------------------------------------------

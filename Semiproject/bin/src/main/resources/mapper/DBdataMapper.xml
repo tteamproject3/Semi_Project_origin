@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.myapp.dao.DBdataDAO">
+	<insert id="inputdata">
+		insert into festival(
+		festival_id,
+		festival_place ,
+		festival_start_date ,
+		festival_end_date ,
+		festival_content,
+		festival_phonenum,
+		festival_site,
+		festival_road_name_addr,
+		festival_lotnum_addr,
+		festival_lat,
+		festival_long)
+		values (
+		#{festival_id},
+		#{festival_place},
+		#{festival_start_date},
+		#{festival_end_date},
+		#{festival_content},
+		#{festival_phonenum},
+		#{festival_site},
+		#{festival_road_name_addr},
+		#{festival_lotnum_addr},
+		#{festival_lat},
+		#{festival_long})
+	</insert>
+	<insert id="inputdataT">
+		insert into touristSpot(
+		tour_id,
+		tour_content,
+		tour_parkinglot_num,
+		tour_phonenum,
+		tour_road_name_addr,
+		tour_lotnum_addr,
+		tour_lat,
+		tour_long)
+		values (
+		#{tour_id},
+		#{tour_content},
+		#{tour_parkinglot_num},
+		#{tour_phonenum},
+		#{tour_road_name_addr},
+		#{tour_lotnum_addr},
+		#{tour_lat},
+		#{tour_long})
+	</insert>
+	<delete id="deleteFDB">
+		delete from festival;
+	</delete>
+	<delete id="deleteTDB">
+		delete from touristSpot;
+	</delete>
+	<update id="updateFDB">
+		ALTER TABLE festival AUTO_INCREMENT = 1;
+	</update>
+	<update id="updateTDB">
+		ALTER TABLE touristSpot AUTO_INCREMENT = 1;
+	</update>
+</mapper>

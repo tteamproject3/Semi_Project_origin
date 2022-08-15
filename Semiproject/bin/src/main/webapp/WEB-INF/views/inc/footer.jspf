@@ -1,0 +1,17 @@
+    <!-- FOOTER -->
+    <footer>
+		<div class="footer__icon">
+			<a href="#"><i class="fa-brands fa-facebook"></i></a>
+			<a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+			<a href="#"><i class="fa-solid fa-share-from-square"></i></a>
+		</div>
+		<div class="footer__info">
+			<a href="#">About Us</a> | 
+			<a href="#">Support</a> |
+			<a href="#">Term of Use</a> |
+			<a href="#">Private Policy</a> <br>
+			©2022 NoviceCoders. All Right Reserved.
+		</div>
+	</footer>
+</body>
+</html>
