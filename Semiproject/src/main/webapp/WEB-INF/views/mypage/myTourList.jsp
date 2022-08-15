@@ -124,7 +124,7 @@
 	margin:calc(var(--medium-space)*2) var(--medium-space) var(--medium-space) var(--medium-space);
 	font-size:var(--small-font-size-1);
 	/* 여러줄 말줄임 */
-	 display:-webkit-box; 
+	display:-webkit-box; 
     word-wrap:break-word; 
     -webkit-line-clamp:5; 
     -webkit-box-orient:vertical; 

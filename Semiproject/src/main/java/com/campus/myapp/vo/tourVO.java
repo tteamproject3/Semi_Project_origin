@@ -1,7 +1,7 @@
 package com.campus.myapp.vo;
 
 
-public class tourVO {
+public class TourVO {
 	private String tour_id;
 	private String tour_content;
 	private String tour_parkinglot_num;

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="/script/weather.js" type="text/javascript"></script>   
     <div class="top">
 			<div>
 				<div class="main_title">On The Way</div>
@@ -214,69 +215,24 @@
 			</div>
 			<!-- theme section -->
 			<ul class="theme__list">
-				<li>
-					<!-- theme card -->
+				<c:forEach var="vo" items="${t_list}">
+					<li>
 					<div class="card">
-						<img src="img/nightsky-view.jpg" alt="">
-						<span class="title">한옥 카페 시리즈</span>
+						<img src="${vo.post_file1 }" alt="">
+						<span class="title">${vo.post_title }</span>
 						<div class="card__detail">
-							★ 4.5
 							<i class="fa-regular fa-heart"></i>
 						</div>
 					</div>
 					<div class="line"></div>	
 					<!-- theme description -->
 					<div class="descript">
-						<span class="desc__title">평범한 카페는 이제 그만</span>
-						<span class="desc__content">여행의 매력은 무궁무진하겠지만, 그 중 하나는
-							“일상에서 벗어난 낯섦에 대한 기대”이지 않을까?
-							
-							이 점에서 여행지에서 만나는 한옥카페는 여러분에게 낯선 공간을 제공하며 새로운 분위기를 만들어줄 수 있을 거예요. 대한민국 테마여행 10선 여행 중 만나는 한옥카페, 조용하고 고즈넉한 분위기 속에서 그 새로운 공간을 누려보는 건 어떨까요? </span>
-						<a href="#"><span class="desc__detail">더보기</span></a>
+						<span class="desc__title">${vo.post_intro }</span>
+						<span class="desc__content">${vo.post_content }</span>
+						<a href="/userboard/boardView?post_id=${vo.post_id}"><span class="desc__detail">더보기</span></a>
 					</div>
-				</li>
-				<li>
-					<!-- theme card -->
-					<div class="card">
-						<img src="img/nightsky-view.jpg" alt="">
-						<span class="title">한옥 카페 시리즈</span>
-						<div class="card__detail">
-							★ 4.5
-							<i class="fa-regular fa-heart"></i>
-						</div>
-					</div>
-					<div class="line"></div>	
-					<!-- theme description -->
-					<div class="descript">
-						<span class="desc__title">평범한 카페는 이제 그만</span>
-						<span class="desc__content">여행의 매력은 무궁무진하겠지만, 그 중 하나는
-							“일상에서 벗어난 낯섦에 대한 기대”이지 않을까?
-							
-							이 점에서 여행지에서 만나는 한옥카페는 여러분에게 낯선 공간을 제공하며 새로운 분위기를 만들어줄 수 있을 거예요. 대한민국 테마여행 10선 여행 중 만나는 한옥카페, 조용하고 고즈넉한 분위기 속에서 그 새로운 공간을 누려보는 건 어떨까요? </span>
-						<a href="#"><span class="desc__detail">더보기</span></a>
-					</div>
-				</li>
-				<li>
-					<!-- theme card -->
-					<div class="card">
-						<img src="img/nightsky-view.jpg" alt="">
-						<span class="title">한옥 카페 시리즈</span>
-						<div class="card__detail">
-							★ 4.5
-							<i class="fa-regular fa-heart"></i>
-						</div>
-					</div>
-					<div class="line"></div>	
-					<!-- theme description -->
-					<div class="descript">
-						<span class="desc__title">평범한 카페는 이제 그만</span>
-						<span class="desc__content">여행의 매력은 무궁무진하겠지만, 그 중 하나는
-							“일상에서 벗어난 낯섦에 대한 기대”이지 않을까?
-							
-							이 점에서 여행지에서 만나는 한옥카페는 여러분에게 낯선 공간을 제공하며 새로운 분위기를 만들어줄 수 있을 거예요. 대한민국 테마여행 10선 여행 중 만나는 한옥카페, 조용하고 고즈넉한 분위기 속에서 그 새로운 공간을 누려보는 건 어떨까요? </span>
-						<a href="#"><span class="desc__detail">더보기</span></a>
-					</div>
-				</li>
+					</li>
+				</c:forEach>
 			</ul>
 		</section>
     

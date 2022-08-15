@@ -4,13 +4,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.campus.myapp.vo.FestivalVO;
-import com.campus.myapp.vo.tourVO;
+import com.campus.myapp.vo.TourVO;
 
 @Mapper
 @Repository
 public interface DBdataDAO {
 	public void inputdata(FestivalVO fVO);
-	public void inputdataT(tourVO tVO);
+	public void inputdataT(TourVO tVO);
 	public void deleteFDB();
 	public void deleteTDB();
 	public void updateFDB();

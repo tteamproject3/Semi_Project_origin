@@ -342,6 +342,7 @@ i{
 .theme__list .card{
 	/* 테마카드 */
 	/* 세로 정렬 */
+	/* width:40%; */
 	height: inherit;
 	display: flex;
 	flex-direction: column;
@@ -355,14 +356,21 @@ i{
 .theme__list .card img{
 	width: 80%;
 	max-width: 18vw;
+	height: 24vh;
 	border-radius: var(--mild-radius);
 	margin-top: var(--large-space);	
+}
+.theme__list .card>.title{
+	margin: var(--large-space);
+	width:90%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .theme__list .card .card__detail{
 	width: 80%;
 	font-size:var(--large-font-size-3);
-	display: flex;
-	justify-content: space-between;
+	text-align:right;
 	margin-bottom: var(--large-space);	
 }
 .theme__list .card .card__detail i{
@@ -384,10 +392,14 @@ i{
 }
 .theme__list .descript .desc__content{
 	/* 설명 */
-	height: 70%;
+	height: 60%;
 	width: 100%;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	display:-webkit-box; 
+    word-wrap:break-word; 
+    -webkit-line-clamp:7; 
+    -webkit-box-orient:vertical; 
+    overflow:hidden; 
+    text-overflow:ellipsis;
 }
 .theme__list .descript .desc__detail{
 	/* 더보기 */
