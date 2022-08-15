@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.myapp.dao.TourDAO">
+	<select id="getList" resultType="TourVO">
+		select 
+ 		tour_num, 
+ 		tour_id, 
+ 		tour_content, 
+ 		tour_phonenum, 
+		tour_road_name_addr
+		from touristSpot
+		<if test="searchWord!=null">
+			and ${searchKey} like '%${searchWord}%'
+		</if>
+		order by tour_num desc
+		limit ${onePageRecord} offset ${offsetPoint}
+	</select>
+	
+	<select id="totalRecord" resultType="int">
+		select count(tour_num) cnt
+		from touristSpot
+	</select>
+</mapper>

@@ -37,7 +37,7 @@ public class UserboardController {
 		mav = new ModelAndView();
 		
 		//페이지세팅
-		System.out.println(pVO.getSearchType());
+		//System.out.println(pVO.getSearchType());
 		pVO.setTotalRecord(service.totalRecord(pVO));
 		//포스트 리스트
 		mav.addObject("list", service.boardList(pVO));

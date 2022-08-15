@@ -281,33 +281,6 @@
 						2022. 7. 29. ~ 30. / 18:00 ~ 22:00
 					</div>
 				</li>
-				<li>
-					<!-- festival info -->
-					<div class="festival__info">
-						<img src="img/city-view.jpg" alt="" >
-						<i class="fa-regular fa-heart"></i>
-						<span class="fTitle">2022 목포문화재야행</span>
-						<span class="fDetail">전라남도 목포시 <br></span>
-						2022. 7. 29. ~ 30. / 18:00 ~ 22:00
-					</div>
-				</li><li>
-					<!-- festival info -->
-					<div class="festival__info">
-						<img src="img/city-view.jpg" alt="" >
-						<i class="fa-regular fa-heart"></i>
-						<span class="fTitle">2022 목포문화재야행</span>
-						<span class="fDetail">전라남도 목포시 <br></span>
-						2022. 7. 29. ~ 30. / 18:00 ~ 22:00
-					</div>
-				</li><li>
-					<!-- festival info -->
-					<div class="festival__info">
-						<img src="img/city-view.jpg" alt="" >
-						<i class="fa-regular fa-heart"></i>
-						<span class="fTitle">2022 목포문화재야행</span>
-						<span class="fDetail">전라남도 목포시 <br></span>
-						2022. 7. 29. ~ 30. / 18:00 ~ 22:00
-					</div>
-				</li>
+	
 			</ul>
 		</section>

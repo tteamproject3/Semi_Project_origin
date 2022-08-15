@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.campus.myapp.service.FestivalService;
 import com.campus.myapp.service.PostService;
+import com.campus.myapp.service.TourService;
 import com.campus.myapp.vo.PagingVO;
 import com.campus.myapp.vo.PostVO;
 
@@ -29,19 +31,39 @@ public class AdminController {
     @Inject
     PostService p_service;
 	
+    @Inject
+    TourService t_service;
+    
+    @Inject
+    FestivalService f_service;
+    
     ModelAndView mav = null;
 
 	//데이터 게시판
-	@GetMapping("spotList")
-	public ModelAndView reviewList(PagingVO pVO, HttpSession ses) {
+	@GetMapping("tourList")
+	public ModelAndView tourList(PagingVO pVO) {
 		mav = new ModelAndView();
 		
 		//페이지 세팅
-		//pVO.setTotalRecord(p_service.totalRecord(pVO));
+		pVO.setTotalRecord(t_service.totalRecord(pVO));
 		mav.addObject("pVO",pVO);
 		
-		//mav.addObject("list", p_service.boardList(pVO));
-		mav.setViewName("/adminboard/spotList");
+		mav.addObject("list", t_service.getList(pVO));
+		mav.setViewName("/adminboard/tourList");
+		return mav;	
+	}
+
+	//축제 게시판
+	@GetMapping("festivalList")
+	public ModelAndView festivalList(PagingVO pVO) {
+		mav = new ModelAndView();
+		
+		//페이지 세팅
+		pVO.setTotalRecord(f_service.totalRecord(pVO));
+		mav.addObject("pVO",pVO);
+		
+		mav.addObject("list", f_service.getList(pVO));
+		mav.setViewName("/adminboard/festivalList");
 		return mav;	
 	}
 

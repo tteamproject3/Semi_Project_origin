@@ -30,10 +30,10 @@ public class MypageController {
 	
 	ModelAndView mav = null;
 	
-	@GetMapping("myTourList")
-	public ModelAndView myTourList() {
+	@GetMapping("mySavedList")
+	public ModelAndView mySavedList() {
 		mav = new ModelAndView();
-		mav.setViewName("/mypage/myTourList");
+		mav.setViewName("/mypage/mySavedList");
 		return mav;
 	}
 	

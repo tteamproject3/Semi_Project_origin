@@ -86,9 +86,9 @@
 						</li>
 					</ul>
 				</form>
+
 				
 				<input type="button" value="바로 검색" id="mainSB">
-				<input type="button" value="API에서 축제, 관광지 데이터 가져오기 임시버튼" class="aasz">
 		</section>
 <!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
 	
@@ -134,17 +134,14 @@
    			</div>
 		</section> -->
 <!-- ---------------------googleMaps-------------------------  -->   
-		<section class="gmap_section">
-						<div class="gmap_search">
-					<form>
-					</form>
-				</div>
+		<section class="gmap_section">\
+
 				<div id="googleMapView">
 				</div>
 		</section>
  <!-- ---------------------------------맞춤여행지-----------------------------------  --> 
  		    <div class="search_result_div1">
-	   			<div class="search_result_title">${user_nickname} 님을 위한 맞춤 여행지</div>
+	   			<div class="search_result_title">${log_NickName} 님을 위한 맞춤 여행지</div>
 	   			<hr class="search_result_hr">
   			</div>
  		<section class="search_result">
@@ -215,44 +212,21 @@
 				<br>요즘 핫한 축제 알아보기
 			</div>
 			<ul class="festival__list">
+				<c:forEach var="vo" items="${f_list}">
 				<!-- festival list -->
-				<li>
+					<li>
 					<!-- festival info -->
 					<div class="festival__info">
-						<img src="img/city-view.jpg" alt="" >
+						<img src="${vo.festivalcol }" alt="" >
 						<i class="fa-regular fa-heart"></i>
-						<span class="fTitle">2022 목포문화재야행</span>
-						<span class="fDetail">전라남도 목포시 <br></span>
-						2022. 7. 29. ~ 30. / 18:00 ~ 22:00
+						<span class="fTitle">${vo.festival_id}</span>
+						<span class="fDetail">${vo.festival_place} <br></span>
+						${vo.festival_start_date} ~ ${vo.festival_end_date}</br>
+						<a href="${vo.festival_site }">축제 사이트로 이동</a>
 					</div>
-				</li>
-				<li>
-					<!-- festival info -->
-					<div class="festival__info">
-						<img src="img/city-view.jpg" alt="" >
-						<i class="fa-regular fa-heart"></i>
-						<span class="fTitle">2022 목포문화재야행</span>
-						<span class="fDetail">전라남도 목포시 <br></span>
-						2022. 7. 29. ~ 30. / 18:00 ~ 22:00
-					</div>
-				</li><li>
-					<!-- festival info -->
-					<div class="festival__info">
-						<img src="img/city-view.jpg" alt="" >
-						<i class="fa-regular fa-heart"></i>
-						<span class="fTitle">2022 목포문화재야행</span>
-						<span class="fDetail">전라남도 목포시 <br></span>
-						2022. 7. 29. ~ 30. / 18:00 ~ 22:00
-					</div>
-				</li><li>
-					<!-- festival info -->
-					<div class="festival__info">
-						<img src="img/city-view.jpg" alt="" >
-						<i class="fa-regular fa-heart"></i>
-						<span class="fTitle">2022 목포문화재야행</span>
-						<span class="fDetail">전라남도 목포시 <br></span>
-						2022. 7. 29. ~ 30. / 18:00 ~ 22:00
-					</div>
-				</li>
+					
+					</li>
+				</c:forEach>
+		
 			</ul>
 		</section>

@@ -126,7 +126,7 @@
 	/* 여러줄 말줄임 */
 	display:-webkit-box; 
     word-wrap:break-word; 
-    -webkit-line-clamp:5; 
+    -webkit-line-clamp:4; 
     -webkit-box-orient:vertical; 
     overflow:hidden; 
     text-overflow:ellipsis;
@@ -170,7 +170,21 @@
 }
 
 </style>
+<script>
+	function clip() {
 
+		var url = '';
+		var textarea = document.createElement("textarea");
+		document.body.appendChild(textarea);
+		url = window.document.location.href;
+		textarea.value = url;
+		textarea.select();
+		document.execCommand("copy");
+		document.body.removeChild(textarea);
+		alert("URL이 복사되었습니다.")
+
+	}
+</script>
 
 
 <section class="title">
@@ -186,7 +200,7 @@
 			<ul class="board__nav">
 				<li><a href="/mypage/myWriteList">내가 쓴 글</a></li>
 				<li><a href="/mypage/myCommentList">내가 쓴 댓글</a></li>
-				<li class="active"><a href="/mypage/myTourList">찜한 여행지</a></li>
+				<li class="active"><a href="/mypage/mySavedList">찜한 여행지</a></li>
 			</ul>
 			<ul class="board__search">
 				<li>
@@ -215,8 +229,7 @@
 							<ul class="b_right">
 								<li class="bChk"><input type="checkbox"></li>
 								<li class="bTitle">부산<li>
-								<li>★ 4.6 <li>
-								<li><i class="fa-solid fa-share"></i> 공유하기<li>
+								<li><a href="javascript:clip();"><i class="fa-solid fa-share"></i> 공유하기</a><li>
 							</ul>						
 						</div>
 						<div class="b_bottom">부산광역시는 대한민국 동남부 해안에  산업이 발달하였다. 일본과는 대한해협과 대마도를 사이에 두고 마주하고 있다.부산광역시는 대한민국 동남부 해안에 위치한 광역시이다. 대한민국의 제2의 도시이자 최대의 해양 물류 도시이며, 부산항을 중심으로 해상 무역과 물류 산업이 발달하였다. 부산광역시는 대한민국 동남부 해안에 위치한 광역시이다. 대한민국의 제2의 도시이자 최대의 해양 물류 도시이며, 부산항을 중심으로 해상 무역과 물류 산업이 발달하였다. 일본과는 대한해협과 대마도를 사이에 두고 마주하고 있다. 부산광역시는 대한민국 동남부 해안에 위치한 광역시이다. 대한민국의 제2의 도시이자 최대의 해양 물류 도시이며, 부산항을 중심으로 해상 무역과 물류 산업이 발달하였다. 일본과는 대한해협과 대마도를 사이에 두고 마주하고 있다. 일본과는 대한해협과 대마도를 사이에 두고 마주하고 있다.v</div>
