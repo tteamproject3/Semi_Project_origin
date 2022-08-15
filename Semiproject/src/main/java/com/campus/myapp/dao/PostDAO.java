@@ -21,4 +21,7 @@ public interface PostDAO {
 	public int boardDel(int post_id, String google_id);
 	public int boardEditOk(PostVO vo);
 	public int boardMultiDel(PostVO vo);
+	
+	public List<PostVO> getThemeList(PagingVO pVO);
+	public int totalThemeRecord(PagingVO pVO);
 }

@@ -3,18 +3,55 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.campus.myapp.dao.PostDAO">
+ 	<select id="getThemeList" resultType="PostVO">
+ 		select 
+ 		post_id, 
+ 		google_id, 
+ 		post_title, 
+ 		post_intro, 
+		post_content, 
+		post_hit, 
+		date_format(post_registration_date,'%m-%d %h:%i') post_registration_date,
+		post_file1
+		from post
+		where post_type like 'theme'
+		<if test="searchWord!=null">
+			and ${searchKey} like '%${searchWord}%'
+		</if>
+		order by post_id desc
+		limit ${onePageRecord} offset ${offsetPoint}
+ 	</select>
+ 	
 	<select id="boardList" resultType="PostVO">
-		select post_id, google_id, post_type, post_title, post_intro, 
+		select
+		t1.post_id, 
+		t1.google_id, 
+		t1.post_type, 
+		t1.post_title, 
+		t1.post_intro, 
+		t1.post_content, 
+		t1.post_hit, 
+		t1.post_registration_date, 
+		t1.post_file1,
+		t2.comment_count
+		from
+		
+		(select post_id, google_id, post_type, post_title, post_intro, 
 		post_content, post_hit, date_format(post_registration_date,'%m-%d %h:%i') post_registration_date, post_file1
 		from post
+		
 		<if test="searchWord!=null">
 			where ${searchKey} like '%${searchWord}%'
 		</if>
 		<if test="searchType!=null">
 			where post_type like '%${searchType}%'
 		</if>
+		
 		order by post_id desc
-		limit ${onePageRecord} offset ${offsetPoint}
+		limit ${onePageRecord} offset ${offsetPoint}) t1
+		left outer join
+		(select post_id, count(post_id) comment_count from comment group by post_id) t2
+		on t1.post_id = t2.post_id
 	</select>
 	
 	<select id="totalRecord" resultType="int">
@@ -27,9 +64,17 @@
 		</if>
 	</select>
 	
+	<select id="totalThemeRecord" resultType="int">
+		select count(post_id) cnt from post
+		where post_type like 'theme'
+		<if test="searchWord!=null">
+			and ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	
 	<insert id="postWriteOk">
-		insert into post(post_title, post_type, post_content, google_id)
-		values(#{post_title},#{post_type}, #{post_content}, #{google_id})
+		insert into post(post_title, post_intro, post_type, post_content, google_id, post_file1)
+		values(#{post_title}, #{post_intro}, #{post_type}, #{post_content}, #{google_id},#{post_file1})
 	</insert>
 	
 	<update id="hitCount">
@@ -39,7 +84,7 @@
 	</update>
 	
 	<select id="getBoard" resultType="PostVO" parameterType="int">
-		select post_id, post_title, post_type, post_intro, post_content, post_hit, google_id, post_registration_date
+		select post_id, post_title, post_type, post_intro, post_content, post_hit, google_id, post_file1, post_registration_date
 		from post
 		where post_id=${param1}
 	</select>
@@ -51,7 +96,12 @@
 	
 	<update id="boardEditOk" parameterType="PostVO">
 		update post
-		set post_title=#{post_title}, post_type=#{post_type}, post_content=#{post_content}
+		set 
+		post_title=#{post_title}, 
+		post_intro=#{post_intro},
+		post_type=#{post_type}, 
+		post_content=#{post_content},
+		post_file1=#{post_file1}
 		where post_id=${post_id} and google_id=#{google_id}
 	</update> 
 	

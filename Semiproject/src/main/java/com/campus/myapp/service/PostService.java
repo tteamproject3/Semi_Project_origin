@@ -1,6 +1,7 @@
 package com.campus.myapp.service;
 import java.util.List;
 
+import com.campus.myapp.vo.CommentVO;
 import com.campus.myapp.vo.PagingVO;
 import com.campus.myapp.vo.PostVO;
 
@@ -17,6 +18,9 @@ public interface PostService {
 	public int boardDel(int post_id, String google_id);
 	public int boardEditOk(PostVO vo);
 	public int boardMultiDel(PostVO vo);
+	
+	public List<PostVO> getThemeList(PagingVO pVO);
+	public int totalThemeRecord(PagingVO pVO);
 }
 
 
