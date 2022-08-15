@@ -3,8 +3,9 @@ package com.campus.myapp.controller;
 import javax.inject.Inject;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -198,8 +199,10 @@ public class DBdataController {
 		}
 	}
 
-	
-	public String getImgUrl(String name) {
+	@GetMapping("/getImgUrl")
+	//public String getImgUrl(String name) {
+	public String getImgUrl(@RequestParam("name") String name) {
+		//String name = a;
 		StringBuffer result1 = new StringBuffer();
 		String nameRp3 = name.replaceAll("\\s", "");
 		String nameRp2 = nameRp3.replaceAll("\\(", "");

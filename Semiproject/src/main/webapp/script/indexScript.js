@@ -297,7 +297,7 @@ function initMap() {
 	var myCenter = new google.maps.LatLng(latitude, longitude)
 	var mapProperty = {
 		center : myCenter,
-		zoom : 10,
+		zoom : 13,
 		mapTypeId : google.maps.MapTypeId.roadmap
 		/*
 		roadmap displays the default road map view. This is the default map type.
@@ -312,6 +312,9 @@ function initMap() {
 	var lat = "";
 	var long = "";
 	var i = 0;
+	var abc= "";
+	var img = "";
+	var msg = "";
 	console.log(11);
 	$.ajax({
 		url: "/DBdata/gmapGo",
@@ -325,14 +328,21 @@ function initMap() {
 			var latlong = new google.maps.LatLng(data[i].tour_lat,data[i].tour_long)
 			var infowindow = new google.maps.InfoWindow();
 			var marker = new google.maps.Marker({
+				//icon : '../../img/tour.png',
 				position: latlong,
 				map:map,
 				title:data[i].tour_id,
 			})
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
+						abc= data[i].tour_id;
+						console.log(data[i].tour_id);
+						MSG = "관광지명 : "+data[i].tour_id+"<hr/>";
+						MSG += "관광지 정보 : "+data[i].tour_content+"<br/>";
+						MSG += "주소 : "+data[i].tour_road_name_addr+"<br/>";
+						//MSG += "<li><img src='"+img+"'width'150'  height'150'/></li>";
                         //html로 표시될 인포 윈도우의 내용
-                        infowindow.setContent(data[i].tour_id);
+                        var infowindow = new google.maps.InfoWindow({content:MSG});
                         //인포윈도우가 표시될 위치
                         infowindow.open(map, marker);
                     }
@@ -394,17 +404,28 @@ $(function () {
 	getLocation();
 	});
     $(".aasz").click(function () {
-	$.ajax({
-	    url: "/DBdata/dataInsert",
-	    success: function(data){
-	        if (data == "true") {
-	    	    alert('API에서 데이터 가져오기 성공');
-	        }
-	        else {
-				alert('API에서 데이터 가져오기 실패');
-		    } 
-	        }
-    });
+							$.ajax({
+							url: "/DBdata/getImgUrl",
+							data: {abc : data[i].tour_id},
+							success: function(aa){
+								img = aa;
+							},error:function(aaa){
+								console.log("가져오기 실패")
+								console.log(aaa)
+							}
+						});
+	//$.ajax({
+	//    url: "/DBdata/dataInsert",
+	//    success: function(data){
+	//        if (data == "true") {
+	//    	    alert('API에서 데이터 가져오기 성공');
+	//        }
+	//        else {
+	//			alert('API에서 데이터 가져오기 실패');
+	//	    } 
+	//        }
+   // });
+   
     });
 });
 //---------------------------------------------------------------------------------------------
