@@ -308,7 +308,7 @@ function initMap() {
 	};
 	var map = new google.maps.Map(document
 	.getElementById('googleMapView'), mapProperty);
-	MyOverlay.prototype = new google.maps.OverlayView();
+	
 	var lat = "";
 	var long = "";
 	var i = 0;
@@ -323,12 +323,38 @@ function initMap() {
 			lat= data[i].tour_lat;
 			long = data[i].tour_long;
 			var latlong = new google.maps.LatLng(data[i].tour_lat,data[i].tour_long)
-
+			var infowindow = new google.maps.InfoWindow();
 			var marker = new google.maps.Marker({
 				position: latlong,
 				map:map,
 				title:data[i].tour_id,
 			})
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        //html로 표시될 인포 윈도우의 내용
+                        infowindow.setContent(data[i].tour_id);
+                        //인포윈도우가 표시될 위치
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+                
+                if (marker) {
+                    marker.addListener('click', function() {
+                        //중심 위치를 클릭된 마커의 위치로 변경
+                        map.setCenter(this.getPosition());
+                        //마커 클릭 시의 줌 변화
+                        map.setZoom(14);
+                    });
+                }
+
+
+
+            
+			//var info = new google.maps.InfoWindow({content:data[i].tour_id});
+			//google.maps.event.addListener(marker, 'mouseover', function(){
+			//	info.open(map, marker);
+			//})
+
 	}
 		},error:function(){
 			console.log("가져오기 실패")
