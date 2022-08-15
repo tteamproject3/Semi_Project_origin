@@ -276,7 +276,7 @@ function initMap() {
 						console.log(data[i].tour_id);
 						MSG = "관광지명 : "+data[i].tour_id+"<hr/>";
 						MSG += "관광지 정보 : "+data[i].tour_content+"<br/>";
-						MSG += "주소 : "+data[i].tour_road_name_addr+"<br/>";
+						//MSG += "주소 : "+data[i].tour_road_name_addr+"<br/>";
 						//MSG += "<li><img src='"+img+"'width'150' height'150'/></li>";
                         //html로 표시될 인포 윈도우의 내용
                         var infowindow = new google.maps.InfoWindow({content:MSG});
@@ -301,8 +301,9 @@ function initMap() {
 						success: function(data2){
 							console.log(data2)
 							data3 = data2;
+							//User-Agent
 							var appenddiv = "<div class='touristSpot'>";
-		                    appenddiv +="<div class='touristSpot_img'><img src='"+data3[0].tour_img+"'></div>";
+		                    appenddiv +="<div class='touristSpot_img'><img src='"+data3[0].tour_img+"'style='width\"300\" height\"300\"/'></div>";
 							appenddiv +="<div class='touristSpot_div'>"
 							appenddiv +="<div class='touristSpot_subject'>"+data3[0].tour_id+"</div>";
 							appenddiv +="<br/>";
@@ -378,27 +379,27 @@ $(function () {
 	getLocation();
 	});
     $(".aasz").click(function () {
-							$.ajax({
-							url: "/DBdata/getImgUrl",
-							data: {abc : data[i].tour_id},
-							success: function(aa){
-								img = aa;
-							},error:function(aaa){
-								console.log("가져오기 실패")
-								console.log(aaa)
-							}
-						});
-	//$.ajax({
-	//    url: "/DBdata/dataInsert",
-	//    success: function(data){
-	//        if (data == "true") {
-	//    	    alert('API에서 데이터 가져오기 성공');
-	//        }
-	//        else {
-	//			alert('API에서 데이터 가져오기 실패');
-	//	    } 
-	//        }
-   // });
+							//$.ajax({
+							//url: "/DBdata/getImgUrl",
+							//data: {abc : data[i].tour_id},
+							//success: function(aa){
+							//	img = aa;
+							//},error:function(aaa){
+							//	console.log("가져오기 실패")
+							//	console.log(aaa)
+							//}
+						//});
+	$.ajax({
+	    url: "/DBdata/dataInsert",
+	    success: function(data){
+	        if (data == "true") {
+	    	    alert('API에서 데이터 가져오기 성공');
+	        }
+	        else {
+				alert('API에서 데이터 가져오기 실패');
+		    } 
+	        }
+    });
    
     });
 });
