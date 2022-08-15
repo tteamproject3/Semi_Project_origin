@@ -57,6 +57,14 @@ public class DBdataServiceImpl implements DBdataService {
 		return dao.GmapGo();
 	}
 
+	@Override
+	public List<tourVO> getPdata(int num) {
+		// TODO Auto-generated method stub
+		return dao.getPdata(num);
+	}
+
+
+
 
 
 }

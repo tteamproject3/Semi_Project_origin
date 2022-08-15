@@ -18,4 +18,5 @@ public interface DBdataDAO {
 	public void updateFDB();
 	public void updateTDB();
 	public List<tourVO> GmapGo();
+	public List<tourVO> getPdata(int num);
 }

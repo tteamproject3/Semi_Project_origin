@@ -275,5 +275,15 @@ public class DBdataController {
 		return service.GmapGo();
 	}
 	
-
+	@GetMapping("/getPdata")
+	public List<tourVO> getPdata(@RequestParam("num") String num) {
+		System.out.println(num);
+		List<tourVO> TVO = service.getPdata(Integer.parseInt(num));
+		TVO.get(0).setTour_img(getImgUrl(TVO.get(0).getTour_id()));
+		System.out.println(TVO.toString());
+		//TVO.get(0).getTour_id();
+		//getImgUrl(TVO.get(0).getTour_id());
+		
+		return TVO;
+	}
 }

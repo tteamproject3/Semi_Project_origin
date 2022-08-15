@@ -2,6 +2,7 @@ package com.campus.myapp.vo;
 
 
 public class tourVO {
+	private int tour_num;
 	private String tour_id;
 	private String tour_content;
 	private String tour_parkinglot_num;
@@ -10,7 +11,29 @@ public class tourVO {
 	private String tour_lotnum_addr;
 	private String tour_lat;
 	private String tour_long;
+	private String tour_img;
 
+	
+	
+	@Override
+	public String toString() {
+		return "tourVO [tour_num=" + tour_num + ", tour_id=" + tour_id + ", tour_content=" + tour_content
+				+ ", tour_parkinglot_num=" + tour_parkinglot_num + ", tour_phonenum=" + tour_phonenum
+				+ ", tour_road_name_addr=" + tour_road_name_addr + ", tour_lotnum_addr=" + tour_lotnum_addr
+				+ ", tour_lat=" + tour_lat + ", tour_long=" + tour_long + ", tour_img=" + tour_img + "]";
+	}
+	public String getTour_img() {
+		return tour_img;
+	}
+	public void setTour_img(String tour_img) {
+		this.tour_img = tour_img;
+	}
+	public int getTour_num() {
+		return tour_num;
+	}
+	public void setTour_num(int tour_num) {
+		this.tour_num = tour_num;
+	}
 	public String getTour_id() {
 		return tour_id;
 	}
