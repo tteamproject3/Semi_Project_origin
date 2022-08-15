@@ -2,59 +2,81 @@
 <!-- 807255779746-g38g7anne185lap9hucopa8rhnn4gbo7.apps.googleusercontent.com -->
 <!-- 587344456746-qits6jitnj2npb8l5o1obpslf4j3536p.apps.googleusercontent.com  -->
 <!--   -->
+<style>
+	.login{
+		background-color: var(--bg-color-lightBlue-2);
+		border-radius: calc(var(--strong-radius)*2);
+		box-shadow: var(--bigger-shadow);
+		position: relative;
+		top: calc(var(--super-space)*(-2));
+		width: 30%;
+
+	}
+	.login ul {
+		display: flex;
+		flex-wrap: wrap;
+		align-content: space-around;
+		width: 100%;
+		padding: 5% 5%;
+
+		/* padding: var(--large-space) calc(var(--large-space)*3); */
+	}
+	.login ul>li {
+		width: 26%;
+		color: var(--ct-color-gray-dark);
+		font-size: var(--medium-font-size-1);
+		padding: 2%;
+
+	}
+	.button {
+		width: 40%;
+		height: 10%;
+		border: none;
+		border-radius: var(--strong-radius);
+		background-color: var(--main-color);
+		color: var(--main-bg-color);
+		font-size: var(--large-font-size-3);
+		text-align: center;
+		margin-top: var(--medium-space);
+
+	}
+	.login_wrap {
+		margin: 0 auto;
+		height: 30%;
+		text-align: center;
+	}
+	h1 {
+		font-size: 30px;
+	}
+	.inner_content{
+		padding-top: 10%;
+	}
+
+
+
+</style>
+
 
 <div class="top">
 	<div>
 		<div class="main_title">On The Way</div>
-		지금 당신이 향해야 할 곳은 바로 여기
+		답답한 일상을 벗어나고 싶은데 어디로 갈지 모르겠다면?
+		<h3>온 더 웨이와 함께하는 일상탈출</h3>
 	</div>
 </div>
-<section class="search">
+<section class="login">
 	<!-- SEARCH FORM -->
-
-		<ul>
-			<!-- 	<li>
-                        <div class="search__title">여행 방법</div>
-                        <input type="radio" name="tripPlan" id="roundTrip" value="rountTrip" checked>
-                        <label for="roundTrip">왕복</label>&nbsp;&nbsp;&nbsp;
-                        <input type="radio" name="tripPlan" id="oneWay" value="oneWay">
-                        <label for="oneWay">편도</label>
-                </li> -->
+<div class="login_wrap">
+<div class="inner_content">
+			<h1>소셜로그인</h1>
+			<br>
 
 
 
 
 
-			<!-- 	<li>
-                    <div class="search__title">이동수단</div>
-                    <select class="input__box" id="transfort" >
-                        <option value="">-</option>
-                        <option value="train">기차</option>
-                        <option value="car">차량</option>
-                        <option value="bus">버스</option>
-                        <option value="walk">도보</option>
-                    </select>
-                </li>
+			<button class="button" name="button" onclick="location.href='/auth/google' ">Google</button>
 
-                <li>
-                    <div class="search__title">이동거리</div>
-                    <select class="input__box" id="distance" >
-                        <option value="">-</option>
-                        <option value="range_1">10Km ~ 30Km</option>
-                        <option value="range_1">30Km ~ 100Km</option>
-                        <option value="range_1">100Km ~ 200Km</option>
-                        <option value="range_1">200Km ~ 300Km</option>
-                        <option value="range_1">300Km ~ 400Km</option>
-                        <option value="range_1">400Km ~ </option>
-                    </select>
-                </li> -->
-
-			<li>
-				<button class="button" name="button" onclick="location.href='/auth/google' ">버튼</button>
-			</li>
-		</ul>
-
-
-
-	<input type="button" value="API에서 축제, 관광지 데이터 가져오기 임시버튼" class="aasz">
+</div>
+</div>
 </section>
