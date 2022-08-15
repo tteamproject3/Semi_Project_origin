@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.AdminBoardService;
-import com.campus.myapp.vo.BoardVO;
 import com.campus.myapp.vo.PagingVO;
 
 
@@ -157,29 +156,29 @@ public class AdminController {
 	// }
 
 	//테마 여행 글 삭제
-	 @GetMapping("boardDel")
-	 public ModelAndView boardDel(int no,HttpSession session) {
-	 	int cnt = service.boardDel(no, (String) session.getAttribute("logId"));
-	 	mav= new ModelAndView();
-	 	if(cnt>0) {
-	 		mav.setViewName("redirect:themeList");
-	 	}else {
-	 		mav.setViewName("redirect:themeView");
-	 	}
-		
-	 	return mav;
-	 }
+//	 @GetMapping("boardDel")
+//	 public ModelAndView boardDel(int no,HttpSession session) {
+//	 	int cnt = service.boardDel(no, (String) session.getAttribute("logId"));
+//	 	mav= new ModelAndView();
+//	 	if(cnt>0) {
+//	 		mav.setViewName("redirect:themeList");
+//	 	}else {
+//	 		mav.setViewName("redirect:themeView");
+//	 	}
+//		
+//	 	return mav;
+//	 }
 
 	// //테마 여행 글 여러개 삭제
-	@PostMapping("multiDel")
-	public ModelAndView multiDel(BoardVO vo) {
-		
-		int cnt = service.boardMultiDel(vo);
-		System.out.println("삭제된 게시글 수:"+cnt);
-			
-		mav=new ModelAndView();
-		mav.setViewName("redirect:themeView");
-			
-		return mav;
-	}
+//	@PostMapping("multiDel")
+//	public ModelAndView multiDel(BoardVO vo) {
+//		
+//		int cnt = service.boardMultiDel(vo);
+//		System.out.println("삭제된 게시글 수:"+cnt);
+//			
+//		mav=new ModelAndView();
+//		mav.setViewName("redirect:themeView");
+//			
+//		return mav;
+//	}
 }

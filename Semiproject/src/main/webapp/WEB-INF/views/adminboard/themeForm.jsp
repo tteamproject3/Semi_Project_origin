@@ -30,9 +30,9 @@
 	<form method = "post" action="/adminboard/themeFormOk" id = "boardFrm">
 	<ul>
 		<li>제목</li>
-		<li><input type = "text" name="subject" id = "subject" style="width:800px"/></li>
+		<li><input type = "text" name="subject" id = "subject" style="width:100%"/></li>
 		<li>사이드 제목 </li>
-		<li><input type = "text" style="width:800px"/></li>
+		<li><input type = "text" style="width:100%"/></li>
 		<li>글내용</li>
 		<li><textarea name = "content" id = "content"></textarea></li>
 		<li><input type = "submit" value = "글등록"/></li>
