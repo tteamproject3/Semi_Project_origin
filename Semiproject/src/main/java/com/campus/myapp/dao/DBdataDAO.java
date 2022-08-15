@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.campus.myapp.vo.FestivalVO;
 import com.campus.myapp.vo.TourVO;
@@ -19,4 +20,5 @@ public interface DBdataDAO {
 	public void updateTDB();
 	public List<TourVO> GmapGo();
 	public List<TourVO> getPdata(int num);
+	public List<TourVO> getLI(String la, String lon);
 }

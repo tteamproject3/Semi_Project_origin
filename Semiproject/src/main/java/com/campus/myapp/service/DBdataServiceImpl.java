@@ -63,6 +63,12 @@ public class DBdataServiceImpl implements DBdataService {
 		return dao.getPdata(num);
 	}
 
+	@Override
+	public List<TourVO> getLI(String la, String lon) {
+		// TODO Auto-generated method stub
+		return dao.getLI(la,lon);
+	}
+
 
 
 

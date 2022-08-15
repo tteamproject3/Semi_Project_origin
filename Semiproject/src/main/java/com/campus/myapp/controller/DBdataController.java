@@ -304,4 +304,18 @@ public class DBdataController {
 		
 		return TVO;
 	}
+	
+	@GetMapping("/getLI")
+	public List<TourVO> getLI(@RequestParam(value="lat") String lat, @RequestParam(value="long") String lon) {
+		System.out.println(lon);
+		System.out.println(lat);
+		List<TourVO> TVO2 = service.getLI(lat, lon);
+		
+		//TVO.get(0).setTour_img(getImgUrl(TVO.get(0).getTour_id()));
+		//System.out.println(TVO.toString());
+		//TVO.get(0).getTour_id();
+		//getImgUrl(TVO.get(0).getTour_id());
+		
+		return TVO2;
+	}
 }

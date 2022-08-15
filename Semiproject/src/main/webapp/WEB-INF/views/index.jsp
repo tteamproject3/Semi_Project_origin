@@ -86,7 +86,9 @@
 						</li>
 					</ul>
 				</form>
-						
+
+				
+				<input type="button" value="바로 검색" id="mainSB">
 		</section>
 <!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
 	
@@ -133,16 +135,13 @@
 		</section> -->
 <!-- ---------------------googleMaps-------------------------  -->   
 		<section class="gmap_section">\
-			<!-- 	<div class="gmap_search">
-					<form>
-					</form>
-				</div> -->
+
 				<div id="googleMapView">
 				</div>
 		</section>
  <!-- ---------------------------------맞춤여행지-----------------------------------  --> 
  		    <div class="search_result_div1">
-	   			<div class="search_result_title">${user_nickname} 님을 위한 맞춤 여행지</div>
+	   			<div class="search_result_title">${log_NickName} 님을 위한 맞춤 여행지</div>
 	   			<hr class="search_result_hr">
   			</div>
  		<section class="search_result">
