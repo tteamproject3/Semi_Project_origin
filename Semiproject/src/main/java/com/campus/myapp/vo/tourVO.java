@@ -10,15 +10,7 @@ public class tourVO {
 	private String tour_lotnum_addr;
 	private String tour_lat;
 	private String tour_long;
-	private String tour_img;
 
-	
-	public String getTour_img() {
-		return tour_img;
-	}
-	public void setTour_img(String tour_img) {
-		this.tour_img = tour_img;
-	}
 	public String getTour_id() {
 		return tour_id;
 	}

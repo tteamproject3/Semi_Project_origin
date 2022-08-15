@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-
+import java.util.List;
 import java.io.BufferedReader;
 
 import org.json.simple.JSONArray;
@@ -239,32 +239,38 @@ public class DBdataController {
 			do {
 				do {
 					obj1 = (JSONObject) parse1.parse(resultString);
-					System.out.println("01" + obj1);
+					//System.out.println("01" + obj1);
 					JSONArray parse_items1 = (JSONArray) obj1.get("items");
-					System.out.println("1" + parse_items1);
+					//System.out.println("1" + parse_items1);
 					parse_body1 = (JSONObject) parse_items1.get(i);
-					System.out.println("2" + parse_body1);
+					//System.out.println("2" + parse_body1);
 					if (parse_body1.get("pagemap") == null) {
 						i++;
 					}
 				} while (parse_body1.get("pagemap") == null);
 				parse2 = (JSONObject) parse_body1.get("pagemap");
-				System.out.println("3" + parse2);
+				//System.out.println("3" + parse2);
 				if (parse2.get("cse_image") == null) {
 					i++;
 				}
 			} while (parse2.get("cse_image") == null);
 			parse3 = (JSONArray) parse2.get("cse_image");
-			System.out.println("4" + parse3);
+			//System.out.println("4" + parse3);
 			JSONObject parse4 = (JSONObject) parse3.get(0);
-			System.out.println("5" + parse4);
-			System.out.println("6" + parse4.get("src"));
+			//System.out.println("5" + parse4);
+			//System.out.println("6" + parse4.get("src"));
 			a = parse4.get("src").toString();
-			System.out.println(i);
+			//System.out.println(i);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		return a;
 	}
+	
+	@GetMapping("/gmapGo")
+	public List<tourVO> gmapGo() {
+		return service.GmapGo();
+	}
+	
 
 }

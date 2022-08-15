@@ -279,20 +279,62 @@ function categoryChange(e) {
 }
 
 //googlemaps --------------------------------------------------------------------------------------
+	$.ajax({
+		url: "/DBdata/gmapGo",
+		success: function(data){
+			console.log(data);
+			console.log(data[1].tour_id);
+		},error:function(){
+			console.log("가져오기 실패")
+		}
+    });
 var map;
-var latitude = 37.5729503;
-var longitude = 126.9793578;			
-var lat = [37.562685,37.462685,37.7862685];
-var log = [126.8793578,126.8393578,126.8893578];
+var latitude = 37.5642135;
+var longitude = 127.0016985;			
 function initMap() {
 	var myCenter = new google.maps.LatLng(latitude, longitude)
 	var mapProperty = {
 		center : myCenter,
 		zoom : 10,
-		mapTypeId : google.maps.MapTypeId.ROADMAP
+		mapTypeId : google.maps.MapTypeId.roadmap
+		/*
+		roadmap displays the default road map view. This is the default map type.
+		satellite displays Google Earth satellite images.
+		hybrid displays a mixture of normal and satellite views.
+		terrain displays a physical map based on terrain information.
+		*/
 	};
 	var map = new google.maps.Map(document
 	.getElementById('googleMapView'), mapProperty);
+	
+	var lat = "";
+	var long = "";
+	var i = 0;
+	console.log(11);
+	$.ajax({
+		url: "/DBdata/gmapGo",
+		success: function(data){
+			console.log(data[1].tour_id);
+			console.log(data.length);
+			console.log(data[1].tour_lat);
+			for(i;i<data.length;i++){
+			lat= data[i].tour_lat;
+			long = data[i].tour_long;
+			var latlong = new google.maps.LatLng(data[i].tour_lat,data[i].tour_long)
+
+			var marker = new google.maps.Marker({
+				position: latlong,
+				map:map,
+				title:data[i].tour_id,
+			})
+	}
+		},error:function(){
+			console.log("가져오기 실패")
+		}
+    });
+	
+	
+
 }
 // 사용자 위치정보 가져오기-----------------------------------------------------------------------------------
 //[ajax] Google Maps API는 AJAX를 사용할 때만 “Uncaught ReferenceError : google is not defined” 구글맵 첫 실행시 안나오는 오류 수정해야함
@@ -336,5 +378,5 @@ $(function () {
 	        }
     });
     });
- });
+});
 //---------------------------------------------------------------------------------------------

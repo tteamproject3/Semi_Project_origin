@@ -12,4 +12,5 @@ public interface DBdataService {
 	public void deleteTDB();
 	public void updateFDB();
 	public void updateTDB();
+	public List<tourVO> GmapGo();
 }

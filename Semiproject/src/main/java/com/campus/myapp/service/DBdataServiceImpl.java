@@ -3,9 +3,7 @@ package com.campus.myapp.service;
 import java.util.List;
 
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
-
 import com.campus.myapp.dao.DBdataDAO;
 import com.campus.myapp.vo.FestivalVO;
 import com.campus.myapp.vo.tourVO;
@@ -51,6 +49,12 @@ public class DBdataServiceImpl implements DBdataService {
 	public void updateTDB() {
 		// TODO Auto-generated method stub
 		dao.updateTDB();
+	}
+
+	@Override
+	public List<tourVO> GmapGo() {
+		// TODO Auto-generated method stub
+		return dao.GmapGo();
 	}
 
 
