@@ -87,7 +87,7 @@
 					</ul>
 				</form>
 				
-				
+				<input type="button" value="바로 검색" id="mainSB">
 				<input type="button" value="API에서 축제, 관광지 데이터 가져오기 임시버튼" class="aasz">
 		</section>
 <!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
@@ -134,7 +134,7 @@
    			</div>
 		</section> -->
 <!-- ---------------------googleMaps-------------------------  -->   
-		<section class="gmap_section">\
+		<section class="gmap_section">
 						<div class="gmap_search">
 					<form>
 					</form>
