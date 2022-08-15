@@ -37,6 +37,7 @@ public class UserboardController {
 		mav = new ModelAndView();
 		
 		//페이지세팅
+		System.out.println(pVO.getSearchType());
 		pVO.setTotalRecord(service.totalRecord(pVO));
 		//포스트 리스트
 		mav.addObject("list", service.boardList(pVO));
@@ -68,6 +69,8 @@ public class UserboardController {
 		mav.setViewName("/userboard/boardForm");
 		return mav;
 	}
+	
+	
 	@GetMapping("boardFormNotice")
 	public ResponseEntity<String> boardFormNotice(HttpSession session) {
 		
@@ -184,9 +187,9 @@ public class UserboardController {
 	
 	@PostMapping("multiDel")
 	public ModelAndView multiDel(PostVO vo) {
-		System.out.println(vo.getNoList().toString());
+		//System.out.println(vo.getNoList().toString());
 		int cnt = service.boardMultiDel(vo);
-		System.out.println(cnt);
+		//System.out.println(cnt);
 		
 		mav = new ModelAndView();
 		mav.setViewName("redirect:boardList");

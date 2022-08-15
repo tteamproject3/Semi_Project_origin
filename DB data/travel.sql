@@ -2,9 +2,26 @@ use travel;
 show tables;
 
 desc post;
+desc festival;
+
+ALTER TABLE post MODIFY COLUMN post_file1 varchar(300);
+update post set post_type = 'theme' where post_type ='thema' ;
 select * from post;
-
-
+ 		select 
+ 		post_id, 
+ 		google_id, 
+ 		post_title, 
+        post_type,
+ 		post_intro, 
+		post_content, 
+		post_hit, 
+		date_format(post_registration_date,'%m-%d %h:%i') post_registration_date, post_file1
+		from post
+		where post_type like 'theme'
+        limit 12  offset 0;
+        
+        
+select * from comment;
 
 -- reset하기 
 SET foreign_key_checks = 0;
