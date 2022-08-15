@@ -452,27 +452,27 @@ $(function () {
 	getLocation();
 	});
     $(".aasz").click(function () {
-							$.ajax({
-							url: "/DBdata/getImgUrl",
-							data: {abc : data[i].tour_id},
-							success: function(aa){
-								img = aa;
-							},error:function(aaa){
-								console.log("가져오기 실패")
-								console.log(aaa)
-							}
-						});
-	//$.ajax({
-	//    url: "/DBdata/dataInsert",
-	//    success: function(data){
-	//        if (data == "true") {
-	//    	    alert('API에서 데이터 가져오기 성공');
-	//        }
-	//        else {
-	//			alert('API에서 데이터 가져오기 실패');
-	//	    } 
-	//        }
-   // });
+							//$.ajax({
+							//url: "/DBdata/getImgUrl",
+							//data: {abc : data[i].tour_id},
+							//success: function(aa){
+							//	img = aa;
+							//},error:function(aaa){
+							//	console.log("가져오기 실패")
+							//	console.log(aaa)
+							//}
+						//});
+	$.ajax({
+	    url: "/DBdata/dataInsert",
+	    success: function(data){
+	        if (data == "true") {
+	    	    alert('API에서 데이터 가져오기 성공');
+	        }
+	        else {
+				alert('API에서 데이터 가져오기 실패');
+		    } 
+	        }
+    });
    
     });
 });
