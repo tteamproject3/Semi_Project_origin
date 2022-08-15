@@ -144,7 +144,7 @@
 	   			<hr class="search_result_hr">
   			</div>
   			<div class="touristSpot">
-	  			<div class="touristSpot_img">img파일 어디서구하지?</div>
+	  			<div class="touristSpot_img"><img src="https:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/e\/ef\/Goseokjeong%2C_a_natural_tower_of_granite_rock%2C_at_Hantan_River.jpg\/1200px-Goseokjeong%2C_a_natural_tower_of_granite_rock%2C_at_Hantan_River.jpg"></div>
 	  			<!-- 이미지파일을 구하는 방법을 정하면 그때가서 동그라미로 자르기 -->
 	  			<div class="touristSpot_div">
 		  			<div class="touristSpot_subject">은평역사한옥박물관</div>
