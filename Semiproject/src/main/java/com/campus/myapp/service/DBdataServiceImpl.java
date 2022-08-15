@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.campus.myapp.dao.DBdataDAO;
 import com.campus.myapp.vo.FestivalVO;
-import com.campus.myapp.vo.TourVO;
+import com.campus.myapp.vo.tourVO;
 
 
 @Service
@@ -22,7 +22,7 @@ public class DBdataServiceImpl implements DBdataService {
 	}
 
 	@Override
-	public void inputdataT(TourVO tVO) {
+	public void inputdataT(tourVO tVO) {
 		// TODO Auto-generated method stub
 		dao.inputdataT(tVO);
 	}
@@ -52,19 +52,19 @@ public class DBdataServiceImpl implements DBdataService {
 	}
 
 	@Override
-	public List<TourVO> GmapGo() {
+	public List<tourVO> GmapGo() {
 		// TODO Auto-generated method stub
 		return dao.GmapGo();
 	}
 
 	@Override
-	public List<TourVO> getPdata(int num) {
+	public List<tourVO> getPdata(int num) {
 		// TODO Auto-generated method stub
 		return dao.getPdata(num);
 	}
 
 	@Override
-	public List<TourVO> getLI(String la, String lon) {
+	public List<tourVO> getLI(String la, String lon) {
 		// TODO Auto-generated method stub
 		return dao.getLI(la,lon);
 	}

@@ -7,18 +7,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.campus.myapp.vo.FestivalVO;
-import com.campus.myapp.vo.TourVO;
+import com.campus.myapp.vo.tourVO;
 
 @Mapper
 @Repository
 public interface DBdataDAO {
 	public void inputdata(FestivalVO fVO);
-	public void inputdataT(TourVO tVO);
+	public void inputdataT(tourVO tVO);
 	public void deleteFDB();
 	public void deleteTDB();
 	public void updateFDB();
 	public void updateTDB();
-	public List<TourVO> GmapGo();
-	public List<TourVO> getPdata(int num);
-	public List<TourVO> getLI(String la, String lon);
+	public List<tourVO> GmapGo();
+	public List<tourVO> getPdata(int num);
+	public List<tourVO> getLI(String la, String lon);
 }

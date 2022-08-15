@@ -6,12 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.campus.myapp.vo.PagingVO;
-import com.campus.myapp.vo.TourVO;
+import com.campus.myapp.vo.tourVO;
 
 @Mapper
 @Repository
 public interface TourDAO {
 
-	public List<TourVO> getList(PagingVO pVO);
+	public List<tourVO> getList(PagingVO pVO);
 	public int totalRecord(PagingVO pVO);
 }

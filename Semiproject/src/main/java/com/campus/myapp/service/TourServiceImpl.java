@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.TourDAO;
 import com.campus.myapp.vo.PagingVO;
-import com.campus.myapp.vo.TourVO;
+import com.campus.myapp.vo.tourVO;
 
 @Service
 public class TourServiceImpl implements TourService {
@@ -17,7 +17,7 @@ public class TourServiceImpl implements TourService {
 	TourDAO dao;
 	
 	@Override
-	public List<TourVO> getList(PagingVO pVO) {
+	public List<tourVO> getList(PagingVO pVO) {
 		return dao.getList(pVO);
 	}
 
