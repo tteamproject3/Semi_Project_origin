@@ -302,7 +302,7 @@ success: function(data) {
 						appenddiv += "</div>";
 						appenddiv += "</div>";
 						appenddiv += "<br/>";
-						$('.search_result').prepend(appenddiv)
+						$('.search_result').append(appenddiv)
 
 
 					}, error: function(aaa) {
@@ -404,7 +404,7 @@ success: function(data) {
 								appenddiv += "</div>";
 								appenddiv += "</div>";
 								appenddiv += "<br/>";
-								$('.search_result').prepend(appenddiv)
+								$('.search_result').append(appenddiv)
 
 
 							}, error: function(aaa) {
@@ -511,7 +511,7 @@ $(function() {
 
 				appenddiv += "</div>";
 				appenddiv += "<br/>";
-				$('.gmap_search').prepend(appenddiv)
+				$('.gmap_search').append(appenddiv)
 				});
 				$('.abcde').click(function() {
 				console.log(1234);
@@ -531,7 +531,7 @@ $(function() {
 				c = $(this).children().last().prev().html();
 				d = $(this).children().last().html();
 				console.log(c+d)
-				initMap2(c,d,15)
+				initMap2(c,d,13)
 
 				});
 			}, error: function(aaa) {
@@ -566,7 +566,7 @@ $(function() {
 
 				appenddiv2 += "</div>";
 				appenddiv2 += "<br/>";
-				$('.gmap_search').prepend(appenddiv2)
+				$('.gmap_search').append(appenddiv2)
 				});
 				$('.abcde').click(function() {
 				console.log(1234);
