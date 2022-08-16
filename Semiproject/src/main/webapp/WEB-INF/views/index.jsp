@@ -8,7 +8,7 @@
 		</div>
     <section class="search">
 				<!-- SEARCH FORM -->
-				<form method="get" action="DBdata/festData" >
+				<form id="form12">
 					<ul>
 					<!-- 	<li>
 								<div class="search__title">여행 방법</div>
@@ -23,24 +23,24 @@
 								<div class="search__title">현재 위치</div>
 							</label>
 							<div class="input__wrapper">
-								<select name="" class="search_box_1" onchange="categoryChange(this)">
+								<select name="" class="search_box_1" id="se1">
 					              <option value>시/도 선택</option>
-					              <option value="general01">강원</option>
-					              <option value="general02">경기</option>
-					              <option value="general03">경남</option>
-					              <option value="general04">경북</option>
-					              <option value="general05">광주</option>
-					              <option value="general06">대구</option>
-					              <option value="general07">대전</option>
-					              <option value="general08">부산</option>
-					              <option value="general09">서울</option>
-					              <option value="general10">울산</option>
-					              <option value="general11">인천</option>
-					              <option value="general12">전남</option>
-					              <option value="general13">전북</option>
-					              <option value="general14">제주</option>
-					              <option value="general15">충남</option>
-					              <option value="general16">충북</option>
+					              <option value="37.8603672A128.3115261">강원</option>
+					              <option value="37.4363177A127.550802">경기</option>
+					              <option value="35.4414209A128.2417453">경남</option>
+					              <option value="36.6308397A128.962578">경북</option>
+					              <option value="35.160032A126.851338">광주</option>
+					              <option value="35.87139A128.601763">대구</option>
+					              <option value="36.3504396A127.3849508">대전</option>
+					              <option value="35.179816A129.0750223">부산</option>
+					              <option value="37.5666103A126.9783882">서울</option>
+					              <option value="35.5394773A129.3112994">울산</option>
+					              <option value="37.4559418A126.7051505">인천</option>
+					              <option value="34.9007274A126.9571667">전남</option>
+					              <option value="35.6910153A127.2368291">전북</option>
+					              <option value="33.4273366A126.5758344">제주</option>
+					              <option value="36.6173379A126.8453965">충남</option>
+					              <option value="36.7853718A127.6551404">충북</option>
 					            </select>
 								<div>
 									<i class="fa-solid fa-location-crosshairs" id="GPS"></i> <!-- 사용자 위치 받아오는 버튼 -->
@@ -82,7 +82,7 @@
 						</li> -->
 
 						<li>
-							<input type="submit" value="바로 검색" class="button">
+							<input type="button" value="바로 검색" class="button">
 						</li>
 					</ul>
 				</form>

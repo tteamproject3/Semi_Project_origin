@@ -352,12 +352,14 @@ public class DBdataController {
 	}
 	
 	@GetMapping("/getLI2")
-	public List<FestivalVO> getLI2(@RequestParam(value="lat") String lat, @RequestParam(value="long") String lon, @RequestParam(value="a")String a,@RequestParam(value="b") String b) {
+	public List<FestivalVO> getLI2(@RequestParam(value="lat") String lat, @RequestParam(value="long") String lon, @RequestParam(value="abc")String va,@RequestParam(value="bb") String b) {
 		System.out.println(lon);
 		System.out.println(lat);
-		System.out.println(a);
+		System.out.println(1941);
+		System.out.println(va);
 		System.out.println(b);
-		List<FestivalVO> TVO3 = service.getLI2(lat, lon, a, b);
+		System.out.println(1941);
+		List<FestivalVO> TVO3 = service.getLI2(lat, lon, va, b);
 		System.out.println(TVO3.toString());
 		//TVO.get(0).setTour_img(getImgUrl(TVO.get(0).getTour_id()));
 		//System.out.println(TVO.toString());
