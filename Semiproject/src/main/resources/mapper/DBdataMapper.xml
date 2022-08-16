@@ -95,4 +95,45 @@
 -radians(${param2}))+sin(radians(${param1}))*sin(radians(tour_lat))))
 AS tour_distance FROM touristSpot HAVING tour_distance &lt; 1000 ORDER BY tour_distance asc LIMIT 0 , 7
 	</select>
+	<select id="gmapGo2" resultType="FestivalVO">
+		select
+		festival_num,
+		festival_id,
+		festival_place ,
+		festival_start_date ,
+		festival_end_date ,
+		festival_content,
+		festival_phonenum,
+		festival_site,
+		festival_road_name_addr,
+		festival_lotnum_addr,
+		festival_lat,
+		festival_long
+		from festival
+		where festival_start_date BETWEEN #{param1} AND #{param2} or festival_end_date  BETWEEN #{param1} AND #{param2};
+	</select>
+	<select id="getPdata2" resultType="FestivalVO">
+		select
+		festival_num,
+		festival_id,
+		festival_place ,
+		festival_start_date ,
+		festival_end_date ,
+		festival_content,
+		festival_phonenum,
+		festival_site,
+		festival_road_name_addr,
+		festival_lotnum_addr,
+		festival_lat,
+		festival_long
+		from festival
+		where festival_num = ${param1} 
+	</select>
+	
+		<select id="getLI2" resultType="FestivalVO">
+	select festival_num, festival_id, festival_lat, festival_long, festival_start_date ,festival_end_date,(6371*acos(cos(radians(${param1}))*cos(radians(festival_lat))*cos(radians(festival_long)
+-radians(${param2}))+sin(radians(${param1}))*sin(radians(festival_lat))))
+AS festival_distance FROM festival HAVING festival_distance &lt; 1000 and festival_start_date BETWEEN #{param3} AND #{param4} or festival_end_date  BETWEEN #{param3} AND #{param4}
+ ORDER BY festival_distance asc LIMIT 0 , 7
+	</select>
 </mapper>
