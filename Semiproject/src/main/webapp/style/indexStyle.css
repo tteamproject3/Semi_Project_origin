@@ -586,6 +586,7 @@ i{
 	background: #F2F2F2 0% 0% no-repeat padding-box;
 	box-shadow: var(--bigger-shadow) ;
 	border-radius: 20px;
+
 	overflow:scroll;
 }
 .gmap_search .abcde{
@@ -602,6 +603,7 @@ i{
  }
 .gmap_search .abcde:last-child{
 	border:none;
+
 }
 #googleMapView{
 	width: 73%;
@@ -614,7 +616,9 @@ i{
 .search_result{
 	flex-direction: column;
 	display: flex;
+
 	margin-bottom: var(--large-space);
+
 }
 .search_result_div1{
 	display: flex;
@@ -622,6 +626,7 @@ i{
 	margin:auto;
 	width: 80%;
 	height: 200px;
+	
 }
 .search_result_title{
 	width: 80%;
@@ -683,6 +688,7 @@ i{
 	height:150px;
 	text-align: left;
 	font-size:var(--medium-font-size-3);
+	overflow: hidden;
 }
 .touristSpot_fav{
 	width:30px;
