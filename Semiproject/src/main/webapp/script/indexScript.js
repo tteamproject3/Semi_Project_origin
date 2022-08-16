@@ -426,7 +426,7 @@ $(function() {
 				aa.forEach(function (el, index){
 				var appenddiv = "<div class='abcde'>";
 				appenddiv += "관광지명 : "+el.tour_id+"<br/>";
-				appenddiv += "거리 : "+el.tour_distance;
+				appenddiv += "거리 : "+Number(el.tour_distance).toFixed(2)+"KM";
 				appenddiv += "</div>";
 				appenddiv += "<br/>";
 				$('.gmap_search').append(appenddiv)
