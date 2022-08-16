@@ -493,6 +493,7 @@ $(function() {
 });
 $(function() {
 	$('#mainSB').click(function() {
+		$('.gmap_search').empty();
 		console.log(11);
 		$.ajax({
 			url: "/DBdata/getLI",
@@ -543,6 +544,7 @@ $(function() {
 	});
 	$(function() {
 	$('#mainSB2').click(function() {
+		$('.gmap_search').empty();
 		console.log(11);
 		$.ajax({
 			url: "/DBdata/getLI2",
