@@ -12,7 +12,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1/travel?characterEncoding=utf-8
     username: root
-    password: root1234
+    password: akflfls8dfh115!
         
 mybatis:
   type-aliases-package: com.campus.myapp.vo
