@@ -16,7 +16,7 @@
 							</label>
 							<div class="input__wrapper">
 								<select name="" class="search_box_1" id="se1">
-					              <option value>시/도 선택</option>
+					              <option value="37.5666103A126.9783882">서울</option>
 					              <option value="37.8603672A128.3115261">강원</option>
 					              <option value="37.4363177A127.550802">경기</option>
 					              <option value="35.4414209A128.2417453">경남</option>
@@ -25,7 +25,6 @@
 					              <option value="35.87139A128.601763">대구</option>
 					              <option value="36.3504396A127.3849508">대전</option>
 					              <option value="35.179816A129.0750223">부산</option>
-					              <option value="37.5666103A126.9783882">서울</option>
 					              <option value="35.5394773A129.3112994">울산</option>
 					              <option value="37.4559418A126.7051505">인천</option>
 					              <option value="34.9007274A126.9571667">전남</option>
