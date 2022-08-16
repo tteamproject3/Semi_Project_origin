@@ -566,18 +566,19 @@ i{
 	top: -70px;
 }
 .gmap_search{
-	width: 38%;
+	width: 25%;
 	height: 600px;
 	background: #F2F2F2 0% 0% no-repeat padding-box;
 	box-shadow: var(--bigger-shadow);
 	border-radius: 20px;
 }
 #googleMapView{
-	width: 100%;
+	width: 73%;
 	height: 600px;
 	box-shadow: var(--bigger-shadow);
 	border-radius: 20px;
 }
+
 /* ---------------------------------맞춤여행지----------------------------------- */
 .search_result{
 	flex-direction: column;

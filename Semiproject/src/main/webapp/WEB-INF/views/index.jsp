@@ -134,7 +134,9 @@
    			</div>
 		</section> -->
 <!-- ---------------------googleMaps-------------------------  -->   
-		<section class="gmap_section">\
+		<section class="gmap_section">
+				<div class="gmap_search">
+				</div>
 
 				<div id="googleMapView">
 				</div>
