@@ -557,7 +557,7 @@ $(function() {
 				console.log(aa);
 				aa.forEach(function (el, index){
 				var appenddiv2 = "<div class='abcde'>";
-				appenddiv2 += "축제명 : "+el.tour_id+"<br/>";
+				appenddiv2 += "축제명 : "+el.festival_id+"<br/>";
 				appenddiv2 += "거리 : "+Number(el.festival_distance).toFixed(2)+"KM<br/>";
 				appenddiv2 += "축제기간 : "+el.festival_start_date+"~"+el.festival_end_date;
 				appenddiv2 += "</div>";
