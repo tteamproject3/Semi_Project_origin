@@ -362,6 +362,110 @@ function initMap() {
 			console.log("가져오기 실패")
 		}
 	});
+	var i =0;
+		$.ajax({
+		url: "/DBdata/gmapGo2",
+		success: function(data) {
+			console.log(data[1].festival_id);
+			console.log(data.length);
+			console.log(data[1].festival_lat);
+			for (i; i < data.length; i++) {
+				lat = data[i].festival_lat;
+				long = data[i].festival_long;
+				var latlong = new google.maps.LatLng(data[i].festival_lat, data[i].festival_long)
+				var infowindow = new google.maps.InfoWindow();
+				var marker = new google.maps.Marker({
+					icon : '../../img/festival-logo (1).png',
+					position: latlong,
+					map: map,
+					title: "" + data[i].festival_num,
+					
+				})
+				google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					return function() {
+						//abc= data[i].tour_id;
+						//$.ajax({
+						//	url: "/DBdata/getImgUrl",
+						//	data: {name : data[i].tour_id},
+						//	success: function(aa){
+						//		img = aa;
+						//	},error:function(aaa){
+						//		console.log("가져오기 실패")
+						//		console.log(aaa)
+						//	}
+						//});
+						console.log(data[i].festival_id);
+						MSG = "관광지명 : " + data[i].festival_id + "<hr/>";
+						MSG += "관광지 정보 : " + data[i].festival_content + "<br/>";
+						//MSG += "주소 : "+data[i].tour_road_name_addr+"<br/>";
+						//MSG += "<li><img src='"+img+"'width'150' height'150'/></li>";
+						//html로 표시될 인포 윈도우의 내용
+						var infowindow = new google.maps.InfoWindow({ content: MSG });
+						//인포윈도우가 표시될 위치
+						infowindow.open(map, marker);
+					}
+				})(marker, i));
+				var data3 = [];
+				if (marker) {
+					marker.addListener('click', function() {
+						//중심 위치를 클릭된 마커의 위치로 변경
+						map.setCenter(this.getPosition());
+						//마커 클릭 시의 줌 변화
+						map.setZoom(14);
+						console.log(99);
+						console.log(this.title);
+						console.log(this);
+
+						$.ajax({
+							url: "/DBdata/getPdata2",
+							data: { num: this.title },
+							success: function(data2) {
+								console.log(data2)
+								data3 = data2;
+								//User-Agent
+								var appenddiv = "<div class='touristSpot'>";
+								appenddiv += "<div class='touristSpot_img'><img src='" + data3[0].festival_img + "'style='width\"300\" height\"300\"/'></div>";
+								appenddiv += "<div class='touristSpot_div'>"
+								appenddiv += "<div class='touristSpot_subject'>" + data3[0].festival_id + "</div>";
+								appenddiv += "<br/>";
+								appenddiv += "<spen>축제 소개<br/></spen>";
+								appenddiv += "<div class='touristSpot_content'>" + data3[0].festival_content + "</div>";
+								appenddiv += "<div class='touristSpot_tel'>축제 주소: " + data3[0].festival_road_name_addr + "</div>";
+								appenddiv += "<div class='touristSpot_tel'>축제 관리기관 전화번호: " + data3[0].festival_phonenum + "</div>";
+								appenddiv += "<div class='touristSpot_div2'>";
+								appenddiv += "<div class='touristSpot_parking'>축제 기간: " + data3[0].festival_start_date+"~"+data3[0].festival_end_date+"</div>";
+								appenddiv += "<div class='touristSpot_raiting'> &nbsp; &nbsp;";
+								appenddiv += "<input class='touristSpot_fav' type='button' value='❤'/></div>";
+								appenddiv += "</div>";
+								appenddiv += "</div>";
+								appenddiv += "</div>";
+								appenddiv += "<br/>";
+								$('.search_result').prepend(appenddiv)
+
+
+							}, error: function(aaa) {
+								console.log("가져오기 실패")
+								console.log(aaa)
+							}
+						});
+						console.log(this);
+
+					});
+				}
+
+
+
+
+				//var info = new google.maps.InfoWindow({content:data[i].tour_id});
+				//google.maps.event.addListener(marker, 'mouseover', function(){
+				//	info.open(map, marker);
+				//})
+
+			}
+		}, error: function() {
+			console.log("가져오기 실패")
+		}
+	});
 
 
 
@@ -439,6 +543,35 @@ $(function() {
 				appenddiv += "</div>";
 				appenddiv += "<br/>";
 				$('.gmap_search').append(appenddiv)
+				});
+			}, error: function(aaa) {
+				console.log("가져오기 실패")
+				console.log(aaa)
+			}
+		});
+	});
+	});
+	$(function() {
+	$('#mainSB2').click(function() {
+		console.log(11);
+		var li = [37.5642135, 127.0016985];
+		$.ajax({
+			url: "/DBdata/getLI2",
+			data: {lat: 37.5642135,
+					long: 127.0016985,
+					a :"2022-08-16" ,
+					b:"2022-08-19"},
+			success: function(aa) {
+				console.log("bbbb");
+				console.log(aa);
+				aa.forEach(function (el, index){
+				var appenddiv2 = "<div class='abcde'>";
+				appenddiv2 += "축제명 : "+el.tour_id+"<br/>";
+				appenddiv2 += "거리 : "+Number(el.festival_distance).toFixed(2)+"KM<br/>";
+				appenddiv2 += "축제기간 : "+el.festival_start_date+"~"+el.festival_end_date;
+				appenddiv2 += "</div>";
+				appenddiv2 += "<br/>";
+				$('.gmap_search').append(appenddiv2)
 				});
 			}, error: function(aaa) {
 				console.log("가져오기 실패")

@@ -20,7 +20,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.io.BufferedReader;
 
@@ -204,6 +209,7 @@ public class DBdataController {
 	//public String getImgUrl(String name) {
 	public String getImgUrl(@RequestParam("name") String name) {
 		//String name = a;
+		System.out.println(name);
 		StringBuffer result1 = new StringBuffer();
 		String nameRp3 = name.replaceAll("\\s", "");
 		String nameRp2 = nameRp3.replaceAll("\\(", "");
@@ -317,5 +323,47 @@ public class DBdataController {
 		//getImgUrl(TVO.get(0).getTour_id());
 		
 		return TVO2;
+	}
+	@GetMapping("/gmapGo2")
+	public List<FestivalVO> gmapGo2() {
+		Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        DateFormat df = new SimpleDateFormat("yy-MM-dd");
+        System.out.println("current: " + df.format(cal.getTime()));
+        String a = df.format(cal.getTime());
+        System.out.println(a);
+        cal.add(Calendar.DATE, +30);
+        String b = df.format(cal.getTime());
+        System.out.println(a);
+        System.out.println(b);
+		return service.gmapGo2(a, b);
+	}
+	@GetMapping("/getPdata2")
+	public List<FestivalVO> getPdata2(@RequestParam("num") String num) {
+		System.out.println(num);
+		List<FestivalVO> TVO = service.getPdata2(Integer.parseInt(num));
+		System.out.println(TVO.toString());
+		TVO.get(0).setFestival_img(getImgUrl(TVO.get(0).getFestival_id()));
+		System.out.println(TVO.toString());
+		//TVO.get(0).getTour_id();
+		//getImgUrl(TVO.get(0).getTour_id());
+		
+		return TVO;
+	}
+	
+	@GetMapping("/getLI2")
+	public List<FestivalVO> getLI2(@RequestParam(value="lat") String lat, @RequestParam(value="long") String lon, @RequestParam(value="a")String a,@RequestParam(value="b") String b) {
+		System.out.println(lon);
+		System.out.println(lat);
+		System.out.println(a);
+		System.out.println(b);
+		List<FestivalVO> TVO3 = service.getLI2(lat, lon, a, b);
+		System.out.println(TVO3.toString());
+		//TVO.get(0).setTour_img(getImgUrl(TVO.get(0).getTour_id()));
+		//System.out.println(TVO.toString());
+		//TVO.get(0).getTour_id();
+		//getImgUrl(TVO.get(0).getTour_id());
+		
+		return TVO3;
 	}
 }

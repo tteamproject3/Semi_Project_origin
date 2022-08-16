@@ -69,7 +69,22 @@ public class DBdataServiceImpl implements DBdataService {
 		return dao.getLI(la,lon);
 	}
 
+	@Override
+	public List<FestivalVO> gmapGo2(String a, String b) {
+		// TODO Auto-generated method stub
+		return dao.gmapGo2(a,b);
+	}
+	@Override
+	public List<FestivalVO> getPdata2(int num) {
+		// TODO Auto-generated method stub
+		return dao.getPdata2(num);
+	}
 
+	@Override
+	public List<FestivalVO> getLI2(String la, String lon, String a, String b) {
+		// TODO Auto-generated method stub
+		return dao.getLI2(la,lon,a,b);
+	}
 
 
 

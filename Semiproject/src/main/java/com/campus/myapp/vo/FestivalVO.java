@@ -15,43 +15,27 @@ public class FestivalVO {
 	private String festival_lat;
 	private String festival_long;
 	private String festivalcol;
+	private String festival_distance;
+	private String festival_img;
+	
+	
 	
 	@Override
 	public String toString() {
-		return "FestivalVO [festival_id=" + festival_id + ", festival_place=" + festival_place
-				+ ", festival_start_date=" + festival_start_date + ", festival_end_date=" + festival_end_date
-				+ ", festival_content=" + festival_content + ", festival_phonenum=" + festival_phonenum
-				+ ", festival_site=" + festival_site + ", festival_road_name_addr=" + festival_road_name_addr
-				+ ", festival_lotnum_addr=" + festival_lotnum_addr + ", festival_lat=" + festival_lat
-				+ ", festival_long=" + festival_long + "]";
+		return "FestivalVO [festival_num=" + festival_num + ", festival_id=" + festival_id + ", festival_place="
+				+ festival_place + ", festival_start_date=" + festival_start_date + ", festival_end_date="
+				+ festival_end_date + ", festival_content=" + festival_content + ", festival_phonenum="
+				+ festival_phonenum + ", festival_site=" + festival_site + ", festival_road_name_addr="
+				+ festival_road_name_addr + ", festival_lotnum_addr=" + festival_lotnum_addr + ", festival_lat="
+				+ festival_lat + ", festival_long=" + festival_long + ", festivalcol=" + festivalcol
+				+ ", festival_distance=" + festival_distance + ", festival_img=" + festival_img + "]";
 	}
-	
-	
-	
 	public int getFestival_num() {
 		return festival_num;
 	}
-
-
-
 	public void setFestival_num(int festival_num) {
 		this.festival_num = festival_num;
 	}
-
-
-
-	public String getFestivalcol() {
-		return festivalcol;
-	}
-
-
-
-	public void setFestivalcol(String festivalcol) {
-		this.festivalcol = festivalcol;
-	}
-
-
-
 	public String getFestival_id() {
 		return festival_id;
 	}
@@ -118,6 +102,25 @@ public class FestivalVO {
 	public void setFestival_long(String festival_long) {
 		this.festival_long = festival_long;
 	}
+	public String getFestivalcol() {
+		return festivalcol;
+	}
+	public void setFestivalcol(String festivalcol) {
+		this.festivalcol = festivalcol;
+	}
+	public String getFestival_distance() {
+		return festival_distance;
+	}
+	public void setFestival_distance(String festival_distance) {
+		this.festival_distance = festival_distance;
+	}
+	public String getFestival_img() {
+		return festival_img;
+	}
+	public void setFestival_img(String festival_img) {
+		this.festival_img = festival_img;
+	}
+	
 	
 	
 }
