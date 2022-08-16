@@ -145,9 +145,10 @@ $(function() {
 $(document).ready()
 
 //select box------------------------------------------------------------------------------------------------------
-$(function() {
-	initMap();
-});
+function initMap() {
+	initMap2(37.5642135,127.0016985 ,13);
+};
+
 function categoryChange(e) {
 	const state = document.getElementById("search_box_2");
 
@@ -223,16 +224,17 @@ $.ajax({
 		console.log("가져오기 실패")
 	}
 });
-
-
+var zM=0;
+var c ="";
+var d = "";
 var map;
-var latitude = 37.5642135;
-var longitude = 127.0016985;
-function initMap() {
-	var myCenter = new google.maps.LatLng(latitude, longitude)
+var a = "";
+var b = "";
+function initMap2(a, b, c) {
+	var myCenter = new google.maps.LatLng(a, b)
 	var mapProperty = {
 		center: myCenter,
-		zoom: 13,
+		zoom: c,
 		mapTypeId: google.maps.MapTypeId.roadmap
 		/*
 		roadmap displays the default road map view. This is the default map type.
@@ -252,12 +254,118 @@ function initMap() {
 	var msg = "";
 	console.log(11);
 	$.ajax({
+url: "/DBdata/gmapGo2",
+success: function(data) {
+	console.log(data[1].festival_id);
+	console.log(data.length);
+	console.log(data[1].festival_lat);
+	console.log(1111111111111111111111111111111111111111);
+	for (i; i < data.length; i++) {
+		lat = data[i].festival_lat;
+		long = data[i].festival_long;
+		var latlong = new google.maps.LatLng(data[i].festival_lat, data[i].festival_long)
+		var infowindow = new google.maps.InfoWindow();
+		var marker = new google.maps.Marker({
+			icon : '../../img/festival-logo1.png',
+			position: latlong,
+			map: map,
+			title: "" + data[i].festival_num
+			
+		})
+		
+		google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+				console.log(1111111111111111111111111111111111111111);
+				//abc= data[i].tour_id;
+				//$.ajax({
+				//	url: "/DBdata/getImgUrl",
+				//	data: {name : data[i].tour_id},
+				//	success: function(aa){
+				//		img = aa;
+				//	},error:function(aaa){
+				//		console.log("가져오기 실패")
+				//		console.log(aaa)
+				//	}
+				//});
+				console.log(data[i].festival_id);
+				MSG = "축제명 : " + data[i].festival_id + "<hr/>";
+				MSG += "축제 정보 : " + data[i].festival_content + "<br/>";
+				//MSG += "주소 : "+data[i].tour_road_name_addr+"<br/>";
+				//MSG += "<li><img src='"+img+"'width'150' height'150'/></li>";
+				//html로 표시될 인포 윈도우의 내용
+				var infowindow = new google.maps.InfoWindow({ content: MSG });
+				//인포윈도우가 표시될 위치
+				infowindow.open(map, marker);
+			}
+		})(marker, i));
+		var data3 = [];
+		if (marker) {
+			marker.addListener('click', function() {
+				//중심 위치를 클릭된 마커의 위치로 변경
+				map.setCenter(this.getPosition());
+				//마커 클릭 시의 줌 변화
+				map.setZoom(14);
+				console.log(99);
+				console.log(this.title);
+				console.log(this);
+
+				$.ajax({
+					url: "/DBdata/getPdata2",
+					data: { num: this.title },
+					success: function(data2) {
+						console.log(data2)
+						data3 = data2;
+						//User-Agent
+						var appenddiv = "<div class='touristSpot'>";
+						appenddiv += "<div class='touristSpot_img'><img src='" + data3[0].festival_img + "'style='width\"300\" height\"300\"/'></div>";
+						appenddiv += "<div class='touristSpot_div'>"
+						appenddiv += "<div class='touristSpot_subject'>" + data3[0].festival_id + "</div>";
+						appenddiv += "<br/>";
+						appenddiv += "<spen>축제 소개<br/></spen>";
+						appenddiv += "<div class='touristSpot_content'>" + data3[0].festival_content + "</div>";
+						appenddiv += "<div class='touristSpot_tel'>축제 주소: " + data3[0].festival_road_name_addr + "</div>";
+						appenddiv += "<div class='touristSpot_tel'>축제 관리기관 전화번호: " + data3[0].festival_phonenum + "</div>";
+						appenddiv += "<div class='touristSpot_div2'>";
+						appenddiv += "<div class='touristSpot_parking'>축제 기간: " + data3[0].festival_start_date+"~"+data3[0].festival_end_date+"</div>";
+						appenddiv += "<div class='touristSpot_raiting'> &nbsp; &nbsp;";
+						appenddiv += "<input class='touristSpot_fav' type='button' value='❤'/></div>";
+						appenddiv += "</div>";
+						appenddiv += "</div>";
+						appenddiv += "</div>";
+						appenddiv += "<br/>";
+						$('.search_result').prepend(appenddiv)
+
+
+					}, error: function(aaa) {
+						console.log("가져오기 실패")
+						console.log(aaa)
+					}
+				});
+				console.log(this);
+
+			});
+		}
+
+
+
+
+				//var info = new google.maps.InfoWindow({content:data[i].tour_id});
+				//google.maps.event.addListener(marker, 'mouseover', function(){
+				//	info.open(map, marker);
+				//})
+
+			}
+		}, error: function() {
+			console.log("가져오기 실패")
+		}
+	});
+	$.ajax({
 		url: "/DBdata/gmapGo",
 		success: function(data) {
 			console.log(data[1].tour_id);
 			console.log(data.length);
 			console.log(data[1].tour_lat);
-			for (i; i < data.length; i++) {
+			for (var i=0; i < data.length; i++) {
 				lat = data[i].tour_lat;
 				long = data[i].tour_long;
 				var latlong = new google.maps.LatLng(data[i].tour_lat, data[i].tour_long)
@@ -266,7 +374,7 @@ function initMap() {
 					//icon : '../../img/tour.png',
 					position: latlong,
 					map: map,
-					title: "" + data[i].tour_num,
+					title: "" + data[i].tour_num
 				})
 				google.maps.event.addListener(marker, 'click', (function(marker, i) {
 					return function() {
@@ -298,7 +406,7 @@ function initMap() {
 						//중심 위치를 클릭된 마커의 위치로 변경
 						map.setCenter(this.getPosition());
 						//마커 클릭 시의 줌 변화
-						map.setZoom(14);
+						map.setZoom(13);
 						console.log(99);
 						console.log(this.title);
 						console.log(this);
@@ -354,109 +462,7 @@ function initMap() {
 		}
 	});
 	var i =0;
-		$.ajax({
-		url: "/DBdata/gmapGo2",
-		success: function(data) {
-			console.log(data[1].festival_id);
-			console.log(data.length);
-			console.log(data[1].festival_lat);
-			for (i; i < data.length; i++) {
-				lat = data[i].festival_lat;
-				long = data[i].festival_long;
-				var latlong = new google.maps.LatLng(data[i].festival_lat, data[i].festival_long)
-				var infowindow = new google.maps.InfoWindow();
-				var marker = new google.maps.Marker({
-					icon : '../../img/festival-logo (1).png',
-					position: latlong,
-					map: map,
-					title: "" + data[i].festival_num,
-					
-				})
-				google.maps.event.addListener(marker, 'click', (function(marker, i) {
-					return function() {
-						//abc= data[i].tour_id;
-						//$.ajax({
-						//	url: "/DBdata/getImgUrl",
-						//	data: {name : data[i].tour_id},
-						//	success: function(aa){
-						//		img = aa;
-						//	},error:function(aaa){
-						//		console.log("가져오기 실패")
-						//		console.log(aaa)
-						//	}
-						//});
-						console.log(data[i].festival_id);
-						MSG = "관광지명 : " + data[i].festival_id + "<hr/>";
-						MSG += "관광지 정보 : " + data[i].festival_content + "<br/>";
-						//MSG += "주소 : "+data[i].tour_road_name_addr+"<br/>";
-						//MSG += "<li><img src='"+img+"'width'150' height'150'/></li>";
-						//html로 표시될 인포 윈도우의 내용
-						var infowindow = new google.maps.InfoWindow({ content: MSG });
-						//인포윈도우가 표시될 위치
-						infowindow.open(map, marker);
-					}
-				})(marker, i));
-				var data3 = [];
-				if (marker) {
-					marker.addListener('click', function() {
-						//중심 위치를 클릭된 마커의 위치로 변경
-						map.setCenter(this.getPosition());
-						//마커 클릭 시의 줌 변화
-						map.setZoom(14);
-						console.log(99);
-						console.log(this.title);
-						console.log(this);
 
-						$.ajax({
-							url: "/DBdata/getPdata2",
-							data: { num: this.title },
-							success: function(data2) {
-								console.log(data2)
-								data3 = data2;
-								//User-Agent
-								var appenddiv = "<div class='touristSpot'>";
-								appenddiv += "<div class='touristSpot_img'><img src='" + data3[0].festival_img + "'style='width\"300\" height\"300\"/'></div>";
-								appenddiv += "<div class='touristSpot_div'>"
-								appenddiv += "<div class='touristSpot_subject'>" + data3[0].festival_id + "</div>";
-								appenddiv += "<br/>";
-								appenddiv += "<spen>축제 소개<br/></spen>";
-								appenddiv += "<div class='touristSpot_content'>" + data3[0].festival_content + "</div>";
-								appenddiv += "<div class='touristSpot_tel'>축제 주소: " + data3[0].festival_road_name_addr + "</div>";
-								appenddiv += "<div class='touristSpot_tel'>축제 관리기관 전화번호: " + data3[0].festival_phonenum + "</div>";
-								appenddiv += "<div class='touristSpot_div2'>";
-								appenddiv += "<div class='touristSpot_parking'>축제 기간: " + data3[0].festival_start_date+"~"+data3[0].festival_end_date+"</div>";
-								appenddiv += "<div class='touristSpot_raiting'> &nbsp; &nbsp;";
-								appenddiv += "<input class='touristSpot_fav' type='button' value='❤'/></div>";
-								appenddiv += "</div>";
-								appenddiv += "</div>";
-								appenddiv += "</div>";
-								appenddiv += "<br/>";
-								$('.search_result').prepend(appenddiv)
-
-
-							}, error: function(aaa) {
-								console.log("가져오기 실패")
-								console.log(aaa)
-							}
-						});
-						console.log(this);
-
-					});
-				}
-
-
-
-
-				//var info = new google.maps.InfoWindow({content:data[i].tour_id});
-				//google.maps.event.addListener(marker, 'mouseover', function(){
-				//	info.open(map, marker);
-				//})
-
-			}
-		}, error: function() {
-			console.log("가져오기 실패")
-		}
-	});
 
 
 
@@ -472,7 +478,7 @@ function getLocation() {
 			//버튼 클릭시 구글맵 위치를 사용자 위치로 이동
 			latitude = position.coords.latitude
 			longitude = position.coords.longitude
-			initMap()
+			initMap2(latitude,longitude,15)
 		}, function(error) {
 			console.error(error);
 		}, {
@@ -531,9 +537,32 @@ $(function() {
 				var appenddiv = "<div class='abcde'>";
 				appenddiv += "관광지명 : "+el.tour_id+"<br/>";
 				appenddiv += "거리 : "+Number(el.tour_distance).toFixed(2)+"KM";
+				appenddiv += "<div class='fLat1'  style='display:none' >"+el.tour_lat+"</div>";
+				appenddiv += "<div class='fLat2'  style='display:none' >"+el.tour_long+"</div>";
 				appenddiv += "</div>";
 				appenddiv += "<br/>";
 				$('.gmap_search').append(appenddiv)
+				});
+				$('.abcde').click(function() {
+				console.log(1234);
+				console.log( $(this));
+				console.log( $(this).children());
+				//console.log($(this).children().last().prev().html());
+				//console.log($(this).children().last().html());
+				//console.log($(this).children().last().prev().html());
+				//console.log($(this).children('.lastchild').text());
+				//console.log($(this).children('.lastchild').prev().html());
+				//console.log(1234);
+				
+				//console.log( $(this).child('.heart').attr("value"));
+				//console.log(Number(this.festival_lat));
+				//console.log(1234);
+				console.log(1234);
+				c = $(this).children().last().prev().html();
+				d = $(this).children().last().html();
+				console.log(c+d)
+				initMap2(c,d,15)
+
 				});
 			}, error: function(aaa) {
 				console.log("가져오기 실패")
@@ -557,12 +586,35 @@ $(function() {
 				console.log(aa);
 				aa.forEach(function (el, index){
 				var appenddiv2 = "<div class='abcde'>";
-				appenddiv2 += "축제명 : "+el.festival_id+"<br/>";
-				appenddiv2 += "거리 : "+Number(el.festival_distance).toFixed(2)+"KM<br/>";
-				appenddiv2 += "축제기간 : "+el.festival_start_date+"~"+el.festival_end_date;
+				appenddiv2 += "<li>축제명 : "+el.festival_id+"</li>";
+				appenddiv2 += "<li>거리 : "+Number(el.festival_distance).toFixed(2)+"KM</li>";
+				appenddiv2 += "<li>축제기간 : "+el.festival_start_date+"~"+el.festival_end_date+"</li>";
+				appenddiv2 += "<div class='fLat1'  style='display:none' >"+el.festival_lat+"</div>";
+				appenddiv2 += "<div class='fLat2'  style='display:none' >"+el.festival_long+"</div>";
 				appenddiv2 += "</div>";
 				appenddiv2 += "<br/>";
 				$('.gmap_search').append(appenddiv2)
+				});
+				$('.abcde').click(function() {
+				console.log(1234);
+				console.log( $(this));
+				console.log( $(this).children());
+				//console.log($(this).children().last().prev().html());
+				//console.log($(this).children().last().html());
+				//console.log($(this).children().last().prev().html());
+				//console.log($(this).children('.lastchild').text());
+				//console.log($(this).children('.lastchild').prev().html());
+				//console.log(1234);
+				
+				//console.log( $(this).child('.heart').attr("value"));
+				//console.log(Number(this.festival_lat));
+				//console.log(1234);
+				console.log(1234);
+				c = $(this).children().last().prev().html();
+				d = $(this).children().last().html();
+				console.log(c+d)
+				initMap2(c,d,15)
+
 				});
 			}, error: function(aaa) {
 				console.log("가져오기 실패")
@@ -571,4 +623,6 @@ $(function() {
 		});
 	});
 	});
+	
+
 //---------------------------------------------------------------------------------------------
