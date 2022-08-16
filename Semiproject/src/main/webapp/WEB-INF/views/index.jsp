@@ -56,9 +56,10 @@
 					</ul>
 				</form>
 
-				
-				<input type="button" value="바로 관광지 검색" id="mainSB">
-				<input type="button" value="바로 축제 검색" id="mainSB2">
+				<ul class="nBtn" >
+					<li><input type="button" value="바로 관광지 검색" class="button" id="mainSB"></li>
+					<li><input type="button" value="바로 축제 검색"  class="button" id="mainSB2"></li>
+				</ul>
 		</section>
 <!-- ---------------------지도한눈에 보기~ 구글맵 전까지------------------------- -->
 	
