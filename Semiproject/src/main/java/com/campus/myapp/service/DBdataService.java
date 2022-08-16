@@ -17,4 +17,7 @@ public interface DBdataService {
 	public List<tourVO> GmapGo();
 	public List<tourVO> getPdata(int num);
 	public List<tourVO> getLI(String la, String lon);
+	public List<FestivalVO> gmapGo2(String a, String b);
+	public List<FestivalVO> getPdata2(int num);
+	public List<FestivalVO> getLI2(String la, String lon, String a, String b);
 }
