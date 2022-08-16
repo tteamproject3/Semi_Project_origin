@@ -84,16 +84,16 @@ public class tourVO {
 //	}
 //	public String getTour_lat() {
 //		return tour_lat;
-	}
-	public void setTour_lat(String tour_lat) {
-		this.tour_lat = tour_lat;
-	}
-	public String getTour_long() {
-		return tour_long;
-	}
-	public void setTour_long(String tour_long) {
-		this.tour_long = tour_long;
-	}
+//	}
+//	public void setTour_lat(String tour_lat) {
+//		this.tour_lat = tour_lat;
+//	}
+//	public String getTour_long() {
+//		return tour_long;
+//	}
+//	public void setTour_long(String tour_long) {
+//		this.tour_long = tour_long;
+//	}
 	
 	
 	
