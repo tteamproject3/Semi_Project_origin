@@ -189,7 +189,10 @@ $.ajax({
 		console.log("가져오기 실패")
 	}
 });
+var latitude = "";
+var longitude = "";
 var zM=0;
+var la=0;
 var c ="";
 var d = "";
 var map;
@@ -508,7 +511,7 @@ $(function() {
 
 				appenddiv += "</div>";
 				appenddiv += "<br/>";
-				$('.gmap_search').append(appenddiv)
+				$('.gmap_search').prepend(appenddiv)
 				});
 				$('.abcde').click(function() {
 				console.log(1234);
@@ -563,7 +566,7 @@ $(function() {
 
 				appenddiv2 += "</div>";
 				appenddiv2 += "<br/>";
-				$('.gmap_search').append(appenddiv2)
+				$('.gmap_search').prepend(appenddiv2)
 				});
 				$('.abcde').click(function() {
 				console.log(1234);
