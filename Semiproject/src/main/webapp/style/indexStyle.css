@@ -586,13 +586,7 @@ i{
 	background: #F2F2F2 0% 0% no-repeat padding-box;
 	box-shadow: var(--bigger-shadow) ;
 	border-radius: 20px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-	overflow: hidden;
-=======
-=======
 
->>>>>>> 3444eaa5e94b05d057b2bc925fd45b112530d7b1
 	overflow:scroll;
 }
 .gmap_search .abcde{
@@ -609,11 +603,6 @@ i{
  }
 .gmap_search .abcde:last-child{
 	border:none;
-<<<<<<< HEAD
->>>>>>> f4fcf68a28a1446efe52dc470d5d4f7bb4de8ef6
-=======
-
->>>>>>> 3444eaa5e94b05d057b2bc925fd45b112530d7b1
 }
 #googleMapView{
 	width: 73%;
@@ -626,17 +615,9 @@ i{
 .search_result{
 	flex-direction: column;
 	display: flex;
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-=======
-	margin-bottom: var(--large-space);
->>>>>>> f4fcf68a28a1446efe52dc470d5d4f7bb4de8ef6
-=======
 
 	margin-bottom: var(--large-space);
 
->>>>>>> 3444eaa5e94b05d057b2bc925fd45b112530d7b1
 }
 .search_result_div1{
 	display: flex;
