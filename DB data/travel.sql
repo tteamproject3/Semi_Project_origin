@@ -1,9 +1,23 @@
 use travel;
 show tables;
-
+desc touristSpot;
 desc post;
 desc festival;
-
+select
+		festival_num,
+		festival_id,
+		festival_place,
+		date_format(festival_start_date,'%m-%d') festival_start_date,
+		date_format(festival_end_date,'%m-%d')festival_end_date,
+		festival_content,
+		festival_site,
+		festival_road_name_addr,
+		festivalcol
+		from
+		festival
+		where festival_start_date between '2022-08-15' and '2022-10-15'
+		order by festival_start_date
+		limit 4 offset 0;
 ALTER TABLE post MODIFY COLUMN post_file1 varchar(300);
 update post set post_type = 'theme' where post_type ='thema' ;
 select * from post;
@@ -91,3 +105,4 @@ delete from festival;
 select count(festival_id) from festival;
 select count(tour_id) from touristSpot;
 select * from touristSpot;
+

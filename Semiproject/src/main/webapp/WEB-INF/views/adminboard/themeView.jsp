@@ -111,7 +111,8 @@ function boardDel(){
 <section class="container">
 	<div class="board__bar">
 		<ul class="board__nav">
-			<li><a href ="/adminboard/spotList">데이터 관리</a></li>
+			<li><a href = "/adminboard/tourList">여행지 관리</a></li>
+			<li><a href = "/adminboard/festivalList">축제 관리</a></li>
 			<li class="active"><a href ="/adminboard/themeList">테마여행추천</a></li>
 		</ul>
 	</div>	
