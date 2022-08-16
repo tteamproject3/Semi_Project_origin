@@ -155,9 +155,12 @@ i{
 	flex-wrap: wrap;
 	align-content: space-around;
 	width: 100%;
-	/* 여백 */
-	padding: 5% 5%;
-	/* padding: var(--large-space) calc(var(--large-space)*3); */
+}
+.search ul:firth-child{
+	padding: 5% 5% 1% 5%;
+}
+.search ul:last-child{
+	padding: 1% 5% 1% 5%;
 }
 .search ul>li{
 	width:26%;
@@ -183,6 +186,9 @@ i{
 	/* 날짜 입력창 설정 */
 	width: 44%;
 }
+.search .search_box_1{
+	width:70%
+}
 .search .input__wrapper{
 	/* 현재 위치 검색창 스타일 */
 	width:100%;
@@ -200,7 +206,7 @@ i{
 .search .button{
 	/* 바로검색 버튼 */
 	width: 100%;
-	height: 70%;
+	height: 60%;
 	border: none;
 	border-radius: var(--strong-radius);
 	background-color: var(--main-color);
@@ -208,6 +214,9 @@ i{
 	font-size: var(--large-font-size-3);
 	text-align: center;
 	margin-top: var(--medium-space);
+}
+.search .nBtn>li{
+	height: 100%;
 }
 /* ***** event ****** */
 .search .button:hover{
@@ -318,21 +327,24 @@ i{
 	width: var(--main-center-ratio);
 	margin: 0 auto;
 }
-.theme__list>li{
+.theme__list form>li{
 	/* 가로 정렬 */
 	display: flex;
 	align-items: center;
 	justify-self: center;
 	padding: var(--medium-space) var(--large-space);
 }
-.theme__list>li>div{
+.theme__list form>li:nth-child(2n+2){
+	flex-direction:row;
+}
+.theme__list li>div{
 	/* 테마칸 설정 */
 	margin: var(--medium-space);
 	padding: var(--medium-space);
 	width: 45%;
 	height: inherit;
 }
-.theme__list>li .line{
+.theme__list li .line{
 	/* 중앙선 */
 	padding: 0;
 	width: 0px;
@@ -408,10 +420,11 @@ i{
 	color: var(--ct-color-gray-dark);
 	font-size: var(--small-font-size-1);
 }
-.theme__list li:nth-child(2n+2){
-	/* 테마칸 반전 정렬 */
-	flex-direction: row-reverse;
-}
+
+/* .theme__list .tm_box:nth-child(2n+2){
+	테마칸 반전 정렬
+	flex-direction: row-reverse;  
+} */
 
 /* ----- FESTIVAL BANNER ----- */
 .festival{
@@ -445,23 +458,23 @@ i{
 .festival__list .festival__info img{
 	width: 100%;
 	height: 20vh;
+	margin-bottom: var(--medium-space);
 }
-.festival__list .festival__info i{
+.festival__list .festival__info .saved{
+	text-align:right;
+}
+.festival__list .festival__info .saved>i{
 	/* 좋아요 버튼 */
 	color: black;
 	font-size:var(--large-font-size-2);
-	align-self: flex-end;
-	/* 위치 이동 */
-	position: relative;
-	top: calc(var(--large-space)*-1.5);
-	left: calc(var(--large-space)*-0.5);
 }
+
 .festival__list .festival__info .fTitle{
 	/* 축제명 */
 	font-size: var(--medium-font-size-3);
 	font-weight: bold;
 	text-align: left;
-	margin-bottom: var(--medium-space) ;
+	margin: var(--medium-space) 0 ;
 	color: black;
 	border-bottom: var(--basic-line) var(--main-color);
 }
@@ -565,13 +578,32 @@ i{
 	position: relative;
 	top: -70px;
 }
+/* 관광지 목록 들어오는 곳  */
+/* .abcde */
 .gmap_search{
 	width: 25%;
 	height: 600px;
 	background: #F2F2F2 0% 0% no-repeat padding-box;
-	box-shadow: var(--bigger-shadow);
+	box-shadow: var(--bigger-shadow) ;
 	border-radius: 20px;
-	overflow: hidden;
+
+	overflow:scroll;
+}
+.gmap_search .abcde{
+	margin: var(--medium-space);
+	background-color:white;
+	box-shadow:var(--basic-box);
+	border-radius:10%;
+	padding:var(--medium-space);
+	/* border-bottom: var(--dotted-line) var(--ct-color-gray-dark); */
+	color:black;
+ }
+ .gmap_search .abcde .tt{
+ 	color: var(--ct-color-gray-dark);
+ }
+.gmap_search .abcde:last-child{
+	border:none;
+
 }
 #googleMapView{
 	width: 73%;
@@ -584,7 +616,9 @@ i{
 .search_result{
 	flex-direction: column;
 	display: flex;
-	
+
+	margin-bottom: var(--large-space);
+
 }
 .search_result_div1{
 	display: flex;
@@ -661,7 +695,7 @@ i{
 }
 .touristSpot_div2{
 	display: flex;
-	justify-content: space-between
+	justify-content: space-between;
 }
 /* ------------------------------------------------------------------------------ */
 
