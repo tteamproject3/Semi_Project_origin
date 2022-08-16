@@ -3,5 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campus.myapp.dao.MySavedDAO">
+	<insert id="postWriteOk" >
+		insert into mysaved(saved_title, saved_url, saved_content, google_id)
+		values(#{post_title}, #{post_file1}, #{post_content},#{google_id})
+	</insert>
 	
+	<insert id="postAddOk" >
+		insert into mysaved(saved_title, saved_url, saved_content, google_id)
+		values(#{saved_title}, #{saved_url}, #{saved_content},#{google_id})
+	</insert>
+	
+	<select id="totalRecord" resultType="int">
+		select count(saved_num) cnt from mysaved
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	
+	<select id="boardList" resultType="MySavedVO">
+		select 
+		saved_num,
+		saved_title,
+		saved_url,
+		saved_content
+		from mysaved
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		limit ${onePageRecord} offset ${offsetPoint}
+	</select>
 </mapper>

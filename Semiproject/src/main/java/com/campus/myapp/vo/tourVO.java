@@ -11,6 +11,7 @@ public class tourVO {
 	private String tour_lat;
 	private String tour_long;
 	private String tour_img;
+	private String tour_distance;
 
 	
 	
@@ -21,6 +22,18 @@ public class tourVO {
 				+ ", tour_road_name_addr=" + tour_road_name_addr + ", tour_lotnum_addr=" + tour_lotnum_addr
 				+ ", tour_lat=" + tour_lat + ", tour_long=" + tour_long + ", tour_img=" + tour_img + "]";
 	}
+	
+	
+	public String getTour_distance() {
+		return tour_distance;
+	}
+
+
+	public void setTour_distance(String tour_distance) {
+		this.tour_distance = tour_distance;
+	}
+
+
 	public String getTour_img() {
 		return tour_img;
 	}
@@ -81,5 +94,7 @@ public class tourVO {
 	public void setTour_long(String tour_long) {
 		this.tour_long = tour_long;
 	}
+	
+	
 	
 }

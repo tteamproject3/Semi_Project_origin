@@ -157,17 +157,19 @@
 			<!-- theme section -->
 			<ul class="theme__list">
 				<c:forEach var="vo" items="${t_list}">
-					<form class="p_save" method="post" action="/mypage/postSave" >
-						<input type="hidden" name="saved_title" value="${vo.post_title }">
-						<input type="hidden" name="saved_url" value="${vo.post_file1 }">
-						<input type="hidden" name="saved_content" value="${vo.post_content }">
+					<form class="p_save_${vo.post_id }" method="post" action="/mypage/postSave" > 
+					<!-- <form class="p_save"> -->
+						<input type="hidden" name="post_title" value="${vo.post_title }">
+						<input type="hidden" name="post_file1" value="${vo.post_file1 }">
+						<input type="hidden" name="post_content" value="${vo.post_content }">
 						<li>
 						<div class="card">
 							<img src="${vo.post_file1 }" alt="">
 							<span class="title">${vo.post_title }</span>
 							<div class="card__detail">
-								<i class="fa-regular fa-heart saved"></i>
+								<div class="saved_1"><i class="fa-regular fa-heart "></i></div>
 							</div>
+							<input type="hidden" name="post_id" value="${vo.post_id }">
 						</div>
 						<div class="line"></div>	
 						<!-- theme description -->
@@ -190,19 +192,28 @@
 			</div>
 			<ul class="festival__list">
 				<c:forEach var="vo" items="${f_list}">
-				<!-- festival list -->
-					<li>
-					<!-- festival info -->
-					<div class="festival__info">
-						<img src="${vo.festivalcol }" alt="" >
-						<i class="fa-regular fa-heart saved"></i>
-						<span class="fTitle">${vo.festival_id}</span>
-						<span class="fDetail">${vo.festival_place} <br></span>
-						${vo.festival_start_date} ~ ${vo.festival_end_date}</br>
-						<a href="${vo.festival_site }">축제 사이트로 이동</a>
-					</div>
+					<%--   --%>
+					<!-- festival list -->
+						<li>
+						<form class="p_save_${vo.festival_num }" method="post" action="/mypage/newSave" >
+						<input type="hidden" name="saved_title" value="${vo.festival_id }" >
+						<input type="hidden" name="saved_url" value="${vo.festivalcol }" >
+						<input type="hidden" name="saved_content" value="${vo.festival_content }" >
+						
+						<!-- festival info -->
+						<div class="festival__info">
+							<img src="${vo.festivalcol }" alt="" >
+							<div class="saved_2"><i class="fa-regular fa-heart saved"></i></div>
+							<span class="fTitle">${vo.festival_id}</span>
+							<span class="fDetail">${vo.festival_place} <br></span>
+							${vo.festival_start_date} ~ ${vo.festival_end_date}</br>
+							<a href="${vo.festival_site }">축제 사이트로 이동</a>
+							
+						</div>
+						<input type="hidden" value="${vo.festival_num }" >
+						</form>
+						</li>
 					
-					</li>
 				</c:forEach>
 		
 			</ul>

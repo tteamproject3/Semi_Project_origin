@@ -142,11 +142,31 @@ $(function() {
 		}
 	})
 	
-	//좋아요 버튼
-	$(".saved").click(function(){
-		$(this).parent().html('');
-		$(this).parent().html("<i class='fa-solid fa-heart saved'></i>");
-		alert("마이페이지에 저장합니다!");			
+	//좋아요 버튼-테마	
+	$(".saved_1").click(function(){
+		$(this).html('');
+		$(this).append("<i class='fa-solid fa-heart saved'></i>");
+		alert("마이페이지에 저장합니다!");	
+		
+		var frmName = ".p_save_"+$(this).parent().next().val();
+		//console.log(frmName);
+		$(frmName).submit(
+		);
+				
+	});
+	
+	
+	//좋아요 버튼 - 축제
+	$(".saved_2").click(function(){
+		$(this).html('');
+		$(this).append("<i class='fa-solid fa-heart saved'></i>");
+		alert("마이페이지에 저장합니다!");	
+		
+		var frmName = ".p_save_"+$(this).parent().next().val();
+		console.log(frmName);
+		$(frmName).submit(
+		);
+				
 	});
 
 	
@@ -566,9 +586,11 @@ $(function() {
 				console.log(aa);
 				aa.forEach(function (el, index){
 				var appenddiv2 = "<div class='abcde'>";
-				appenddiv2 += "축제명 : "+el.tour_id+"<br/>";
-				appenddiv2 += "거리 : "+Number(el.festival_distance).toFixed(2)+"KM<br/>";
-				appenddiv2 += "축제기간 : "+el.festival_start_date+"~"+el.festival_end_date;
+				
+				
+				appenddiv2 += "<div class='tt'>축제명 : </div>"+el.festival_id+"<br/>";
+				appenddiv2 += "<div class='tt'>거리명 : </div>"+Number(el.festival_distance).toFixed(2)+"KM<br/>";
+				appenddiv2 += "<div class='tt'>축제기간 : </div>"+el.festival_start_date+"~"+el.festival_end_date;
 				appenddiv2 += "</div>";
 				appenddiv2 += "<br/>";
 				$('.gmap_search').append(appenddiv2)

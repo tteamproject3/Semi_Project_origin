@@ -2,7 +2,7 @@ package com.campus.myapp.vo;
 
 public class PagingVO {
 	private int nowPage = 1; // 현재 페이지
-	private int onePageRecord=12; // 한페이지에 출력할 레코드수
+	private int onePageRecord=6; // 한페이지에 출력할 레코드수
 	private int totalRecord; // 총레코드수
 	private int totalPage;// 총페이지수
 	private int offsetPoint; // 페이지 레코드 서낵할 위치
@@ -48,6 +48,7 @@ public class PagingVO {
 		//표시할 페이지의 시작번호
 		startPage = (nowPage-1)/onePageCount*onePageCount+1;
 	}
+	
 	public int getOnePageRecord() {
 		return onePageRecord;
 	}
