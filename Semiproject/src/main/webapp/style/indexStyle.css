@@ -318,21 +318,24 @@ i{
 	width: var(--main-center-ratio);
 	margin: 0 auto;
 }
-.theme__list>li{
+.theme__list form>li{
 	/* 가로 정렬 */
 	display: flex;
 	align-items: center;
 	justify-self: center;
 	padding: var(--medium-space) var(--large-space);
 }
-.theme__list>li>div{
+.theme__list form>li:nth-child(2n+2){
+	flex-direction:row;
+}
+.theme__list li>div{
 	/* 테마칸 설정 */
 	margin: var(--medium-space);
 	padding: var(--medium-space);
 	width: 45%;
 	height: inherit;
 }
-.theme__list>li .line{
+.theme__list li .line{
 	/* 중앙선 */
 	padding: 0;
 	width: 0px;
@@ -408,10 +411,11 @@ i{
 	color: var(--ct-color-gray-dark);
 	font-size: var(--small-font-size-1);
 }
-.theme__list li:nth-child(2n+2){
-	/* 테마칸 반전 정렬 */
-	flex-direction: row-reverse;
-}
+
+/* .theme__list .tm_box:nth-child(2n+2){
+	테마칸 반전 정렬
+	flex-direction: row-reverse;  
+} */
 
 /* ----- FESTIVAL BANNER ----- */
 .festival{
@@ -565,12 +569,30 @@ i{
 	position: relative;
 	top: -70px;
 }
+/* 관광지 목록 들어오는 곳  */
+/* .abcde */
 .gmap_search{
 	width: 25%;
 	height: 600px;
 	background: #F2F2F2 0% 0% no-repeat padding-box;
-	box-shadow: var(--bigger-shadow);
+	box-shadow: var(--bigger-shadow) ;
 	border-radius: 20px;
+	overflow:scroll;
+}
+.gmap_search .abcde{
+	margin: var(--medium-space);
+	background-color:white;
+	box-shadow:var(--basic-box);
+	border-radius:10%;
+	padding:var(--medium-space);
+	/* border-bottom: var(--dotted-line) var(--ct-color-gray-dark); */
+	color:black;
+ }
+ .gmap_search .abcde .tt{
+ 	color: var(--ct-color-gray-dark);
+ }
+.gmap_search .abcde:last-child{
+	border:none;
 }
 #googleMapView{
 	width: 73%;
@@ -583,6 +605,7 @@ i{
 .search_result{
 	flex-direction: column;
 	display: flex;
+	margin-bottom: var(--large-space);
 }
 .search_result_div1{
 	display: flex;
@@ -657,7 +680,7 @@ i{
 }
 .touristSpot_div2{
 	display: flex;
-	justify-content: space-between
+	justify-content: space-between;
 }
 /* ------------------------------------------------------------------------------ */
 

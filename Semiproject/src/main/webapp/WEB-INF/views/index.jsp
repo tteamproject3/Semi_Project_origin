@@ -10,14 +10,6 @@
 				<!-- SEARCH FORM -->
 				<form method="get" action="DBdata/festData" >
 					<ul>
-					<!-- 	<li>
-								<div class="search__title">여행 방법</div>
-								<input type="radio" name="tripPlan" id="roundTrip" value="rountTrip" checked>
-								<label for="roundTrip">왕복</label>&nbsp;&nbsp;&nbsp;
-								<input type="radio" name="tripPlan" id="oneWay" value="oneWay">
-								<label for="oneWay">편도</label>
-						</li> -->
-
 						<li>
 							<label for="curLoc" >
 								<div class="search__title">현재 위치</div>
@@ -57,29 +49,6 @@
 							<input type="date" class="input__box" id="end_Itnr" name="end_Itnr"> 
 						</li>
 
-					<!-- 	<li>
-							<div class="search__title">이동수단</div>
-							<select class="input__box" id="transfort" >
-								<option value="">-</option>
-								<option value="train">기차</option>
-								<option value="car">차량</option>
-								<option value="bus">버스</option>
-								<option value="walk">도보</option>
-							</select>
-						</li>
-
-						<li>
-							<div class="search__title">이동거리</div>
-							<select class="input__box" id="distance" >
-								<option value="">-</option>
-								<option value="range_1">10Km ~ 30Km</option>
-								<option value="range_1">30Km ~ 100Km</option>
-								<option value="range_1">100Km ~ 200Km</option>
-								<option value="range_1">200Km ~ 300Km</option>
-								<option value="range_1">300Km ~ 400Km</option>
-								<option value="range_1">400Km ~ </option>
-							</select>
-						</li> -->
 
 						<li>
 							<input type="submit" value="바로 검색" class="button">
@@ -143,7 +112,7 @@
 		</section>
  <!-- ---------------------------------맞춤여행지-----------------------------------  --> 
  		    <div class="search_result_div1">
-	   			<div class="search_result_title">${log_NickName} 님을 위한 맞춤 여행지</div>
+	   			<div class="search_result_title">${logNickName} 님을 위한 맞춤 여행지</div>
 	   			<hr class="search_result_hr">
   			</div>
  		<section class="search_result">
@@ -187,22 +156,27 @@
 			<!-- theme section -->
 			<ul class="theme__list">
 				<c:forEach var="vo" items="${t_list}">
-					<li>
-					<div class="card">
-						<img src="${vo.post_file1 }" alt="">
-						<span class="title">${vo.post_title }</span>
-						<div class="card__detail">
-							<i class="fa-regular fa-heart"></i>
+					<form class="p_save" method="post" action="/mypage/postSave" >
+						<input type="hidden" name="saved_title" value="${vo.post_title }">
+						<input type="hidden" name="saved_url" value="${vo.post_file1 }">
+						<input type="hidden" name="saved_content" value="${vo.post_content }">
+						<li>
+						<div class="card">
+							<img src="${vo.post_file1 }" alt="">
+							<span class="title">${vo.post_title }</span>
+							<div class="card__detail">
+								<i class="fa-regular fa-heart saved"></i>
+							</div>
 						</div>
-					</div>
-					<div class="line"></div>	
-					<!-- theme description -->
-					<div class="descript">
-						<span class="desc__title">${vo.post_intro }</span>
-						<span class="desc__content">${vo.post_content }</span>
-						<a href="/userboard/boardView?post_id=${vo.post_id}"><span class="desc__detail">더보기</span></a>
-					</div>
-					</li>
+						<div class="line"></div>	
+						<!-- theme description -->
+						<div class="descript">
+							<span class="desc__title">${vo.post_intro }</span>
+							<span class="desc__content">${vo.post_content }</span>
+							<a href="/userboard/boardView?post_id=${vo.post_id}"><span class="desc__detail">더보기</span></a>
+						</div>
+						</li>
+					</form>
 				</c:forEach>
 			</ul>
 		</section>
@@ -220,7 +194,7 @@
 					<!-- festival info -->
 					<div class="festival__info">
 						<img src="${vo.festivalcol }" alt="" >
-						<i class="fa-regular fa-heart"></i>
+						<i class="fa-regular fa-heart saved"></i>
 						<span class="fTitle">${vo.festival_id}</span>
 						<span class="fDetail">${vo.festival_place} <br></span>
 						${vo.festival_start_date} ~ ${vo.festival_end_date}</br>

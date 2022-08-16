@@ -55,6 +55,8 @@ public class HomeController {
 		}
 		
 		mav.addObject("f_list", fList);
+		
+//		mav.addObject("logNickName", fList);
 		mav.setViewName("index");
 		return mav;
 	}

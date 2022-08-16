@@ -141,6 +141,15 @@ $(function() {
 			$(this).css('color', 'gray');
 		}
 	})
+	
+	//좋아요 버튼
+	$(".saved").click(function(){
+		$(this).parent().html('');
+		$(this).parent().html("<i class='fa-solid fa-heart saved'></i>");
+		alert("마이페이지에 저장합니다!");			
+	});
+
+	
 });
 $(document).ready()
 
@@ -425,8 +434,8 @@ $(function() {
 				console.log(aa);
 				aa.forEach(function (el, index){
 				var appenddiv = "<div class='abcde'>";
-				appenddiv += "관광지명 : "+el.tour_id+"<br/>";
-				appenddiv += "거리 : "+Number(el.tour_distance).toFixed(2)+"KM";
+				appenddiv += "<div class='tt'>관광지명 : </div>"+el.tour_id+"<br/>";
+				appenddiv += "<div class='tt'>거리 : </div>"+Number(el.tour_distance).toFixed(2)+"KM";
 				appenddiv += "</div>";
 				appenddiv += "<br/>";
 				$('.gmap_search').append(appenddiv)

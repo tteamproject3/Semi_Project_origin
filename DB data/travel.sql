@@ -105,3 +105,4 @@ delete from festival;
 select count(festival_id) from festival;
 select count(tour_id) from touristSpot;
 select * from touristSpot;
+
